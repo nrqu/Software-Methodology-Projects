@@ -20,13 +20,22 @@ public class Book {
 		++Book.bookCount;
 		System.out.println(number);
 	}
+	//TODO: might have to update a couple of things depending on how Library is implemented.
+	Book(String name,String date){
+		this.number = "" + Book.bookCount;
+		++Book.bookCount;
+		this.name = name;
+		this.checkedOut = false;
+		this.datePublished = new Date(date);
+		
+	}
 	@Override
 	public boolean equals(Object obj) {
 		Book tempObject = (Book)obj;
 		
 		return this.number == tempObject.number;
 	}
-	//TODO: IMPLEMENT METHOD IN DATE CLASS TO RETURN DATE
+	
 	@Override
 	public String toString() {
 		String bookStatus;
@@ -41,8 +50,11 @@ public class Book {
 	
 	//test bed main
 	public static void main(String[] args) {
-		Book test = new Book();
-		Book test2 = new Book();
+		
+		Book test = new Book("This book","10/23/12");
+
+		
+		System.out.println(test.toString());
 		
 	}
 	
