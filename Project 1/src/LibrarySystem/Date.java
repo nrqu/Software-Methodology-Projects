@@ -4,11 +4,12 @@ package LibrarySystem;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-/**
-This class is used as an abstract data type to represent a date.
-@author HECTOR CERDA, LUIS FIGUEROAGIL
-*/
 
+/**
+ * This class is used as an abstract data type to represent a date.
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Date {
 	private int year;
 	private int month;
