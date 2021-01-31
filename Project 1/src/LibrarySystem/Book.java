@@ -1,10 +1,11 @@
 package LibrarySystem;
-/**
-This class is used as an abstract data type to represent a book.
-The class generates a new id for each instance of a book that is generated.
-@author HECTOR CERDA, LUIS FIGUEROAGIL
-*/
 
+/**
+ * This class is used as an abstract data type to represent a book.
+ * The class generates a new id for each instance of a book that is generated.
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 
 public class Book {
 	private String number;
