@@ -29,6 +29,7 @@ public class Book {
 		this.datePublished = new Date(date);
 		
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		Book tempObject = (Book)obj;
