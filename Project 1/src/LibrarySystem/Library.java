@@ -63,13 +63,26 @@ public class Library {
 	}
 	
 	public boolean checkOut(Book book) {
+		int index =find(book);
 		
-		return true;
+		if(index != NOT_FOUND) {
+			if(!books[index].getBookStatus()) {
+				books[index].setBookStatus(true);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean returns(Book book) {
-		
-		return true;
+		int index = find(book);
+		if(index != NOT_FOUND) {
+			if(books[index].getBookStatus()) {
+				books[index].setBookStatus(false);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	// print the list of books in the bag

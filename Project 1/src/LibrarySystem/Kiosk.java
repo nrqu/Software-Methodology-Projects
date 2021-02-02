@@ -1,6 +1,7 @@
 package LibrarySystem;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Kiosk {
 	public void run() {
@@ -32,11 +33,19 @@ public class Kiosk {
 					break;
 				
 				case "O":
-					// Checkout
+					libraryBook = new Book(tokens[1]);
+					if(lib.checkOut(libraryBook)) {
+						System.out.println("You’ve checked out Book#"+tokens[1]+". Enjoy!");
+					}else
+						System.out.println("Book#"+tokens[1]+" is not available.");
 					break;
 				
 				case "I":
-					// Returning
+					libraryBook = new Book(tokens[1]);
+					if(lib.returns(libraryBook)) {
+						System.out.println("Book#"+ tokens[1] + " return has completed. Thanks!");
+					}else
+						System.out.println("Unable to return Book#"+tokens[1]);
 					break;
 				
 				case "PA":
@@ -53,6 +62,8 @@ public class Kiosk {
 					//output the list of books by the book numbers in ascending order
 					lib.printByNumber();
 					break;
+				default:
+					System.out.println("Invalid command!");
 			}
 			
 		}while(!(tokens[0].equals("Q")));

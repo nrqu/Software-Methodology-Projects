@@ -21,7 +21,6 @@ public class Book {
 		++Book.bookCount;
 		System.out.println(number);
 	}
-	//TODO: might have to update a couple of things depending on how Library is implemented.
 	Book(String name,String date){
 		this.number = "" + Book.bookCount;
 		++Book.bookCount;
@@ -51,7 +50,12 @@ public class Book {
 		
 		return "Book#" + number + "::" + name + "::"+datePublished.getDate()+ "::" + bookStatus; 
 	}
-	
+	public boolean getBookStatus() {
+		return checkedOut;
+	}
+	public void setBookStatus(boolean status) {
+		this.checkedOut = status;
+	}
 	//test bed main
 	public static void main(String[] args) {
 		
