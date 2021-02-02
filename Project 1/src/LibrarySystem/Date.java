@@ -14,6 +14,9 @@ public class Date {
 	private int year;
 	private int month;
 	private int day;
+	private static final int QUADRENNIAL = 4;
+	private static final int CENTENNIAL = 100;
+	private static final int QUATERCENTENNIAL = 400;
 	
 	public Date(String date) {
 		String delimeters = "/";
@@ -65,9 +68,9 @@ public class Date {
 	@return true if it is a leap year, false otherwise.
 	*/
 	private boolean isLeapYear() {
-		if(year % 4 == 0) {
-			if(year % 100 ==0) {
-				if(year % 400 == 0) {
+		if(year % QUADRENNIAL == 0) {
+			if(year % CENTENNIAL ==0) {
+				if(year % QUATERCENTENNIAL == 0) {
 					return true;
 				}else {
 					return false;
