@@ -11,7 +11,7 @@ public class Book {
 	private String number;
 	private String name;
 	private boolean checkedOut;
-	private Date datePublished;//finish
+	private Date datePublished;
 	
 	private static int bookCount = 1001;
 	
@@ -30,12 +30,14 @@ public class Book {
 		this.datePublished = new Date(date);
 		
 	}
-	
+	Book(String bookNum){
+		this.number = bookNum;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		Book tempObject = (Book)obj;
 		
-		return this.number == tempObject.number;
+		return this.number.equals(tempObject.number) ;
 	}
 	
 	@Override
