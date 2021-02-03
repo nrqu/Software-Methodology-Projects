@@ -99,8 +99,15 @@ public class Date {
 	// test bed main
 	// TODO: implement test cases
 	public static void main(String[] args) {
-		Date test = new Date("12/-2/1999");
-		System.out.println(test.isValid());
+
+		String tests[] = { "0/0/0", "01/01/0001", "01/01/1899", "01/01/1900", "-1/01/1900", 
+						"02/-2/1900", "03/03/-1999"};
+
+		for (int i = 0; i < tests.length; i++) {
+			Date test = new Date(tests[i]);
+			System.out.println(test.isValid());
+		}
+
 	}
 
 }
