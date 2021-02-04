@@ -59,22 +59,22 @@ public class Date {
 		}
 		switch (this.month) {// Checks if the date is in the correct range for the month being stored in
 						// instance.
-		case 1, 3, 5, 7, 8, 10, 12:
+		case Calendar.JANUARY+1, Calendar.MARCH+1, Calendar.MAY+1, Calendar.JULY+1, Calendar.AUGUST+1, Calendar.OCTOBER+1, Calendar.DECEMBER+1:
 			if (this.day > MAXDAYSINMONTH31 || this.day < MINDAYSINMONTH) {
 				return false;
 			}
 			return true;
-		case 4, 6, 9, 11:
+		case Calendar.APRIL+1, Calendar.JUNE+1, Calendar.SEPTEMBER+1, Calendar.NOVEMBER+1:
 			if (this.day > MAXDAYSINMONTH30 || this.day < MINDAYSINMONTH) {
 				return false;
 			}
 			return true;
-		case 2:
+		case (Calendar.FEBRUARY+1):
 			if(isLeapYear()) {
-				if(this.day <=MAXDAYSINNONLEAPMONTH && this.day >= MINDAYSINMONTH)
+				if(this.day <=MAXDAYSINLEAPMONTH  && this.day >= MINDAYSINMONTH)
 					return true;
 			}else
-				if(this.day <= MAXDAYSINLEAPMONTH && this.day >= MINDAYSINMONTH)
+				if(this.day <= MAXDAYSINNONLEAPMONTH && this.day >= MINDAYSINMONTH)
 					return true;
 
 		}
@@ -140,7 +140,7 @@ public class Date {
 
 		for (int i = 0; i < tests.length; i++) {
 			Date test = new Date(tests[i]);
-			System.out.println(test.isValid());
+			System.out.println(tests[i]+"->"+test.isValid());
 		}
 
 	}
