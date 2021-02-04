@@ -61,7 +61,7 @@ public class Book {
 		if (!checkedOut) {
 			bookStatus = "is available.";
 		} else {
-			bookStatus = "is not available";
+			bookStatus = "is checked out.";
 		}
 
 		return "Book#" + number + "::" + name + "::" + datePublished.getDate() + "::" + bookStatus;

@@ -91,12 +91,14 @@ public class Kiosk {
 					System.out.println("Bookshelf is empty!");
 				}
 				break;
+			case "Q":
+				System.out.println("Kiosk session ended.");
+				break;
 			default:
 				System.out.println("Invalid command!");
 			}
 
 		} while (!(tokens[0].equals("Q")));
 		input.close();
-		System.out.println("Kiosk session ended.");
 	}
 }

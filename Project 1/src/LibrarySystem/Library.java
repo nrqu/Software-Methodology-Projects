@@ -59,7 +59,7 @@ public class Library {
 	 */
 
 	private void sortByDate() {
-		int sizeOfBag = books.length;
+		int sizeOfBag = numBooks;
 
 		for (int i = 0; i < sizeOfBag - 1; i++) {
 			for (int j = i + 1; j < sizeOfBag; j++) {
@@ -74,11 +74,11 @@ public class Library {
 
 	/**
 	 * The sortByNumber method is a helper function that sorts the Book objects in
-	 * the bag by their book number
+	 * the bag by their book number.
 	 */
 
 	private void sortByNumber() {
-		int sizeOfBag = books.length;
+		int sizeOfBag = numBooks; 
 
 		for (int i = 0; i < sizeOfBag - 1; i++) {
 			for (int j = i + 1; j < sizeOfBag; j++) {
