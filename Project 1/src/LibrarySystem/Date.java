@@ -16,7 +16,15 @@ public class Date {
 	private static final int QUADRENNIAL = 4;
 	private static final int CENTENNIAL = 100;
 	private static final int QUATERCENTENNIAL = 400;
-
+	private static final int MAXDAYSINMONTH31 = 31;
+	private static final int MAXDAYSINMONTH30 = 30;
+	private static final int MAXDAYSINLEAPMONTH = 29;
+	private static final int MAXDAYSINNONLEAPMONTH = 28;
+	private static final int MINDAYSINMONTH = 1;
+	/**
+	 * CONSTRUCTOR: creates a new object with a date given by the user
+	 * @param a string representation of the date format mm/dd/yyyy
+	 */
 	public Date(String date) {
 		String delimeters = "/";
 		StringTokenizer stringTokens = new StringTokenizer(date, delimeters);
@@ -24,7 +32,9 @@ public class Date {
 		this.day = Integer.valueOf(stringTokens.nextToken());
 		this.year = Integer.valueOf(stringTokens.nextToken());
 	}
-
+	/**
+	 * CONSTRUCTOR: Creates a new object with the current date.
+	 */
 	public Date() {
 
 		this.year = Calendar.getInstance().get(Calendar.YEAR);
@@ -41,23 +51,31 @@ public class Date {
 	public boolean isValid() {
 		int minimumYear = 1900;
 
-		if (this.year > Calendar.getInstance().get(Calendar.YEAR) || this.year < minimumYear) {
+		if (this.year < minimumYear) {
 			return false;
 		}
-		switch (month) {// Checks if the date is in the correct range for the month being stored in
+		if(!(getTodaysDate().compareTo(getDateSortFormat()) >= 0)) {
+			return false;
+		}
+		switch (this.month) {// Checks if the date is in the correct range for the month being stored in
 						// instance.
 		case 1, 3, 5, 7, 8, 10, 12:
-			if (this.day > 31 || this.day < 1) {
+			if (this.day > MAXDAYSINMONTH31 || this.day < MINDAYSINMONTH) {
 				return false;
 			}
 			return true;
 		case 4, 6, 9, 11:
-			if (this.day > 30 || this.day < 1) {
+			if (this.day > MAXDAYSINMONTH30 || this.day < MINDAYSINMONTH) {
 				return false;
 			}
 			return true;
 		case 2:
-			return isLeapYear();
+			if(isLeapYear()) {
+				if(this.day <=MAXDAYSINNONLEAPMONTH && this.day >= MINDAYSINMONTH)
+					return true;
+			}else
+				if(this.day <= MAXDAYSINLEAPMONTH && this.day >= MINDAYSINMONTH)
+					return true;
 
 		}
 
@@ -91,17 +109,34 @@ public class Date {
 	public String getDate() {
 		return this.month + "/" + this.day + "/" + this.year;
 	}
-
+	/**
+	 * Creates a string representation of the Date object.
+	 * @return A string with the follwing format yyyy/mm/dd
+	 */
 	public String getDateSortFormat() {
 		return this.year + "/" + this.month + "/" + this.day;
 	}
+	/**
+	 * Creates a string representation of the current date when the program was executed
+	 * @return a string with the following format yyyy/mm/dd
+	 */
+	private String getTodaysDate() {
+		return  ""+Calendar.getInstance().get(Calendar.YEAR)+"/"+ (Calendar.getInstance().get(Calendar.MONTH) + 1)+"/"
+									+Calendar.getInstance().get(Calendar.DATE);
+	}
 
-	// test bed main
-	// TODO: implement test cases
+	/**
+	 * Test bed main used to test the isValid class method
+	 * 
+	 */
 	public static void main(String[] args) {
 
-		String tests[] = { "0/0/0", "01/01/0001", "01/01/1899", "01/01/1900", "-1/01/1900", 
-						"02/-2/1900", "03/03/-1999"};
+		String tests[] = {"01/01/1899", "02/02/2022", "01/32/2020", "03/32/2019",
+						"05/32/2018", "07/32/2017", "08/32/2016", "10/32/2015", 
+						"12/32/2010", "04/31/2016", "06/31/2014", "09/31/2013",
+						"11/31/2012", "02/28/2011", "02/29/2010", "02/29/2008", 
+						"02/30/2004", "13/10/2003", "00/01/2002", "01/00/2001",
+						"01/01/-2000", "02/30/2004"};
 
 		for (int i = 0; i < tests.length; i++) {
 			Date test = new Date(tests[i]);

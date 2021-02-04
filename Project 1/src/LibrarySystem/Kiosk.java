@@ -1,8 +1,17 @@
 package LibrarySystem;
 
 import java.util.Scanner;
-
+/**
+ * This class is used as an interface for the library system.
+ * It processes commands and handles input and output to the console.
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Kiosk {
+	/**
+	 * Interface method that is called to run the library system.
+	 */
 	public void run() {
 
 		Scanner input = new Scanner(System.in); // Create a Scanner object for user input
@@ -21,7 +30,12 @@ public class Kiosk {
 			switch (tokens[0]) {
 			case "A":
 				libraryBook = new Book(tokens[1], tokens[2]);
-				lib.add(libraryBook);
+				if(libraryBook.isDateValid()) {
+					lib.add(libraryBook);
+					System.out.println(tokens[1] + " added to the library.");
+				}else {
+					System.out.println("Invalid Date!");
+				}
 				break;
 
 			case "R":
@@ -49,28 +63,40 @@ public class Kiosk {
 				break;
 
 			case "PA":
-				System.out.println("**List of books in the library.");
-				lib.print();
-				System.out.println("**End of list");
+				if(lib.getNumberOfBooksInLibrary() > 0) {
+					System.out.println("**List of books in the library.");
+					lib.print();
+					System.out.println("**End of list");
+				}else {
+					System.out.println("Library catalog is empty!");
+				}
 				break;
 
 			case "PD":
-				System.out.println("**List of books by the dates published.");
-				lib.printByDate();
-				System.out.println("**End of list");
+				if(lib.getNumberOfBooksInLibrary()>0) {
+					System.out.println("**List of books by the dates published.");
+					lib.printByDate();
+					System.out.println("**End of list");
+				}else {
+					System.out.println("Bookshelf is empty!");
+				}
 				break;
 
 			case "PN":
-				System.out.println("**List of books by the book number.");
-				lib.printByNumber();
-				System.out.println("**End of list");
+				if(lib.getNumberOfBooksInLibrary()>0) {
+					System.out.println("**List of books by the book number.");
+					lib.printByNumber();
+					System.out.println("**End of list");
+				}else {
+					System.out.println("Bookshelf is empty!");
+				}
 				break;
 			default:
 				System.out.println("Invalid command!");
 			}
 
 		} while (!(tokens[0].equals("Q")));
-
+		input.close();
 		System.out.println("Kiosk session ended.");
 	}
 }

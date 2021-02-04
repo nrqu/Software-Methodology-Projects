@@ -101,9 +101,9 @@ public class Library {
 	public void add(Book book) {
 		if (books.length == numBooks)
 			grow();
-
 		books[numBooks] = book;
 		numBooks++;
+	
 	}
 
 	/**
@@ -182,7 +182,6 @@ public class Library {
 		for (int i = 0; i < numBooks; i++) {
 			System.out.println(books[i]);
 		}
-
 	}
 
 	/**
@@ -207,5 +206,12 @@ public class Library {
 
 		for (int i = 0; i < numBooks; i++)
 			System.out.println(books[i]);
+	}
+	/**
+	 * Returns the total number of books in the library.
+	 * @return an int representing the number of books.
+	 */
+	public int getNumberOfBooksInLibrary() {
+		return numBooks;
 	}
 }
