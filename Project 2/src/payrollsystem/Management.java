@@ -1,6 +1,10 @@
 package payrollsystem;
 
 public class Management extends Fulltime{
+	Management(Profile profile, int salary, int managementRole) {
+		super(profile, salary, managementRole);
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public boolean equals(Object obj) { return false;}
 	@Override

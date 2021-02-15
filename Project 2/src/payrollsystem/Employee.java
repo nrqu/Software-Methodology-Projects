@@ -1,9 +1,11 @@
 package payrollsystem;
 
 public class Employee {
-	private Profile profile;
+	protected Profile profile;
 	protected float payment;
-	
+	Employee(){
+		
+	}
 	@Override
 	public boolean equals(Object obj) { return false;}
 	@Override

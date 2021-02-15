@@ -2,7 +2,7 @@ package payrollsystem;
 
 public class Fulltime extends Employee {
 	protected int managementRole;
-	protected float salary;
+	protected int salary;
 	protected final int[] ROLES = new int[] {0,1,2,3};
 	protected float additnalComp;
 	private static final int MANAGERSALARY = 5000;
@@ -10,7 +10,11 @@ public class Fulltime extends Employee {
 	private static final int DIRECTORSALARY =12000;
 	private static final int PAYMENTPERIODS = 26;
 	
-	
+	Fulltime(Profile profile,int salary,int managementRole){
+		this.profile = profile;
+		this.salary = salary;
+		this.managementRole = managementRole;
+	}
 	@Override
 	public boolean equals(Object obj) { return false;}
 	@Override

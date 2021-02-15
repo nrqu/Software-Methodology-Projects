@@ -5,6 +5,11 @@ public class Company {
 	private Employee[] emplist;
 	private int numEmployee;
 	
+	Company(int growthCapacity){
+		emplist = new Employee[growthCapacity];
+		numEmployee=0;
+	}
+	
 	private int find(Employee employee) {
 		return 0; }
 	
