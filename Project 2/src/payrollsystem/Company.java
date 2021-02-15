@@ -1,15 +1,32 @@
 package payrollsystem;
 
+
 public class Company {
 	private Employee[] emplist;
 	private int numEmployee;
 	
 	private int find(Employee employee) {
-		return numEmployee; }
+		return 0; }
 	
-	private void grow() { }
+	private void grow() { 
+		int GROW_CAPACITY = 4;
+		Employee[] newEmplist = new Employee[numEmployee + GROW_CAPACITY];
+
+		for (int i = 0; i < numEmployee; i++)
+			newEmplist[i] = emplist[i];
+
+		emplist = newEmplist;
+	}
 	
 	public boolean add(Employee employee) {
+		if(emplist.length == numEmployee) {
+			grow();
+		}
+		if(employee.isValid()) {
+			emplist[numEmployee] = employee;
+			++numEmployee;
+			return true;
+		}
 		return false; } //check the profile before adding
 	
 	public boolean remove(Employee employee) {

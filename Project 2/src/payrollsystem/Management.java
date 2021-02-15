@@ -6,6 +6,10 @@ public class Management extends Fulltime{
 	@Override
 	public String toString() { return "";}
 	@Override
-	public void calculatePayment() { }
+	public void calculatePayment() { 
+		if(this.managementRole == this.ROLES[1]) {
+			super.calculatePayment();
+		}
+	}
 
 }
