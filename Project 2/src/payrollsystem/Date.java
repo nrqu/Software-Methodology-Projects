@@ -130,24 +130,5 @@ public class Date implements Comparable<Date>{
 									+Calendar.getInstance().get(Calendar.DATE);
 	}
 
-	/**
-	 * Test bed main used to test the isValid class method
-	 * 
-	 */
-	public static void main(String[] args) {
-
-		String tests[] = {"01/01/1899", "02/02/2022", "01/32/2020", "03/32/2019",
-						"05/32/2018", "07/32/2017", "08/32/2016", "10/32/2015", 
-						"12/32/2010", "04/31/2016", "06/31/2014", "09/31/2013",
-						"11/31/2012", "02/28/2011", "02/29/2010", "02/29/2008", 
-						"02/30/2004", "13/10/2003", "00/01/2002", "01/00/2001",
-						"01/01/-2000", "02/30/2004"};
-
-		for (int i = 0; i < tests.length; i++) {
-			Date test = new Date(tests[i]);
-			System.out.println(tests[i]+"->"+test.isValid());
-		}
-
-	}
 
 }
