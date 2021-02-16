@@ -3,8 +3,8 @@ package payrollsystem;
 public class Employee {
 	protected Profile profile;
 	protected float payment;
-	Employee(){
-		
+	Employee(Profile profile){
+		this.profile = profile;
 	}
 	@Override
 	public boolean equals(Object obj) { return false;}

@@ -3,7 +3,10 @@ package payrollsystem;
 public class Parttime extends Employee{
 	private float hourlyRate;
 	private float hoursWorked;
-	
+	Parttime(Profile profile,float hourlyRate){
+		super(profile);
+		this.hourlyRate = hourlyRate;
+	}
 	@Override
 	public boolean equals(Object obj) { return false;}
 	@Override

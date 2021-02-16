@@ -12,6 +12,8 @@ public class PayrollProcessing {
 		String[] tokens = null;
 		Company company = new Company(4);
 		Fulltime fulltime;
+		Parttime parttime;
+		Management management;
 		do {
 			System.out.println("Enter command: ");
 			command = input.nextLine();
@@ -19,14 +21,14 @@ public class PayrollProcessing {
 			switch (tokens[0]) {
 			case "AP","AF","AM":
 					if(tokens[0].equals("AF")) {
-						if(tokens.length == 5) {
-							fulltime = new Fulltime(new Profile(tokens[1],tokens[2],tokens[3]),Integer.parseInt(tokens[4]),0);
-							company.add(fulltime);
-						}else if(tokens.length == 6) {
-							fulltime = new Fulltime(new Profile(tokens[1],tokens[2],tokens[3]),Integer.parseInt(tokens[4]),Integer.parseInt(tokens[5]));
-							company.add(fulltime);
-						}
-						
+						fulltime = new Fulltime(new Profile(tokens[1],tokens[2],tokens[3]),Integer.parseInt(tokens[4]));
+						company.add(fulltime);
+					}else if(tokens[0].equals("AP")) {
+						parttime = new Parttime(new Profile(tokens[1],tokens[2],tokens[3]),Integer.parseInt(tokens[4]));
+						company.add(parttime);
+					}else if(tokens[0].equals("AM")) {
+						management = new Management(new Profile(tokens[1],tokens[2],tokens[3]),Integer.parseInt(tokens[4]),Integer.parseInt(tokens[5]));
+						company.add(management);
 					}
 				break;
 

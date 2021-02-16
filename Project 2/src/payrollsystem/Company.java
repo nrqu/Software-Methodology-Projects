@@ -10,8 +10,7 @@ public class Company {
 		numEmployee=0;
 	}
 	
-	private int find(Employee employee) {
-		return 0; }
+	private int find(Employee employee) {return 0; }
 	
 	private void grow() { 
 		int GROW_CAPACITY = 4;
@@ -19,7 +18,6 @@ public class Company {
 
 		for (int i = 0; i < numEmployee; i++)
 			newEmplist[i] = emplist[i];
-
 		emplist = newEmplist;
 	}
 	
