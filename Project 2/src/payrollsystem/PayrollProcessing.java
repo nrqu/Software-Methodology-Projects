@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class PayrollProcessing {
 	public void run() {
-
 		Scanner input = new Scanner(System.in);
 		String command = null;
 		String[] tokens = null;
@@ -12,6 +11,8 @@ public class PayrollProcessing {
 		Fulltime fulltime;
 		Parttime parttime;
 		Management management;
+		boolean status = false;
+
 		do {
 			System.out.println("Enter command: ");
 			command = input.nextLine();
@@ -19,12 +20,24 @@ public class PayrollProcessing {
 			switch (tokens[0]) {
 			case "AP":
 				parttime = new Parttime(new Profile(tokens[1], tokens[2], tokens[3]), Float.parseFloat(tokens[4]));
-				company.add(parttime);
+				status = company.add(parttime);
+
+				if (status == true)
+					System.out.println("Employee added.");
+				else
+					System.out.println("Employee is already in the list.");
+
 				break;
 
 			case "AF":
 				fulltime = new Fulltime(new Profile(tokens[1], tokens[2], tokens[3]), Integer.parseInt(tokens[4]));
-				company.add(fulltime);
+				status = company.add(fulltime);
+
+				if (status == true)
+					System.out.println("Employee added.");
+				else
+					System.out.println("Employee is already in the list.");
+
 				break;
 
 			case "AM":
@@ -62,6 +75,7 @@ public class PayrollProcessing {
 
 			case "Q":
 				break;
+			
 			case "":
 				System.out.println("");
 				break;

@@ -5,16 +5,16 @@ public class Company {
 	private final int NOT_FOUND = -1;
 	private Employee[] emplist;
 	private int numEmployee;
-	
-	Company() {
+
+	public Company() {
 		emplist = new Employee[CAPACITY];
 		numEmployee = 0;
 	}
-	
+
 	private int find(Employee employee) {
 		for (int i = 0; i < numEmployee; i++) {
 			if (emplist[i].equals(employee)) {
-				System.out.println("find i: " + i);
+				System.out.println("find at: " + i); // DELETE THIS. DEBUGGING PURPOSE
 				return i;
 			}
 		}
@@ -22,56 +22,32 @@ public class Company {
 	}
 
 	private void grow() {
-		//int GROW_CAPACITY = 4;
 		Employee[] newEmplist = new Employee[numEmployee + CAPACITY];
 
 		for (int i = 0; i < numEmployee; i++)
 			newEmplist[i] = emplist[i];
+
 		emplist = newEmplist;
 	}
 
 	public boolean add(Employee employee) {
-		if(emplist.length == numEmployee) {
+		if (emplist.length == numEmployee) {
 			grow();
 		}
-		
-		for(int i = 0; i < numEmployee; i++) {
-			if(emplist[i].equals(employee))
-				return false;
-		}
-		emplist[numEmployee] = employee;
-		++numEmployee;
-		
-		return true;
-		
-//		if(employee.isValid()) {
-//			emplist[numEmployee] = employee;
-//			++numEmployee;
-//			return true;
-//		}
+
+		int index = find(employee);
+
+		if (index == NOT_FOUND) {
+			emplist[numEmployee] = employee;
+			numEmployee++;
+			return true;
+		} else
+			return false;
+
 	} // check the profile before adding
-	
+
 	public boolean remove(Employee employee) {
-		 boolean found = false;
-	      // Look for the course index
-	      int courseIndex = -1;  // need to initialize
-	      for (int i = 0; i < numEmployee; i++) {
-	         if (emplist[i].equals(employee)) {
-	            courseIndex = i;
-	            found = true;
-	            break;
-	         }
-	      }
-	      if (found) {
-	         // Remove the course and re-arrange for courses array
-	         for (int i = courseIndex; i < numEmployee-1; i++) {
-	        	 emplist[i] = emplist[i+1];
-	         }
-	         numEmployee--;
-	         return true;
-	      } else {
-	         return false;
-	      }
+		return false;
 	} // maintain the original sequence
 
 	public boolean setHours(Employee employee) {

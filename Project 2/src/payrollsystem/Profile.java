@@ -25,13 +25,9 @@ public class Profile {
 		Profile tmpObj = (Profile) obj;
 		
 		if(this.name.equals(tmpObj.name) && this.department.equals(tmpObj.department)
-				&& this.dateHired.equals(tmpObj.dateHired))
-		{
+				&& this.dateHired.getDate().equals(tmpObj.dateHired.getDate()))
 			return true;
-		}
 		else
-		{
 			return false; 			
-		}
 	} //compare name, department and dateHired
 }

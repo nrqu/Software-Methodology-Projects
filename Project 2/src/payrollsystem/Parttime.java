@@ -20,7 +20,11 @@ public class Parttime extends Employee {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return false;
+		Employee tmpObj = (Employee) obj;
+		if (this.profile.equals(tmpObj.profile))
+			return true;
+		else
+			return false;
 	}
 
 	@Override
