@@ -34,6 +34,11 @@ public class Management extends Fulltime {
 				return true;
 			else
 				return false;
+		}else {
+		Employee tmpObj = (Employee)obj;
+		
+		if(this.profile.equals(tmpObj.profile))
+			return true;
 		}
 		return false;
 	}

@@ -24,8 +24,13 @@ public class Fulltime extends Employee {
 				return true;
 			else
 				return false;
-		}
-		return false;
+		}else {
+			Employee tmpObj = (Employee)obj;
+			
+			if(this.profile.equals(tmpObj.profile))
+				return true;
+			}
+			return false;
 	}
 
 	@Override
