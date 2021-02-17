@@ -17,12 +17,15 @@ public class Fulltime extends Employee {
 
 	@Override
 	public boolean equals(Object obj) {
-		Employee tmpObj = (Employee) obj;
 
-		if (this.profile.equals(tmpObj.profile))
-			return true;
-		else
-			return false;
+		if(obj instanceof Fulltime && !(obj instanceof Management)) {
+			Fulltime tmpObj = (Fulltime)obj;
+			if (this.profile.equals(tmpObj.profile) && this.salary == tmpObj.salary)
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 
 	@Override

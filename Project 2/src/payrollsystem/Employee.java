@@ -25,12 +25,14 @@ public class Employee {
 	@Override
 	public boolean equals(Object obj) {
 
-		Employee tmpObj = (Employee) obj;
-
-		if (this.profile.equals(tmpObj.profile))
-			return true;
-		else
-			return false;
+		if(obj instanceof Employee) {
+			Employee tmpObj = (Employee)obj;
+			if (this.profile.equals(tmpObj.profile))
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 
 	// TODO is used in the company class before adding a new employee.

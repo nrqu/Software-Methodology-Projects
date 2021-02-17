@@ -27,11 +27,15 @@ public class Management extends Fulltime {
 
 	@Override
 	public boolean equals(Object obj) {
-		Employee tmpObj = (Employee) obj;
-		if (this.profile.equals(tmpObj.profile))
-			return true;
-		else
-			return false;
+
+		if(obj instanceof Management) {
+			Management tmpObj = (Management)obj;
+			if (this.profile.equals(tmpObj.profile) && managementRole == tmpObj.managementRole)
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 
 	@Override

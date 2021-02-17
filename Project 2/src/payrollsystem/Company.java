@@ -11,7 +11,7 @@ public class Company {
 		numEmployee = 0;
 	}
 
-	private int find(Employee employee) {
+	private int find(Object employee) {
 		for (int i = 0; i < numEmployee; i++) {
 			if (emplist[i].equals(employee)) {
 				System.out.println("find at: " + i); // DELETE THIS. DEBUGGING PURPOSE
