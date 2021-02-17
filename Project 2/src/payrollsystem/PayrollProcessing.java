@@ -14,7 +14,7 @@ public class PayrollProcessing {
 		boolean status = false;
 
 		do {
-			System.out.println("Enter command: ");
+			System.out.print("Enter command: ");
 			command = input.nextLine();
 			tokens = command.split(" ");
 			switch (tokens[0]) {
@@ -56,11 +56,19 @@ public class PayrollProcessing {
 				break;
 
 			case "C":
-
+					company.processPayments();
+					System.out.println("Calutlation of employee payments is done.");
 				break;
 
 			case "S":
-
+				parttime = new Parttime(new Profile(tokens[1], tokens[2], tokens[3]), Integer.parseInt(tokens[4]));
+				if(Integer.parseInt(tokens[4]) > 100 ) {
+					System.out.println("Invalid hours over 100.");
+				}else if(Integer.parseInt(tokens[4]) < 0) {
+					System.out.println("Working hours cannot be negative.");
+				}else if(company.setHours(parttime)) {
+					System.out.println("Working hours set.");
+				}
 				break;
 
 			case "PA":

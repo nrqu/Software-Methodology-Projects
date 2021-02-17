@@ -13,8 +13,7 @@ public class Company {
 
 	private int find(Object employee) {
 		for (int i = 0; i < numEmployee; i++) {
-			Employee tmp  = (Employee)emplist[i];
-			if (tmp.equals(employee)) {
+			if (emplist[i].equals(employee)) {
 				System.out.println("find at: " + i); // DELETE THIS. DEBUGGING PURPOSE
 				return i;
 			}
@@ -62,11 +61,21 @@ public class Company {
 	} // maintain the original sequence
 
 	public boolean setHours(Employee employee) {
-		return false;
-	} // set working hours for a part time
+		int index = find(employee);
+		if(index == numEmployee)
+			return false;
+		else {
+			emplist[index] = employee;
+			return true;
+		}
+			
+	} 
 
 	public void processPayments() {
-	} // process payments for all employees
+		for(int i = 0; i < numEmployee;++i ) {
+			emplist[i].calculatePayment();
+		}
+	} 
 
 	public void print() {
 		for (int i = 0; i < numEmployee; i++) {

@@ -2,13 +2,12 @@ package payrollsystem;
 
 public class Parttime extends Employee {
 	private float hourlyRate;
-	private float hoursWorked;
+	private int hoursWorked;
 
 	Parttime(Profile profile, float hourlyRate) {
 		super(profile);
 		this.hourlyRate = hourlyRate;
 	}
-
 	@Override
 	public void calculatePayment() {
 		if (this.hoursWorked > 80) {
@@ -23,7 +22,7 @@ public class Parttime extends Employee {
 
 		if(obj instanceof Parttime) {
 			Parttime tmpObj = (Parttime)obj;
-			if (this.profile.equals(tmpObj.profile) && this.hourlyRate == tmpObj.hourlyRate && this.hoursWorked == tmpObj.hoursWorked)
+			if (this.profile.equals(tmpObj.profile) && this.hourlyRate == tmpObj.hourlyRate)
 				return true;
 			else
 				return false;
