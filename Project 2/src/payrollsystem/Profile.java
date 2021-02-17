@@ -11,12 +11,27 @@ public class Profile {
 		this.dateHired = new Date(dateHired);
 	}
 	
-	
 	//TODO
+	
 	@Override
 	public String toString() {
-		return name+"::"+department+"::"+dateHired.getDate(); }
+		return name+"::"+department+"::"+dateHired.getDate(); 
+	}
+	
+	// CHECK THIS...
+	
 	@Override
 	public boolean equals(Object obj) {
-		return false; } //compare name, department and dateHired
+		Profile tmpObj = (Profile) obj;
+		
+		if(this.name.equals(tmpObj.name) && this.department.equals(tmpObj.department)
+				&& this.dateHired.equals(tmpObj.dateHired))
+		{
+			return true;
+		}
+		else
+		{
+			return false; 			
+		}
+	} //compare name, department and dateHired
 }
