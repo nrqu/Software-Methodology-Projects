@@ -36,6 +36,14 @@ public class Management extends Fulltime {
 
 	@Override
 	public String toString() {
-		return "";
+		String tempRole;
+		if(managementRole == ROLES[0]) {
+			tempRole = "Manager Compensation";
+		}else if(managementRole == ROLES[1]) {
+			tempRole = "Department Head Compensation";
+		}else {
+			tempRole = "Director Compensation";
+		}
+		return super.toString() + "::"+tempRole+ "::"+additnalComp;
 	}
 }

@@ -19,6 +19,7 @@ public class PayrollProcessing {
 			tokens = command.split(" ");
 			switch (tokens[0]) {
 			case "AP":
+				
 				parttime = new Parttime(new Profile(tokens[1], tokens[2], tokens[3]), Float.parseFloat(tokens[4]));
 				status = company.add(parttime);
 
@@ -47,7 +48,11 @@ public class PayrollProcessing {
 				break;
 
 			case "R":
-
+				if(company.remove(new Employee(new Profile(tokens[1],tokens[2],tokens[3])))) {
+					System.out.println("Employee removed.");
+				}else {
+					System.out.println("Employee does not exist.");
+				}
 				break;
 
 			case "C":

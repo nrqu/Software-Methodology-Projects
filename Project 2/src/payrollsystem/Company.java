@@ -1,12 +1,12 @@
 package payrollsystem;
 
 public class Company {
-	private final int CAPACITY = 4;
-	private final int NOT_FOUND = -1;
+
 	private Employee[] emplist;
 	private int numEmployee;
 
 	public Company() {
+		int CAPACITY = 4;
 		emplist = new Employee[CAPACITY];
 		numEmployee = 0;
 	}
@@ -18,10 +18,11 @@ public class Company {
 				return i;
 			}
 		}
-		return NOT_FOUND;
+		return numEmployee;
 	}
 
 	private void grow() {
+		int CAPACITY = 4;
 		Employee[] newEmplist = new Employee[numEmployee + CAPACITY];
 
 		for (int i = 0; i < numEmployee; i++)
@@ -37,7 +38,7 @@ public class Company {
 
 		int index = find(employee);
 
-		if (index == NOT_FOUND) {
+		if (index == numEmployee) {
 			emplist[numEmployee] = employee;
 			numEmployee++;
 			return true;
@@ -47,7 +48,16 @@ public class Company {
 	} // check the profile before adding
 
 	public boolean remove(Employee employee) {
-		return false;
+		int index = find(employee);
+		if(index == numEmployee) {
+			return false;
+		}else {
+			for(int k=index;k<numEmployee;++k) {
+				emplist[k] = emplist[k+1];
+			}
+			--numEmployee;
+			return true;
+		}
 	} // maintain the original sequence
 
 	public boolean setHours(Employee employee) {
