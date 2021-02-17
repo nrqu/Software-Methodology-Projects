@@ -57,6 +57,9 @@ public class PayrollProcessing {
 			case "Q":
 				
 				break;
+			case "":
+				System.out.println("");
+				break;
 			default:
 				System.out.println("Command '"+tokens[0]+"' is not supported!");
 			}
