@@ -1,11 +1,16 @@
 package payrollsystem;
 
+/**
+ * This class
+ * @author HECTOR CERDA, LUIS FIGUEROA
+ * */
+
 public class Fulltime extends Employee {
-	protected int salary;
+	protected float salary;
 	protected final int PAYMENTPERIODS = 26;
 //	protected double payment;
 
-	Fulltime(Profile profile, int salary) {
+	Fulltime(Profile profile, float salary) {
 		super(profile);
 		this.salary = salary;
 	}
@@ -53,7 +58,9 @@ public class Fulltime extends Employee {
 
 	@Override
 	public String toString() {
-		String str = profile.toString() + "::Payment $" + this.payment + "::FULL TIME::Anual Salary $" + salary;
+//		String str = profile.toString() + "::Payment $" + this.payment + "::FULL TIME::Anual Salary $" + salary;
+		String str = String.format("%s::Payment $%,.2f::FULL TIME::Anual Salary $%,.2f", profile.toString(), this.payment,
+				salary);
 
 		return str;
 	}

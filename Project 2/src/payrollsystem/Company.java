@@ -1,5 +1,10 @@
 package payrollsystem;
 
+/**
+ * This class...
+ * @author HECTOR CERDA, LUIS FIGUEROA
+ * */
+
 public class Company {
 
 	private Employee[] emplist;
@@ -10,6 +15,7 @@ public class Company {
 		emplist = new Employee[CAPACITY];
 		numEmployee = 0;
 	}
+	
 
 	private int find(Object employee) {
 		for (int i = 0; i < numEmployee; i++) {

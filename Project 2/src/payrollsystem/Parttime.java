@@ -1,5 +1,10 @@
 package payrollsystem;
 
+/**
+ * This class
+ * @author HECTOR CERDA, LUIS FIGUEROA
+ * */
+
 public class Parttime extends Employee {
 	private float hourlyRate;
 	private int hoursWorked;
@@ -82,10 +87,11 @@ public class Parttime extends Employee {
 
 	@Override
 	public String toString() {
-		String str = profile.toString() + "::Payment $" + this.payment + 
-				"::PART TIME::Hourly Rate $" + this.hourlyRate + 
-				"::Hours worked this period: " + this.hoursWorked;		
-		
+//		String str = profile.toString() + "::Payment $" + this.payment + 
+//				"::PART TIME::Hourly Rate $" + this.hourlyRate + 
+//				"::Hours worked this period: " + this.hoursWorked;		
+		String str = String.format("%s::Payment $,.2f::PART TIME::Hourly Rate $,.2f::Hours worked this period %d",
+				profile.toString(), this.payment, this.hourlyRate, this.hoursWorked);
 		return str;
 	}
 

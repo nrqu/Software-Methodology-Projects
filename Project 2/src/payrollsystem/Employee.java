@@ -1,5 +1,10 @@
 package payrollsystem;
 
+/**
+ * This class
+ * @author HECTOR CERDA, LUIS FIGUEROA
+ * */
+
 public class Employee {
 	protected Profile profile;
 	protected float payment;
@@ -13,14 +18,10 @@ public class Employee {
 
 	}
 	
-	// CHECK THIS PART
 	@Override
 	public String toString() {
 		return "Profile: " + profile + "::" + payment;
 	}
-
-	// CHECK THIS TOO. NOT SURE ABOUT payment == tmpObj.payment
-	// I think payment does not need to be compared
 
 	@Override
 	public boolean equals(Object obj) {

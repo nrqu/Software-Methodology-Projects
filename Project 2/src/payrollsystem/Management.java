@@ -1,5 +1,10 @@
 package payrollsystem;
 
+/**
+ * This class
+ * @author HECTOR CERDA, LUIS FIGUEROA
+ * */
+
 public class Management extends Fulltime {
 	private int managementRole;
 	private float additnalComp;
