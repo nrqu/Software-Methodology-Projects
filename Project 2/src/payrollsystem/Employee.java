@@ -37,7 +37,6 @@ public class Employee {
 
 	// TODO is used in the company class before adding a new employee.
 	public boolean isValid() {
-
 		return true;
 	}
 }

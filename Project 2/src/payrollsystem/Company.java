@@ -89,8 +89,14 @@ public class Company {
 	} // print earning statements for all employees
 
 	public void printByDepartment() {
+
 	} // print earning statements by department
 
 	public void printByDate() {
+
 	} // print earning statements by date hired
+	
+	public int getNumEmployee() {
+		return numEmployee;
+	}
 }
