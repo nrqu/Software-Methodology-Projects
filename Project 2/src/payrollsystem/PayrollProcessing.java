@@ -62,13 +62,25 @@ public class PayrollProcessing {
 
 			case "S":
 				parttime = new Parttime(new Profile(tokens[1], tokens[2], tokens[3]), Integer.parseInt(tokens[4]));
+				
 				if(Integer.parseInt(tokens[4]) > 100 ) {
 					System.out.println("Invalid hours over 100.");
+					break;
 				}else if(Integer.parseInt(tokens[4]) < 0) {
 					System.out.println("Working hours cannot be negative.");
+					break;
 				}else if(company.setHours(parttime)) {
 					System.out.println("Working hours set.");
+					break;
 				}
+				
+				status = company.setHours(parttime);
+				
+				if(status == true)
+					System.out.println("Working hours set");
+				else
+					System.out.println("Employee does not exist.");
+				
 				break;
 
 			case "PA":

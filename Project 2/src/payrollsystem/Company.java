@@ -16,7 +16,8 @@ public class Company {
 			if (emplist[i].equals(employee)) {
 				System.out.println("find at: " + i); // DELETE THIS. DEBUGGING PURPOSE
 				return i;
-			}
+			} else
+				System.out.println("Not found");
 		}
 		return numEmployee;
 	}
@@ -49,11 +50,11 @@ public class Company {
 
 	public boolean remove(Employee employee) {
 		int index = find(employee);
-		if(index == numEmployee) {
+		if (index == numEmployee) {
 			return false;
-		}else {
-			for(int k=index;k<numEmployee;++k) {
-				emplist[k] = emplist[k+1];
+		} else {
+			for (int k = index; k < numEmployee; ++k) {
+				emplist[k] = emplist[k + 1];
 			}
 			--numEmployee;
 			return true;
@@ -62,20 +63,24 @@ public class Company {
 
 	public boolean setHours(Employee employee) {
 		int index = find(employee);
-		if(index == numEmployee)
+		if (index == numEmployee) {
 			return false;
-		else {
-			emplist[index] = employee;
+		} else {
+			Parttime tmpObj1 = (Parttime) emplist[index];
+			Parttime tmpObj2 = (Parttime) employee;
+			int hoursWorked = tmpObj2.getHours();
+			tmpObj1.setHours(hoursWorked);
+			emplist[index] = tmpObj1;
 			return true;
 		}
-			
-	} 
+
+	}
 
 	public void processPayments() {
-		for(int i = 0; i < numEmployee;++i ) {
+		for (int i = 0; i < numEmployee; ++i) {
 			emplist[i].calculatePayment();
 		}
-	} 
+	}
 
 	public void print() {
 		for (int i = 0; i < numEmployee; i++) {

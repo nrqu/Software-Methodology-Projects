@@ -3,7 +3,7 @@ package payrollsystem;
 public class Fulltime extends Employee {
 	protected int salary;
 	protected final int PAYMENTPERIODS = 26;
-	// protected double payment;
+//	protected double payment;
 
 	Fulltime(Profile profile, int salary) {
 		super(profile);
@@ -15,12 +15,30 @@ public class Fulltime extends Employee {
 		this.payment = salary / PAYMENTPERIODS;
 	}
 
+//	@Override
+//	public boolean equals(Object obj) {
+//
+//		if(obj instanceof Fulltime && !(obj instanceof Management)) {
+//			Fulltime tmpObj = (Fulltime)obj;
+//			if (this.profile.equals(tmpObj.profile) && this.salary == tmpObj.salary)
+//				return true;
+//			else
+//				return false;
+//		}else {
+//			Employee tmpObj = (Employee)obj;
+//			
+//			if(this.profile.equals(tmpObj.profile))
+//				return true;
+//			}
+//			return false;
+//	}
+	
 	@Override
 	public boolean equals(Object obj) {
 
 		if(obj instanceof Fulltime && !(obj instanceof Management)) {
 			Fulltime tmpObj = (Fulltime)obj;
-			if (this.profile.equals(tmpObj.profile) && this.salary == tmpObj.salary)
+			if (this.profile.equals(tmpObj.profile))
 				return true;
 			else
 				return false;
