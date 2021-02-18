@@ -20,7 +20,7 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return "Profile: " + profile + "::" + payment;
+		return profile + "::Payment " + String.format("%.2f", payment);
 	}
 
 	@Override
@@ -35,9 +35,7 @@ public class Employee {
 		}
 		return false;
 	}
-
-	// TODO is used in the company class before adding a new employee.
-	public boolean isValid() {
-		return true;
+	private Profile getProfile() {
+		return this.profile;
 	}
 }

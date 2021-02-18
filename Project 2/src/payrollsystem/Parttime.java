@@ -90,8 +90,7 @@ public class Parttime extends Employee {
 //		String str = profile.toString() + "::Payment $" + this.payment + 
 //				"::PART TIME::Hourly Rate $" + this.hourlyRate + 
 //				"::Hours worked this period: " + this.hoursWorked;		
-		String str = String.format("%s::Payment $,.2f::PART TIME::Hourly Rate $,.2f::Hours worked this period %d",
-				profile.toString(), this.payment, this.hourlyRate, this.hoursWorked);
+		String str = super.toString()+"PART TIME::Hourly Rate $"+this.hourlyRate+"::Hours worked this period: "+ this.hoursWorked;
 		return str;
 	}
 

@@ -59,8 +59,7 @@ public class Fulltime extends Employee {
 	@Override
 	public String toString() {
 //		String str = profile.toString() + "::Payment $" + this.payment + "::FULL TIME::Anual Salary $" + salary;
-		String str = String.format("%s::Payment $%,.2f::FULL TIME::Anual Salary $%,.2f", profile.toString(), this.payment,
-				salary);
+		String str = super.toString()+"::FULL TIME::Anual Salary $" + String.format("%.2f", this.salary);
 
 		return str;
 	}
