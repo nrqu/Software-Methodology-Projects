@@ -8,8 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author abel8
- *
+ * @hidden
  */
 public class ParttimeTest {
 
