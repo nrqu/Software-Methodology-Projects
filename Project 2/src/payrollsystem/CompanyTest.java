@@ -71,50 +71,11 @@ public class CompanyTest {
 		Company company = new Company();
 		Employee employee = new Parttime(new Profile("name","CS", "1/20/2020"), 100);
 		assertTrue(company.add(employee));//insert new employee
-		assertTrue(company.setHours(employee));
+		assertTrue(company.setHours(employee));//sets the hour
 		
-		assertTrue(company.remove(employee));
-
+		assertTrue(company.remove(employee));//remove only employee
+		
+		assertFalse(company.setHours(employee));//list is empty
 	}
-
-//	/**
-//	 * Test method for {@link payrollsystem.Company#processPayments()}.
-//	 */
-//	@Test
-//	public void testProcessPayments() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link payrollsystem.Company#print()}.
-//	 */
-//	@Test
-//	public void testPrint() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link payrollsystem.Company#printByDepartment()}.
-//	 */
-//	@Test
-//	public void testPrintByDepartment() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link payrollsystem.Company#printByDate()}.
-//	 */
-//	@Test
-//	public void testPrintByDate() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link payrollsystem.Company#getNumEmployee()}.
-//	 */
-//	@Test
-//	public void testGetNumEmployee() {
-//		fail("Not yet implemented");
-//	}
 
 }
