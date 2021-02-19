@@ -13,43 +13,30 @@ import org.junit.Test;
 public class ManagementTest {
 
 	/**
-	 * Test method for {@link payrollsystem.Management#calculatePayment()}.
-	 */
-	@Test
-	public void testCalculatePayment() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link payrollsystem.Management#toString()}.
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link payrollsystem.Management#equals(java.lang.Object)}.
 	 */
 	@Test
 	public void testEqualsObject() {
-		fail("Not yet implemented");
+		Employee employee = new Management(new Profile("name","CS", "1/20/2020"), 78000,2); 
+		
+		
+		Employee employee2 = new Fulltime(new Profile("name","IT", "1/20/2020"), 78000);
+		
+		
+		assertEquals(false,employee.equals(employee2));//different object type
+		
+		
+		employee2 = new Fulltime(new Profile("name","CS", "1/20/2020"), 78000);
+		
+		assertEquals(true,employee.equals(employee2));//different object types but same profile
+		
+		
+		employee2 = new Parttime(new Profile("different","CS", "1/20/2020"), 32.34f);
+		
+		assertEquals(false,employee.equals(employee2));//different object types and different information
+		
 	}
 
-	/**
-	 * Test method for {@link payrollsystem.Management#Management(payrollsystem.Profile, int, int)}.
-	 */
-	@Test
-	public void testManagement() {
-		fail("Not yet implemented");
-	}
 
-	/**
-	 * Test method for {@link payrollsystem.Management#getManagementRole()}.
-	 */
-	@Test
-	public void testGetManagementRole() {
-		fail("Not yet implemented");
-	}
 
 }

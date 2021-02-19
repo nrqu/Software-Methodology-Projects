@@ -11,6 +11,6 @@ import org.junit.runners.Suite.SuiteClasses;
 /**
  * @hidden
  */
- public class AllTests {
+ public class RunJunitSuite {
 
 }
