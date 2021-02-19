@@ -15,7 +15,7 @@ public class Company {
 	/**
 	 * CONSTRUCTOR: Creates a new object with an array with initial capacity of 4 and sets the number of employees in the company to 0
 	 */
-	public Company() {
+	Company() {
 		int CAPACITY = 4;
 		emplist = new Employee[CAPACITY];
 		numEmployee = 0;
