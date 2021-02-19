@@ -12,20 +12,29 @@ import org.junit.Test;
  */
 public class CompanyTest {
 
-	/**
-	 * Test method for {@link payrollsystem.Company#Company()}.
-	 */
-	@Test
-	public void testCompany() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * Test method for {@link payrollsystem.Company#add(payrollsystem.Employee)}.
 	 */
 	@Test
 	public void testAdd() {
-		fail("Not yet implemented");
+		Company company = new Company();
+		Employee employee = new Parttime(new Profile("name","CS", "1/20/2020"), 32.34f); 
+		
+		assertTrue(company.add(employee));//insert new employee
+		
+		
+		employee = new Fulltime(new Profile("name","CS", "1/20/2020"), 78000);
+		
+		assertFalse(company.add(employee));//employee profile is repeated
+		
+		employee = new Management(new Profile("name","CS", "1/20/2020"), 78000,2);
+
+		assertFalse(company.add(employee));//employee profile is repeated 
+		
+		employee = new Management(new Profile("name","IT", "1/20/2020"), 78000,2);
+
+		assertTrue(company.add(employee));//insert new employee
 	}
 
 	/**
@@ -33,7 +42,25 @@ public class CompanyTest {
 	 */
 	@Test
 	public void testRemove() {
-		fail("Not yet implemented");
+		Company company = new Company();
+		Employee employee = new Parttime(new Profile("name","CS", "1/20/2020"), 32.34f); 
+		
+		assertTrue(company.add(employee));//insert new employee
+		assertTrue(company.remove(employee));//employee profile removed
+		
+		assertFalse(company.remove(employee));//employee list is empty
+		
+		
+		employee = new Management(new Profile("name","CS", "1/20/2020"), 78000,2);
+		assertTrue(company.add(employee));//insert new employee
+		assertTrue(company.remove(employee));//employee profile is removed
+		
+		
+		employee = new Management(new Profile("name","IT", "1/20/2020"), 78000,2);
+		assertTrue(company.add(employee));//insert new employee
+		assertTrue(company.remove(employee));//employee profile is removed
+		
+		assertFalse(company.remove(employee));//employee list is empty
 	}
 
 	/**
@@ -41,47 +68,53 @@ public class CompanyTest {
 	 */
 	@Test
 	public void testSetHours() {
-		fail("Not yet implemented");
+		Company company = new Company();
+		Employee employee = new Parttime(new Profile("name","CS", "1/20/2020"), 100);
+		assertTrue(company.add(employee));//insert new employee
+		assertTrue(company.setHours(employee));
+		
+		assertTrue(company.remove(employee));
+
 	}
 
-	/**
-	 * Test method for {@link payrollsystem.Company#processPayments()}.
-	 */
-	@Test
-	public void testProcessPayments() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link payrollsystem.Company#print()}.
-	 */
-	@Test
-	public void testPrint() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link payrollsystem.Company#printByDepartment()}.
-	 */
-	@Test
-	public void testPrintByDepartment() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link payrollsystem.Company#printByDate()}.
-	 */
-	@Test
-	public void testPrintByDate() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link payrollsystem.Company#getNumEmployee()}.
-	 */
-	@Test
-	public void testGetNumEmployee() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for {@link payrollsystem.Company#processPayments()}.
+//	 */
+//	@Test
+//	public void testProcessPayments() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link payrollsystem.Company#print()}.
+//	 */
+//	@Test
+//	public void testPrint() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link payrollsystem.Company#printByDepartment()}.
+//	 */
+//	@Test
+//	public void testPrintByDepartment() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link payrollsystem.Company#printByDate()}.
+//	 */
+//	@Test
+//	public void testPrintByDate() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link payrollsystem.Company#getNumEmployee()}.
+//	 */
+//	@Test
+//	public void testGetNumEmployee() {
+//		fail("Not yet implemented");
+//	}
 
 }
