@@ -1,32 +1,39 @@
 package payrollsystem;
 
 /**
- * This class
- * @author HECTOR CERDA, LUIS FIGUEROA
- * */
-
+ * This class is used as an interface class where commands are handled before they are send to the company class
+ * 
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PayrollProcessing {
+	/**
+	 * Interface method that is called to run the library system.
+	 */
 	public void run() {
-		Scanner input = new Scanner(System.in);
-		String command = null;
-		String[] tokens = null;
-		Company company = new Company();
-		Fulltime fulltime;
-		Parttime parttime;
-		Management management;
+		Scanner input = new Scanner(System.in);// Create a Scanner object for user input
+		String command = null;// To hold the user's input
+		String[] tokens = null;// To hold each token in String command
+		Company company = new Company();//Creates a new company instance to store employees
+		Fulltime fulltime; // instance used to store full time employees
+		Parttime parttime;// instance used to store part time employees
+		Management management;// instance used to store management employees
 	
 
 		/*
-		 * fix errors list:
-		 * 
-		 * ~ if AM Doe,Jane IT 2/28/2012 85000 1 , then PA. 
-		 * 	It should print compensation as in Sample output.
-		 * 
+		 * sortByDate is not sorting dates correctly
+		 * to input all the test at once go into 
+		 * 1 - RUN CONFIGURATION
+		 * 2 - CREATE NEW CONFIGURATION WITH PROJECT 2
+		 * 3 - CLICK ON COMMON TAB
+		 * 4 - CLICK ON INPUT FILE AND SELECT testcase.txt 
+		 * 5- RUN
 		 * TODO: 
-		 * JUnit 
+		 * JUnit (PayrollSystemTest.java)
 		 * test 
 		 * Diagram 
 		 * Javadoc 
