@@ -7,9 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @hidden
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CompanyTest.class, DateTest.class, EmployeeTest.class,
-				FulltimeTest.class, ManagementTest.class, ParttimeTest.class,
-				PayrollProcessingTest.class, ProfileTest.class })
+@SuiteClasses({ CompanyTest.class, ManagementTest.class })
 /**
  * @hidden
  */
