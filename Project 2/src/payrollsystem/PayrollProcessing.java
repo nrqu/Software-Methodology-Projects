@@ -17,6 +17,7 @@ public class PayrollProcessing {
 		Fulltime fulltime;
 		Parttime parttime;
 		Management management;
+	
 
 		/*
 		 * fix errors list:
@@ -25,8 +26,6 @@ public class PayrollProcessing {
 		 * 	It should print compensation as in Sample output.
 		 * 
 		 * TODO: 
-		 * PD 
-		 * PH 
 		 * JUnit 
 		 * test 
 		 * Diagram 
@@ -34,11 +33,13 @@ public class PayrollProcessing {
 		 * Add comments :(
 		 * 
 		 */
+		
+		
 
-		System.out.println("-- Payroll Processing starts --");
+		System.out.println("Payroll Processing starts");
 
 		do {
-			System.out.print("Enter command: ");
+			System.out.println("Enter command: ");
 			command = input.nextLine();
 			tokens = command.split(" +|\t");
 			try {
@@ -100,7 +101,8 @@ public class PayrollProcessing {
 				case "C":
 					if (company.getNumEmployee() > 0) {
 						company.processPayments();
-						System.out.println("Calutlation of employee payments is done.");
+						System.out.println("Calculation of employee payments is done.");
+						System.out.println("");
 					} else {
 						System.out.println("Employee database is empty.");
 					}
@@ -130,7 +132,7 @@ public class PayrollProcessing {
 					if (company.getNumEmployee() > 0) {
 						System.out.println("--Printing earning statements for all employees--");
 						company.print();
-						System.out.println("--End of list--");
+						//System.out.println("--End of list--");
 					} else {
 						System.out.println("Employee database is empty.");
 					}
@@ -140,7 +142,8 @@ public class PayrollProcessing {
 					if (company.getNumEmployee() > 0) {
 
 						System.out.println("--Print earning statements for all employees by date hired--");
-						System.out.println("--End of list--");
+						company.printByDate();
+						//System.out.println("--End of list--");
 					} else {
 						System.out.println("Employee database is empty.");
 					}
@@ -150,7 +153,8 @@ public class PayrollProcessing {
 				case "PD":
 					if (company.getNumEmployee() > 0) {
 						System.out.println("--Print earning statements for all employees by department--");
-						System.out.println("--End of list--");
+						company.printByDepartment();
+						//System.out.println("--End of list--");
 					} else {
 						System.out.println("Employee database is empty.");
 					}
@@ -198,7 +202,7 @@ public class PayrollProcessing {
 
 	private boolean checkNegativeValue(float value) {
 		if (value < 0) {
-			System.out.println("Hourly Rate/Salary cannot be negative");
+			System.out.println("Pay rate cannot be negative.");
 			return false;
 		}
 		return true;

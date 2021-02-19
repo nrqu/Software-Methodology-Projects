@@ -30,4 +30,10 @@ public class Profile {
 		else
 			return false; 			
 	} //compare name, department and dateHired
+	public Date getDate() {
+		return this.dateHired;
+	}
+	public String getDepartment() {
+		return this.department;
+	}
 }

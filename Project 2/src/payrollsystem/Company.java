@@ -1,12 +1,13 @@
 package payrollsystem;
 
+
+
 /**
  * This class...
  * @author HECTOR CERDA, LUIS FIGUEROA
  * */
-
+import java.util.Arrays;
 public class Company {
-
 	private Employee[] emplist;
 	private int numEmployee;
 
@@ -20,11 +21,9 @@ public class Company {
 	private int find(Object employee) {
 		for (int i = 0; i < numEmployee; i++) {
 			if (emplist[i].equals(employee)) {
-				System.out.println("find at: " + i); // DELETE THIS. DEBUGGING PURPOSE
 				return i;
-			} else
-				System.out.println("Not found");
-		}
+				}
+			}
 		return numEmployee;
 	}
 
@@ -92,14 +91,46 @@ public class Company {
 		for (int i = 0; i < numEmployee; i++) {
 			System.out.println(emplist[i]);
 		}
+		System.out.println("");
 	} // print earning statements for all employees
 
-	public void printByDepartment() {
-
-	} // print earning statements by department
+	public void printByDepartment() {	
+		
+		for (int i = 0; i < numEmployee - 1; i++) {
+			for (int j = i + 1; j < numEmployee; j++) {
+				if (emplist[i].getProfile().getDepartment().compareTo(emplist[j].getProfile().getDepartment()) > 0) {
+					Employee temp = emplist[i];
+					emplist[i] = emplist[j];
+					emplist[j] = temp;
+				}
+			}
+		}
+		
+		for(int i = 0; i < emplist.length;++i) {
+			if(emplist[i] != null)
+				System.out.println(emplist[i]);
+		}
+		System.out.println("");
+	} 
 
 	public void printByDate() {
-
+		
+		for (int i = 0; i < numEmployee - 1; i++) {
+			for (int j = i + 1; j < numEmployee; j++) {
+				if (emplist[i].getProfile().getDate().compareTo(emplist[j].getProfile().getDate()) > 0) {
+					Employee temp = emplist[i];
+					emplist[i] = emplist[j];
+					emplist[j] = temp;
+				}
+			}
+		}
+		
+			
+		for(int i = 0; i < emplist.length;++i) {
+			if(emplist[i] != null)
+				System.out.println(emplist[i]);
+		}
+		System.out.println("");
 	} // print earning statements by date hired
 	
 	public int getNumEmployee() {

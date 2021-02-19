@@ -3,6 +3,7 @@ package payrollsystem;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
+
 /**
  * This class is used as an abstract data type to represent a date.
  * 
@@ -81,10 +82,9 @@ public class Date implements Comparable<Date>{
 
 		return false;
 	}
-	//TODO implement compareTo
 	@Override
 	public int compareTo(Date date) {
-		return 1;
+		return this.getDateSortFormat().compareTo(date.getDateSortFormat());
 	}
 
 	/**

@@ -6,9 +6,8 @@ package payrollsystem;
  * */
 
 public class Fulltime extends Employee {
-	protected float salary;
-	protected final int PAYMENTPERIODS = 26;
-//	protected double payment;
+	private float salary;
+
 
 	Fulltime(Profile profile, float salary) {
 		super(profile);
@@ -17,7 +16,8 @@ public class Fulltime extends Employee {
 
 	@Override
 	public void calculatePayment() {
-		this.payment = salary / PAYMENTPERIODS;
+		int paymentPeriods = 26;
+		super.setPayment(salary / paymentPeriods);
 	}
 
 //	@Override
@@ -43,14 +43,14 @@ public class Fulltime extends Employee {
 
 		if(obj instanceof Fulltime && !(obj instanceof Management)) {
 			Fulltime tmpObj = (Fulltime)obj;
-			if (this.profile.equals(tmpObj.profile))
+			if (super.getProfile().equals(tmpObj.getProfile()))
 				return true;
 			else
 				return false;
 		}else {
 			Employee tmpObj = (Employee)obj;
 			
-			if(this.profile.equals(tmpObj.profile))
+			if(super.getProfile().equals(tmpObj.getProfile()))
 				return true;
 			}
 			return false;
@@ -59,8 +59,11 @@ public class Fulltime extends Employee {
 	@Override
 	public String toString() {
 //		String str = profile.toString() + "::Payment $" + this.payment + "::FULL TIME::Anual Salary $" + salary;
-		String str = super.toString()+"::FULL TIME::Anual Salary $" + String.format("%.2f", this.salary);
+		String str = super.toString()+"::FULL TIME::Anual Salary $" + String.format("%,.2f", this.salary);
 
 		return str;
+	}
+	protected void setSalary(float salary) {
+		this.salary =salary;
 	}
 }

@@ -6,8 +6,8 @@ package payrollsystem;
  * */
 
 public class Employee {
-	protected Profile profile;
-	protected float payment;
+	private Profile profile;
+	private float payment;
 
 	Employee(Profile profile) {
 		this.profile = profile;
@@ -20,7 +20,7 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return profile + "::Payment " + String.format("%.2f", payment);
+		return profile + "::Payment " + String.format("%,.2f", payment);
 	}
 
 	@Override
@@ -35,7 +35,13 @@ public class Employee {
 		}
 		return false;
 	}
-	private Profile getProfile() {
+	protected Profile getProfile() {
 		return this.profile;
+	}
+	protected void setPayment(float payment) {
+		this.payment = payment;
+	}
+	protected float getPayment() {
+		return this.payment;
 	}
 }

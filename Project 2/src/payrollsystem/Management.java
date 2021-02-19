@@ -8,41 +8,45 @@ package payrollsystem;
 public class Management extends Fulltime {
 	private int managementRole;
 	private float additnalComp;
-	private final int MANAGERSALARY = 5000;
-	private final int DEPARTMENTHEADSALARY = 9500;
-	private final int DIRECTORSALARY = 12000;
+	private final float MANAGERSALARY = 5000;
+	private final float DEPARTMENTHEADSALARY = 9500;
+	private final float DIRECTORSALARY = 12000;
 	private final int[] ROLES = new int[] { 1, 2, 3 };
 
 	Management(Profile profile, int salary, int managementRole) {
 		super(profile, salary);
 		this.managementRole = managementRole;
+		
+		int PAYMENTPERIODS = 26;
+		if (managementRole == ROLES[0]) {
+			this.additnalComp = MANAGERSALARY / PAYMENTPERIODS;
+		} else if (managementRole == ROLES[1]) {
+			this.additnalComp = DEPARTMENTHEADSALARY / PAYMENTPERIODS;
+		} else if (managementRole == ROLES[2]) {
+			this.additnalComp = DIRECTORSALARY / PAYMENTPERIODS;
+		}
 	}
 
 	@Override
 	public void calculatePayment() {
 		super.calculatePayment();
-		if (managementRole == ROLES[0]) {
-			this.additnalComp = MANAGERSALARY / super.PAYMENTPERIODS;
-		} else if (managementRole == ROLES[1]) {
-			this.additnalComp = DEPARTMENTHEADSALARY / super.PAYMENTPERIODS;
-		} else if (managementRole == ROLES[2]) {
-			this.additnalComp = DIRECTORSALARY / super.PAYMENTPERIODS;
-		}
+		super.setPayment(this.additnalComp+super.getPayment());
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 
 		if(obj instanceof Management) {
+			
 			Management tmpObj = (Management)obj;
-			if (this.profile.equals(tmpObj.profile) && managementRole == tmpObj.managementRole)
+			if (super.getProfile().equals(tmpObj.getProfile()))
 				return true;
 			else
 				return false;
 		}else {
-		Employee tmpObj = (Employee)obj;
+			Employee tmpObj = (Employee)obj;
 		
-		if(this.profile.equals(tmpObj.profile))
+		if(super.getProfile().equals(tmpObj.getProfile()))
 			return true;
 		}
 		return false;
@@ -58,6 +62,9 @@ public class Management extends Fulltime {
 		}else {
 			tempRole = "Director Compensation";
 		}
-		return super.toString() + "::"+tempRole+ "::"+additnalComp;
+		return super.toString() + "::"+tempRole+ "::"+String.format("%.2f",additnalComp);
+	}
+	public int getManagementRole() {
+		return this.managementRole;
 	}
 }

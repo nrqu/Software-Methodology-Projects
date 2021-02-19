@@ -43,9 +43,9 @@ public class Parttime extends Employee {
 	@Override
 	public void calculatePayment() {
 		if (this.hoursWorked > 80) {
-			this.payment = (this.hourlyRate * 1.5f) * this.hoursWorked;
+			super.setPayment((this.hourlyRate * 1.5f) * this.hoursWorked);
 		} else if (this.hoursWorked <= 80) {
-			this.payment = this.hourlyRate * this.hoursWorked;
+			super.setPayment(this.hourlyRate * this.hoursWorked);
 		}
 	}
 	
@@ -72,14 +72,14 @@ public class Parttime extends Employee {
 
 		if(obj instanceof Parttime) {
 			Parttime tmpObj = (Parttime)obj;
-			if (this.profile.equals(tmpObj.profile))
+			if (super.getProfile().equals(tmpObj.getProfile()))
 				return true;
 			else
 				return false;
 		}else {
 			Employee tmpObj = (Employee)obj;
 			
-			if(this.profile.equals(tmpObj.profile))
+			if(super.getProfile().equals(tmpObj.getProfile()))
 				return true;
 			}
 			return false;
@@ -90,7 +90,7 @@ public class Parttime extends Employee {
 //		String str = profile.toString() + "::Payment $" + this.payment + 
 //				"::PART TIME::Hourly Rate $" + this.hourlyRate + 
 //				"::Hours worked this period: " + this.hoursWorked;		
-		String str = super.toString()+"PART TIME::Hourly Rate $"+this.hourlyRate+"::Hours worked this period: "+ this.hoursWorked;
+		String str = super.toString()+"::PART TIME::Hourly Rate $"+String.format("%.2f", this.hourlyRate)+"::Hours worked this period: "+ this.hoursWorked;
 		return str;
 	}
 
