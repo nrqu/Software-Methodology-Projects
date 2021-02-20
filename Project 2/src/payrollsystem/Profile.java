@@ -47,7 +47,7 @@ public class Profile {
 	 * @return returns a Date object representing the date hired
 	 */
 	public Date getDate() {
-		return this.dateHired;
+		return dateHired;
 	}
 	/**
 	 * Getter method that returns the department of the employee

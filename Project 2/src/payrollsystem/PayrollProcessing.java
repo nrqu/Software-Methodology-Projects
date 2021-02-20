@@ -1,5 +1,9 @@
 package payrollsystem;
 
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * This class is used as an interface class where commands are handled before they are send to the company class
  * 
@@ -7,9 +11,6 @@ package payrollsystem;
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  *
  */
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class PayrollProcessing {
 	/**
 	 * Interface method that is called to run the library system.
@@ -23,25 +24,6 @@ public class PayrollProcessing {
 		Parttime parttime;// instance used to store part time employees
 		Management management;// instance used to store management employees
 	
-
-		/*
-		 * sortByDate is not sorting dates correctly
-		 * to input all the test at once go into 
-		 * 1 - RUN CONFIGURATION
-		 * 2 - CREATE NEW CONFIGURATION WITH PROJECT 2
-		 * 3 - CLICK ON COMMON TAB
-		 * 4 - CLICK ON INPUT FILE AND SELECT testcase.txt 
-		 * 5- RUN
-		 * TODO: 
-		 * JUnit (PayrollSystemTest.java)
-		 * test 
-		 * Diagram 
-		 * Javadoc 
-		 * Add comments :(
-		 * 
-		 */
-		
-		
 
 		System.out.println("Payroll Processing starts");
 
@@ -185,52 +167,92 @@ public class PayrollProcessing {
 		input.close();
 	}
 
-	private boolean checkDepartment(String departmentCode) {
+    /**
+     * The checkDeparment method receives a String object and checks whether or not
+     * it matches one of the valid department codes ("CS", "IT", "ECE).
+     *
+     * @param departmentCode String object holding a department code.
+     * @return true if the String passed matches to one of the department codes.
+     *         Otherwise, it returns false and prints an error message to the
+     *         console.
+     */
+    private boolean checkDepartment(String departmentCode) {
 
-		if (departmentCode.compareTo("CS") != 0 && departmentCode.compareTo("IT") != 0
-				&& departmentCode.compareTo("ECE") != 0) {
-			System.out.printf("'%s' is not a valid department code.\n", departmentCode);
-			return false;
-		}
+        if (departmentCode.compareTo("CS") != 0 && departmentCode.compareTo("IT") != 0
+                && departmentCode.compareTo("ECE") != 0) {
+            System.out.printf("'%s' is not a valid department code.\n", departmentCode);
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	private boolean checkHoursWorked(int hoursWorked) {
-		if (hoursWorked > 100) {
-			System.out.println("Invalid hours: over 100.");
-			return false;
-		} else if (hoursWorked < 0) {
-			System.out.println("Working hours cannot be negative.");
-			return false;
-		}
-		return true;
-	}
+    /**
+     * The CheckHoursWorked method receives an integer value and checks if it is
+     * less than zero or greater than 100.
+     *
+     * @param hoursWorked The number of hours worked.
+     * @return true if the hours worked is in valid range . Otherwise, it returns
+     *         false and prints an error message.
+     */
+    private boolean checkHoursWorked(int hoursWorked) {
+        if (hoursWorked > 100) {
+            System.out.println("Invalid hours: over 100.");
+            return false;
+        } else if (hoursWorked < 0) {
+            System.out.println("Working hours cannot be negative.");
+            return false;
+        }
+        return true;
+    }
 
-	private boolean checkNegativeValue(float value) {
-		if (value < 0) {
-			System.out.println("Pay rate cannot be negative.");
-			return false;
-		}
-		return true;
-	}
+    /**
+     * The checkNegativeValue method receives a float value and checks if it is less
+     * than zero.
+     *
+     * @param value The value to be compared.
+     * @return true if the value is greater than zero. Otherwise, it returns false
+     *         and prints an error message.
+     */
+    private boolean checkNegativeValue(float value) {
+        if (value < 0) {
+            System.out.println("Pay rate cannot be negative.");
+            return false;
+        }
+        return true;
+    }
 
-	private boolean checkRole(int role) {
-		if (role <= 0 || role > 3) {
-			System.out.println("Invalid management code.");
-			return false;
-		}
-		return true;
-	}
+    /**
+     * The checkRole method receives an integer value and checks if it is a valid
+     * role.
+     *
+     * @param role The role of a full time employee.
+     * @return true if the value is in valid range. Otherwise, it returns false and
+     *         prints and error message.
+     */
+    private boolean checkRole(int role) {
+        if (role <= 0 || role > 3) {
+            System.out.println("Invalid management code.");
+            return false;
+        }
+        return true;
+    }
 
-	private boolean checkDate(String date) {
-		Date dateObj = new Date(date);
+    /**
+     * The checkDate method receives a String object containing a date number.
+     *
+     * @param date The string date to be compared.
+     * @return true if the string contains a valid date. Otherwise, it returns false
+     *         and prints an error message.
+     */
+    private boolean checkDate(String date) {
+        Date dateObj = new Date(date);
 
-		if (!(dateObj.isValid())) {
-			System.out.println(date + " is not a valid date.");
-			return false;
-		}
-		return true;
-	}
+        if (!(dateObj.isValid())) {
+            System.out.println(date + " is not a valid date.");
+            return false;
+        }
+        return true;
+    }
 
 }

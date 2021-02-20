@@ -72,16 +72,20 @@ public class Company {
 	 * @return returns true if an employee was removed false otherwise
 	 */
 	public boolean remove(Employee employee) {
+	
 		int index = find(employee);
-		if (index == numEmployee) {
-			return false;
-		} else {
-			for (int k = index; k < numEmployee; ++k) {
-				emplist[k] = emplist[k + 1];
+
+		if (index != numEmployee) {
+			for (int i = index; i < numEmployee; i++) {
+				if (i + 1 >= numEmployee)
+					break;
+				else
+					emplist[i] = emplist[i + 1];
 			}
-			--numEmployee;
+			numEmployee--;
 			return true;
 		}
+		return false;
 	} // maintain the original sequence
 	/**
 	 * Setter method to set the hours of a part time employee
@@ -147,7 +151,8 @@ public class Company {
 		
 		for (int i = 0; i < numEmployee - 1; i++) {
 			for (int j = i + 1; j < numEmployee; j++) {
-				if (emplist[i].getProfile().getDate().compareTo(emplist[j].getProfile().getDate()) > 0) {
+				Date date = emplist[i].getProfile().getDate();
+				if (date.compareTo(emplist[j].getProfile().getDate()) > 0) {
 					Employee temp = emplist[i];
 					emplist[i] = emplist[j];
 					emplist[j] = temp;
@@ -155,10 +160,8 @@ public class Company {
 			}
 		}
 		
-			
-		for(int i = 0; i < emplist.length;++i) {
-			if(emplist[i] != null)
-				System.out.println(emplist[i]);
+		for(int i = 0; i < numEmployee;++i) {
+			System.out.println(emplist[i]);
 		}
 		System.out.println("");
 	} // print earning statements by date hired
