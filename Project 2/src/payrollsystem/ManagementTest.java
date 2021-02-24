@@ -11,6 +11,31 @@ import org.junit.Test;
  * @hidden
  */
 public class ManagementTest {
+	/**
+	 * Test method for {@link payrollsystem.Management#calculatePayment()}.
+	 */
+	@Test
+	public void testCalculatePayment() {
+		
+
+		Management employee = new Management(new Profile("Doe,Jane","IT", "2/28/2012"), 85000,1); 
+		assertEquals("0.0",""+employee.getPayment());//before the call to calculate payment
+		assertEquals("192.3077",""+employee.getAdditionalComp());
+		employee.calculatePayment();
+		assertEquals("3461.5383",""+employee.getPayment());//after the call to calculate payment
+		assertEquals("192.3077",""+employee.getAdditionalComp());
+		
+		employee = new Management(new Profile("Doe,Jane","IT", "2/28/2012"), 110000,2);
+		assertEquals("0.0",""+employee.getPayment());//before the call to calculate payment
+		assertEquals("365.3846",""+employee.getAdditionalComp());
+		employee.calculatePayment();
+		assertEquals("4596.154",""+employee.getPayment());//after the call to calculate payment
+		assertEquals("365.3846",""+employee.getAdditionalComp());
+		
+		
+		
+		
+	}
 
 	/**
 	 * Test method for {@link payrollsystem.Management#equals(java.lang.Object)}.

@@ -24,11 +24,12 @@ public class Date implements Comparable<Date>{
 	private static final int MAXDAYSINLEAPMONTH = 29;
 	private static final int MAXDAYSINNONLEAPMONTH = 28;
 	private static final int MINDAYSINMONTH = 1;
+	
 	/**
 	 * CONSTRUCTOR: creates a new object with a date given by the user
 	 * @param a string representation of the date format mm/dd/yyyy
 	 */
-	public Date(String date) {
+	public Date(String date){
 		String delimeters = "/";
 		StringTokenizer stringTokens = new StringTokenizer(date, delimeters);
 		this.month = Integer.valueOf(stringTokens.nextToken());
@@ -45,6 +46,7 @@ public class Date implements Comparable<Date>{
 																	// to the value return by Calendar.MONTH.
 		this.day = Calendar.getInstance().get(Calendar.DATE);
 	}
+	
 
 	/**
 	 * Checks if he date stored the Date instance is valid.
@@ -109,19 +111,19 @@ public class Date implements Comparable<Date>{
 	}
 
 	/**
+	 * Creates a string representation of the Date object.
+	 * @return A string with the following format yyyy/mm/dd
+	 */
+	public String getDateSortFormat() {
+		return this.year + "/" + this.month + "/" + this.day;
+	}
+	/**
 	 * Creates a string with the following date format mm/dd/yyyy.
 	 * 
 	 * @return A string consisting of the month,date,year stored in the instance
 	 */
 	public String getDate() {
 		return this.month + "/" + this.day + "/" + this.year;
-	}
-	/**
-	 * Creates a string representation of the Date object.
-	 * @return A string with the follwing format yyyy/mm/dd
-	 */
-	public String getDateSortFormat() {
-		return this.year + "/" + this.month + "/" + this.day;
 	}
 	/**
 	 * Creates a string representation of the current date when the program was executed

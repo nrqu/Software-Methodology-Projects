@@ -61,6 +61,7 @@ public class Employee {
 	 * @return returns a float representing the payment 
 	 */
 	protected float getPayment() {
+		
 		return this.payment;
 	}
 }

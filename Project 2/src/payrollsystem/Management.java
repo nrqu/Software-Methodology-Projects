@@ -86,4 +86,11 @@ public class Management extends Fulltime {
 	public int getManagementRole() {
 		return this.managementRole;
 	}
+	/**
+	 * Used in junit test class to test the compensation of each employee once calculate payment is called
+	 * @return returns the total compensation of the employee
+	 */
+	protected float getAdditionalComp() {
+		return  this.additnalComp;
+	}
 }

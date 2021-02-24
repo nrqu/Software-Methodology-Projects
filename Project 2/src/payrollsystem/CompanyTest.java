@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package payrollsystem;
 
 import static org.junit.Assert.*;
