@@ -1,4 +1,4 @@
-package application;
+package payrollsystem;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
