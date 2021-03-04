@@ -138,7 +138,7 @@ public class Company {
 			}
 		}
 		
-		for(int i = 0; i < emplist.length;++i) {
+		for(int i = 0; i < numEmployee;++i) {
 			if(emplist[i] != null)
 				System.out.println(emplist[i]);
 		}
