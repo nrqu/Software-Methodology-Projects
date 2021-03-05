@@ -219,7 +219,7 @@ public class Controller {
     	FileChooser chooser = new FileChooser();
 		chooser.setTitle("Open Source File for the Import");
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-				new ExtensionFilter("Text Files", "database.txt"));
+				new ExtensionFilter("Text Files", "*.*"));
 		Stage stage = new Stage();
 		File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
 		try {
@@ -234,6 +234,16 @@ public class Controller {
 		} catch (FileNotFoundException e) {
 			messageArea.appendText(e.toString());
 		}	
+    }
+    @FXML
+    void exportFile(ActionEvent event) {
+    	FileChooser chooser = new FileChooser();
+		chooser.setTitle("Open Target File for the Export");
+		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+				new ExtensionFilter("All Files", "*.*"));
+		Stage stage = new Stage();
+		File targeFile = chooser.showSaveDialog(stage); //get the reference of the target file
+		
     }
     void handleCommand(String command) {
 		String[] tokens = command.split(",");
