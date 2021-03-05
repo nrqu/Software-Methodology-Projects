@@ -154,6 +154,13 @@ public class Company {
 		}
 
 	} // print earning statements by date hired
+	
+	
+	public void exportDataBase() {
+		
+	}
+	
+	
 	/**
 	 * Getter that returns the total number of employees in the array
 	 * @return returns an in representing the number of employees in the array

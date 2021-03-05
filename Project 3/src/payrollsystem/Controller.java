@@ -1,7 +1,9 @@
 package payrollsystem;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -141,7 +143,7 @@ public class Controller {
     @FXML
     void printAll(ActionEvent event) {
     	if (company.getNumEmployee() > 0) {
-			messageArea.appendText("--Printing earning statements for all employees--\n");
+    		messageArea.appendText("--Printing earning statements for all employees--\n");
 			for(int i = 0;i < company.getNumEmployee();++i) {
 				messageArea.appendText(company.print(i)+"\n");
 			}
@@ -152,7 +154,7 @@ public class Controller {
     @FXML
     void printDept(ActionEvent event) {
     	if (company.getNumEmployee() > 0) {
-			messageArea.appendText("--Print earning statements for all employees by department--\n");
+    		messageArea.appendText("--Print earning statements for all employees by department--\n");
 			company.printByDepartment();
 			for(int i = 0;i < company.getNumEmployee();++i) {
 				messageArea.appendText(company.print(i)+"\n");
@@ -164,7 +166,7 @@ public class Controller {
     @FXML
     void printHired(ActionEvent event) {
     	if (company.getNumEmployee() > 0) {
-			messageArea.appendText("--Print earning statements for all employees by date hired--\n");
+    		messageArea.appendText("--Print earning statements for all employees by date hired--\n");
 			company.printByDate();
 			for(int i = 0;i < company.getNumEmployee();++i) {
 				messageArea.appendText(company.print(i)+"\n");
@@ -217,9 +219,70 @@ public class Controller {
     	FileChooser chooser = new FileChooser();
 		chooser.setTitle("Open Source File for the Import");
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-				new ExtensionFilter("Text Files", "*.txt"));
+				new ExtensionFilter("Text Files", "database.txt"));
 		Stage stage = new Stage();
 		File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
+		try {
+			
+			Scanner scan = new Scanner(sourceFile);
+			int i = 0;
+			while(scan.hasNextLine()) {
+				handleCommand(scan.nextLine());
+;
+			}
+			
+		} catch (FileNotFoundException e) {
+			messageArea.appendText(e.toString());
+		}	
+    }
+    void handleCommand(String command) {
+		String[] tokens = command.split(",");
+		switch (tokens[0]) {
+			case "P":
+				if (checkDepartment(tokens[2]) != true || checkNegativeValue(Float.parseFloat(tokens[4])) != true
+						|| checkDate(tokens[3]) != true)
+					break;
+	
+				parttime = new Parttime(new Profile(tokens[1], tokens[2], tokens[3]), Float.parseFloat(tokens[4]));
+	
+				if (company.add(parttime))
+					messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+	
+				break;
+			case "F":
+				if (checkDepartment(tokens[2]) != true || checkNegativeValue(Float.parseFloat(tokens[4])) != true
+						|| checkDate(tokens[3]) != true)
+					break;
+	
+				fulltime = new Fulltime(new Profile(tokens[1], tokens[2], tokens[3]), Float.parseFloat(tokens[4]));
+				if (company.add(fulltime))
+					messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+	
+				break;
+	
+			case "M":
+				if (checkDepartment(tokens[2]) != true || checkDate(tokens[3]) != true
+						|| checkNegativeValue(Integer.parseInt(tokens[4])) != true
+						|| checkRole(Integer.parseInt(tokens[5])) != true)
+					break;
+	
+				management = new Management(new Profile(tokens[1], tokens[2], tokens[3]),
+						Integer.parseInt(tokens[4]), Integer.parseInt(tokens[5]));
+	
+				if (company.add(management))
+					messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+				break;
+			default:
+				messageArea.appendText("Invalid Command!");
+					
+		}
+
     }
     
     @FXML
@@ -264,6 +327,74 @@ public class Controller {
         	messageArea.appendText("Working hours cannot be negative.\n");
             return false;
         }
+        return true;
+    }
+    
+    /**
+     * The checkNegativeValue method receives a float value and checks if it is less
+     * than zero.
+     *
+     * @param value The value to be compared.
+     * @return true if the value is greater than zero. Otherwise, it returns false
+     *         and prints an error message.
+     */
+    private boolean checkNegativeValue(float value) {
+        if (value < 0) {
+            System.out.println("Pay rate cannot be negative.");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * The checkRole method receives an integer value and checks if it is a valid
+     * role.
+     *
+     * @param role The role of a full time employee.
+     * @return true if the value is in valid range. Otherwise, it returns false and
+     *         prints and error message.
+     */
+    private boolean checkRole(int role) {
+        if (role <= 0 || role > 3) {
+            System.out.println("Invalid management code.");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * The checkDate method receives a String object containing a date number.
+     *
+     * @param date The string date to be compared.
+     * @return true if the string contains a valid date. Otherwise, it returns false
+     *         and prints an error message.
+     */
+    private boolean checkDate(String date) {
+        Date dateObj = new Date(date);
+
+        if (!(dateObj.isValid())) {
+            System.out.println(date + " is not a valid date.");
+            return false;
+        }
+        return true;
+    }
+    /**
+     * The checkDeparment method receives a String object and checks whether or not
+     * it matches one of the valid department codes ("CS", "IT", "ECE).
+     *
+     * @param departmentCode String object holding a department code.
+     * @return true if the String passed matches to one of the department codes.
+     *         Otherwise, it returns false and prints an error message to the
+     *         console.
+     */
+    private boolean checkDepartment(String departmentCode) {
+
+        if (departmentCode.compareTo("CS") != 0 && departmentCode.compareTo("IT") != 0
+                && departmentCode.compareTo("ECE") != 0) {
+            System.out.printf("'%s' is not a valid department code.\n", departmentCode);
+            return false;
+        }
+
         return true;
     }
 }

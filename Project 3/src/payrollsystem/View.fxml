@@ -251,7 +251,7 @@
                             </Menu>
                           </menus>
                         </MenuBar>
-                        <Text layoutX="39.0" layoutY="-12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payrolll Processing System Database" textAlignment="CENTER" wrappingWidth="209.728515625" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="20.0">
+                        <Text layoutX="39.0" layoutY="-12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payroll Processing System Database" textAlignment="CENTER" wrappingWidth="209.728515625" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="20.0">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
