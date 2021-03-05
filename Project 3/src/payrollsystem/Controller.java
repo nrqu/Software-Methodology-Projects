@@ -190,6 +190,15 @@ public class Controller {
     	}
     }
     @FXML
+    void calculatePayment(ActionEvent event) {
+		if (company.getNumEmployee() > 0) {
+			company.processPayments();
+			messageArea.appendText("Calculation of employee payments is done.\n");
+		} else {
+			messageArea.appendText("Employee database is empty.\n");
+		}
+    }
+    @FXML
     void clearTextFields(MouseEvent event) {
     	name.clear();
     	AnnualSalary.clear(); 

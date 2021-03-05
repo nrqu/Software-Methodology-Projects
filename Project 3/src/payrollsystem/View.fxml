@@ -246,7 +246,7 @@
                             </Menu>
                             <Menu mnemonicParsing="false" text="Payment">
                               <items>
-                                <MenuItem fx:id="calculatePayment" mnemonicParsing="false" text="Calculate" />
+                                <MenuItem fx:id="calculatePayment" mnemonicParsing="false" onAction="#calculatePayment" text="Calculate" />
                               </items>
                             </Menu>
                           </menus>
