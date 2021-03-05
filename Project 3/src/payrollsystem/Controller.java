@@ -169,6 +169,9 @@ public class Controller {
     		Rate.setDisable(true);
     		setHoursButton.setDisable(true);
     		AnnualSalary.setDisable(false);
+    		manager.setDisable(true);
+    		headDpt.setDisable(true);
+    		director.setDisable(true);
 
     	} 
 
@@ -177,6 +180,9 @@ public class Controller {
     		HoursWorked.setDisable(false);
     		Rate.setDisable(false);
     		setHoursButton.setDisable(false);
+    		manager.setDisable(true);
+    		headDpt.setDisable(true);
+    		director.setDisable(true);
     	}
     	
     	if(Management.isSelected()) {
