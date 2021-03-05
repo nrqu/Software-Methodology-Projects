@@ -56,10 +56,11 @@ public class Controller {
 
     @FXML
     void add(ActionEvent event) {
-    	String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-    	RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
-    	String department = tmpDept.getText();
-	    try {
+    	try {
+    		String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+    		RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
+    		String department = tmpDept.getText();
+	    
 	    	if(PT.isSelected()) {
 	    		parttime = new Parttime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(Rate.getText()));
 	    		
@@ -118,6 +119,7 @@ public class Controller {
     
     @FXML
 	void remove(ActionEvent event) {
+    	try {
     	String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     	RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
     	String department = tmpDept.getText();
@@ -131,6 +133,9 @@ public class Controller {
 		} else {
 			messageArea.appendText("Employee database is empty.\n");
 		}
+    	}catch (Exception e) {
+    		messageArea.appendText("Invalid input!\n");
+    	}
 	}
    
     @FXML
@@ -206,6 +211,15 @@ public class Controller {
     	Rate.clear();
     	date.setValue(null);
     	
+    }
+    @FXML
+    void importFile(ActionEvent event) {
+    	FileChooser chooser = new FileChooser();
+		chooser.setTitle("Open Source File for the Import");
+		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+				new ExtensionFilter("Text Files", "*.txt"));
+		Stage stage = new Stage();
+		File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
     }
     
     @FXML
