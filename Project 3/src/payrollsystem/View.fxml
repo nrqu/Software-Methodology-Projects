@@ -81,7 +81,7 @@
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="100.0" text="Name" textAlignment="JUSTIFY" />
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="100.0" text="Department" GridPane.rowIndex="1" />
                               <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="100.0" text="Date Hired" GridPane.rowIndex="2" />
-                              <DatePicker fx:id="date" prefHeight="25.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="date" editable="false" prefHeight="25.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="name" GridPane.columnIndex="1" />
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
@@ -240,7 +240,7 @@
                             <Menu mnemonicParsing="false" text="Print">
                               <items>
                                 <MenuItem fx:id="printAll" mnemonicParsing="false" onAction="#printAll" text="All Employees" />
-                                    <MenuItem fx:id="printDept" mnemonicParsing="false" text="By Department" />
+                                    <MenuItem fx:id="printDept" mnemonicParsing="false" onAction="#printDept" text="By Department" />
                                     <MenuItem fx:id="printHired" mnemonicParsing="false" text="By Hired Date" />
                               </items>
                             </Menu>

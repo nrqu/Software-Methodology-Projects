@@ -133,12 +133,25 @@ public class Controller {
     void printAll(ActionEvent event) {
     	if (company.getNumEmployee() > 0) {
 			messageArea.appendText("--Printing earning statements for all employees--\n");
-			messageArea.appendText(company.print());
+			for(int i = 0;i < company.getNumEmployee();++i) {
+				messageArea.appendText(company.print(i)+"\n");
+			}
 		} else {
 			messageArea.appendText("Employee database is empty.\n");
 		}
     }
-    
+    @FXML
+    void printDept(ActionEvent event) {
+    	if (company.getNumEmployee() > 0) {
+			messageArea.appendText("--Print earning statements for all employees by department--\n");
+			company.printByDepartment();
+			for(int i = 0;i < company.getNumEmployee();++i) {
+				messageArea.appendText(company.print(i)+"\n");
+			}
+		} else {
+			messageArea.appendText("Employee database is empty.\n");
+		}
+    }
     @FXML
     void clearTextFields(MouseEvent event) {
     	name.clear();

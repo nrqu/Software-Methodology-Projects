@@ -118,12 +118,8 @@ public class Company {
 	 * Prints the current employees in the array
 	 * @return 
 	 */
-	public String print() {
-		for (int i = 0; i < numEmployee; i++) {
-			return emplist[i].toString();
-		}
-		//System.out.println("");
-	
+	public String print(int i) {
+		return emplist[i].toString();
 	} // print earning statements for all employees
 	/**
 	 * Prints employees in descending order by their department
@@ -140,11 +136,6 @@ public class Company {
 			}
 		}
 		
-		for(int i = 0; i < numEmployee;++i) {
-			if(emplist[i] != null)
-				System.out.println(emplist[i]);
-		}
-		System.out.println("");
 	} 
 	/**
 	 * Prints the array by the hire date of the employees
