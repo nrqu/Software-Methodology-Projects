@@ -241,7 +241,7 @@
                               <items>
                                 <MenuItem fx:id="printAll" mnemonicParsing="false" onAction="#printAll" text="All Employees" />
                                     <MenuItem fx:id="printDept" mnemonicParsing="false" onAction="#printDept" text="By Department" />
-                                    <MenuItem fx:id="printHired" mnemonicParsing="false" text="By Hired Date" />
+                                    <MenuItem fx:id="printHired" mnemonicParsing="false" onAction="#printHired" text="By Hired Date" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="Payment">

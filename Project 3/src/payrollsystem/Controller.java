@@ -153,6 +153,18 @@ public class Controller {
 		}
     }
     @FXML
+    void printHired(ActionEvent event) {
+    	if (company.getNumEmployee() > 0) {
+			messageArea.appendText("--Print earning statements for all employees by date hired--\n");
+			company.printByDate();
+			for(int i = 0;i < company.getNumEmployee();++i) {
+				messageArea.appendText(company.print(i)+"\n");
+			}
+		} else {
+			messageArea.appendText("Employee database is empty.\n");
+		}
+    }
+    @FXML
     void clearTextFields(MouseEvent event) {
     	name.clear();
     	AnnualSalary.clear(); 
