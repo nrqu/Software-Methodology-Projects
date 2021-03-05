@@ -152,11 +152,7 @@ public class Company {
 				}
 			}
 		}
-		
-		for(int i = 0; i < numEmployee;++i) {
-			System.out.println(emplist[i]);
-		}
-		System.out.println("");
+
 	} // print earning statements by date hired
 	/**
 	 * Getter that returns the total number of employees in the array

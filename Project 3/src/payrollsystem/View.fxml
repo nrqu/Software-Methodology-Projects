@@ -207,7 +207,7 @@
                                           <Insets left="15.0" top="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="setHoursButton" disable="true" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" text="Set Hours">
+                                    <Button fx:id="setHoursButton" disable="true" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" onAction="#setHours" text="Set Hours">
                                        <HBox.margin>
                                           <Insets left="15.0" top="5.0" />
                                        </HBox.margin>

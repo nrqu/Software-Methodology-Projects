@@ -165,6 +165,27 @@ public class Controller {
 		}
     }
     @FXML
+    void setHours(ActionEvent event) {
+    	try {
+    		if (checkHoursWorked(Integer.parseInt(HoursWorked.getText())) != true) {
+    	    	HoursWorked.clear(); 
+    		}else {
+    	    	String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+    	    	RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
+    	    	String department = tmpDept.getText();
+    			parttime = new Parttime(new Profile(name.getText(), department, tmpDate), Integer.parseInt(HoursWorked.getText()));
+    			if(company.setHours(parttime))						
+    				messageArea.appendText("Working hours set\n");
+				else
+					messageArea.appendText("Employee does not exist.\n");
+    		}
+    	}catch (NumberFormatException e) {
+    		if(company.getNumEmployee() == 0) {
+    			messageArea.appendText("Employee database empty.\n");
+    		}
+    	}
+    }
+    @FXML
     void clearTextFields(MouseEvent event) {
     	name.clear();
     	AnnualSalary.clear(); 
@@ -207,5 +228,15 @@ public class Controller {
     		HoursWorked.setDisable(true);
 
     	}
+    }
+    private boolean checkHoursWorked(int hoursWorked) {
+        if (hoursWorked > 100) {
+            messageArea.appendText("Invalid hours: over 100.\n");
+            return false;
+        } else if (hoursWorked < 0) {
+        	messageArea.appendText("Working hours cannot be negative.\n");
+            return false;
+        }
+        return true;
     }
 }
