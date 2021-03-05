@@ -225,11 +225,11 @@ public class Controller {
 		try {
 			
 			Scanner scan = new Scanner(sourceFile);
-			int i = 0;
 			while(scan.hasNextLine()) {
 				handleCommand(scan.nextLine());
 ;
 			}
+			scan.close();
 			
 		} catch (FileNotFoundException e) {
 			messageArea.appendText(e.toString());
@@ -242,7 +242,9 @@ public class Controller {
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
 				new ExtensionFilter("All Files", "*.*"));
 		Stage stage = new Stage();
-		File targeFile = chooser.showSaveDialog(stage); //get the reference of the target file
+		File targetFile = chooser.showSaveDialog(stage); //get the reference of the target file
+		
+		messageArea.appendText(company.exportDataBase(targetFile));
 		
     }
     void handleCommand(String command) {

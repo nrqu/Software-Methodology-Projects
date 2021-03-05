@@ -1,7 +1,7 @@
 package payrollsystem;
 
-
-
+import java.io.File;
+import java.io.PrintWriter;
 /**
  * This class is used as an abstract data type that represents a company with a number of employees
  * 
@@ -156,8 +156,18 @@ public class Company {
 	} // print earning statements by date hired
 	
 	
-	public void exportDataBase() {
-		
+	public String exportDataBase(File file) {
+		try {
+			PrintWriter pw = new PrintWriter(file);
+			for(int i = 0; i < numEmployee;++i) {
+				pw.println(this.print(i));
+			}
+			pw.close();
+			return "Database Exported.";
+		}catch(Exception e) {
+			
+		}
+		return "Database was not exported";
 	}
 	
 	
