@@ -59,56 +59,60 @@ public class Controller {
     	String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     	RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
     	String department = tmpDept.getText();
+	    try {
+	    	if(PT.isSelected()) {
+	    		parttime = new Parttime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(Rate.getText()));
+	    		
+	    		if (company.add(parttime))
+					messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+	    		
+	    		// JUST FOR DEBUG
+	        	messageArea.appendText(parttime.toString() + "\n");
+	    	}
+	    	
+	    	if(FT.isSelected()) {
+	    		fulltime = new Fulltime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(AnnualSalary.getText()));
+	    		
+	    		if(company.add(fulltime))
+	    			messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+	    	
+	    		// JUST FOR DEBUG
+	        	messageArea.appendText(fulltime.toString() + "\n");
+	    	}
+	    	
+	    	if(Management.isSelected()) {
+	    		
+	    		RadioButton tmpRole = (RadioButton) role.getSelectedToggle();
+	    		String strRole = tmpRole.getText();
+	    		int intRole = 0;
+	
+	    		if(strRole.compareTo("manager") == 0)
+	    			intRole = 1;
+	    		else if(strRole.compareTo("headDpt") == 0)
+	    			intRole = 2;
+	    		else if(strRole.compareTo("director") == 0)
+	    			intRole = 3;
+	    		
+	    		
+	    		management = new Management(new Profile(name.getText(), department, tmpDate),
+						Integer.parseInt(AnnualSalary.getText()), intRole);
+	    		
+	    		if(company.add(management))
+	    			messageArea.appendText("Employee added.\n");
+				else
+					messageArea.appendText("Employee is already in the list.\n");
+	    		
+	    		// JUST FOR DEBUG
+	        	messageArea.appendText(management.toString() + "\n");
+	    	}
+	    }catch(Exception e){
+	    	messageArea.appendText("Invalid input!\n");
+	    }
     
-    	if(PT.isSelected()) {
-    		parttime = new Parttime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(Rate.getText()));
-    		
-    		if (company.add(parttime))
-				messageArea.appendText("Employee added.\n");
-			else
-				messageArea.appendText("Employee is already in the list.\n");
-    		
-    		// JUST FOR DEBUG
-        	messageArea.appendText(parttime.toString() + "\n");
-    	}
-    	
-    	if(FT.isSelected()) {
-    		fulltime = new Fulltime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(AnnualSalary.getText()));
-    		
-    		if(company.add(fulltime))
-    			messageArea.appendText("Employee added.\n");
-			else
-				messageArea.appendText("Employee is already in the list.\n");
-    	
-    		// JUST FOR DEBUG
-        	messageArea.appendText(fulltime.toString() + "\n");
-    	}
-    	
-    	if(Management.isSelected()) {
-    		
-    		RadioButton tmpRole = (RadioButton) role.getSelectedToggle();
-    		String strRole = tmpRole.getText();
-    		int intRole = 0;
-
-    		if(strRole.compareTo("manager") == 0)
-    			intRole = 1;
-    		else if(strRole.compareTo("headDpt") == 0)
-    			intRole = 2;
-    		else if(strRole.compareTo("director") == 0)
-    			intRole = 3;
-    		
-    		
-    		management = new Management(new Profile(name.getText(), department, tmpDate),
-					Integer.parseInt(AnnualSalary.getText()), intRole);
-    		
-    		if(company.add(management))
-    			messageArea.appendText("Employee added.\n");
-			else
-				messageArea.appendText("Employee is already in the list.\n");
-    		
-    		// JUST FOR DEBUG
-        	messageArea.appendText(management.toString() + "\n");
-    	}
     	
     }
     
