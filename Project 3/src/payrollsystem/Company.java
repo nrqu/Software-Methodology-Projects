@@ -116,12 +116,14 @@ public class Company {
 	}
 	/**
 	 * Prints the current employees in the array
+	 * @return 
 	 */
-	public void print() {
+	public String print() {
 		for (int i = 0; i < numEmployee; i++) {
-			System.out.println(emplist[i]);
+			return emplist[i].toString();
 		}
-		System.out.println("");
+		//System.out.println("");
+	
 	} // print earning statements for all employees
 	/**
 	 * Prints employees in descending order by their department

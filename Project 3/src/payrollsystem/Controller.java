@@ -12,6 +12,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -61,11 +62,91 @@ public class Controller {
     
     	if(PT.isSelected()) {
     		parttime = new Parttime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(Rate.getText()));
+    		
+    		if (company.add(parttime))
+				messageArea.appendText("Employee added.\n");
+			else
+				messageArea.appendText("Employee is already in the list.\n");
+    		
+    		// JUST FOR DEBUG
+        	messageArea.appendText(parttime.toString() + "\n");
     	}
-    	// JUST FOR DEBUG
-    	messageArea.setText(parttime.toString());
     	
+    	if(FT.isSelected()) {
+    		fulltime = new Fulltime(new Profile(name.getText(), department, tmpDate), Float.parseFloat(AnnualSalary.getText()));
+    		
+    		if(company.add(fulltime))
+    			messageArea.appendText("Employee added.\n");
+			else
+				messageArea.appendText("Employee is already in the list.\n");
+    	
+    		// JUST FOR DEBUG
+        	messageArea.appendText(fulltime.toString() + "\n");
+    	}
+    	
+    	if(Management.isSelected()) {
+    		
+    		RadioButton tmpRole = (RadioButton) role.getSelectedToggle();
+    		String strRole = tmpRole.getText();
+    		int intRole = 0;
 
+    		if(strRole.compareTo("manager") == 0)
+    			intRole = 1;
+    		else if(strRole.compareTo("headDpt") == 0)
+    			intRole = 2;
+    		else if(strRole.compareTo("director") == 0)
+    			intRole = 3;
+    		
+    		
+    		management = new Management(new Profile(name.getText(), department, tmpDate),
+					Integer.parseInt(AnnualSalary.getText()), intRole);
+    		
+    		if(company.add(management))
+    			messageArea.appendText("Employee added.\n");
+			else
+				messageArea.appendText("Employee is already in the list.\n");
+    		
+    		// JUST FOR DEBUG
+        	messageArea.appendText(management.toString() + "\n");
+    	}
+    	
+    }
+    
+    @FXML
+	void remove(ActionEvent event) {
+    	String tmpDate = date.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+    	RadioButton tmpDept = (RadioButton) dept.getSelectedToggle();
+    	String department = tmpDept.getText();
+    	
+		if (company.getNumEmployee() > 0) {
+			if (company.remove(new Employee(new Profile(name.getText(), department, tmpDate)))) {
+				messageArea.appendText("Employee removed.\n");
+			} else {
+				messageArea.appendText("Employee does not exist.\n");
+			}
+		} else {
+			messageArea.appendText("Employee database is empty.\n");
+		}
+	}
+   
+    @FXML
+    void printAll(ActionEvent event) {
+    	if (company.getNumEmployee() > 0) {
+			messageArea.appendText("--Printing earning statements for all employees--\n");
+			messageArea.appendText(company.print());
+		} else {
+			messageArea.appendText("Employee database is empty.\n");
+		}
+    }
+    
+    @FXML
+    void clearTextFields(MouseEvent event) {
+    	name.clear();
+    	AnnualSalary.clear(); 
+    	HoursWorked.clear(); 
+    	Rate.clear();
+    	date.setValue(null);
+    	
     }
     
     @FXML
@@ -77,7 +158,6 @@ public class Controller {
     		AnnualSalary.setDisable(false);
 
     	} 
-
 
     	if(PT.isSelected()) {
     		AnnualSalary.setDisable(true);
