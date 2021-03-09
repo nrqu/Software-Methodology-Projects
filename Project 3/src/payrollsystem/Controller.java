@@ -77,6 +77,12 @@ public class Controller {
 			String department = tmpDept.getText();
 
 			if (PT.isSelected()) {
+				if(checkNegativeValue(Float.parseFloat(Rate.getText())) != true)
+				{
+					Rate.clear();
+					return;
+				}
+				
 				parttime = new Parttime(new Profile(name.getText(), department, tmpDate),
 						Float.parseFloat(Rate.getText()));
 
@@ -84,12 +90,15 @@ public class Controller {
 					messageArea.appendText("Employee added.\n");
 				else
 					messageArea.appendText("Employee is already in the list.\n");
-
-				// JUST FOR DEBUG
-				messageArea.appendText(parttime.toString() + "\n");
 			}
 
 			if (FT.isSelected()) {
+				if(checkNegativeValue(Float.parseFloat(AnnualSalary.getText())) != true)
+				{
+					AnnualSalary.clear();
+					return;
+				}
+				
 				fulltime = new Fulltime(new Profile(name.getText(), department, tmpDate),
 						Float.parseFloat(AnnualSalary.getText()));
 
@@ -97,9 +106,6 @@ public class Controller {
 					messageArea.appendText("Employee added.\n");
 				else
 					messageArea.appendText("Employee is already in the list.\n");
-
-				// JUST FOR DEBUG
-				messageArea.appendText(fulltime.toString() + "\n");
 			}
 
 			if (Management.isSelected()) {
@@ -114,6 +120,11 @@ public class Controller {
 					intRole = 2;
 				else if (strRole.compareTo("director") == 0)
 					intRole = 3;
+				
+				if(checkNegativeValue(Integer.parseInt(AnnualSalary.getText())) != true) {
+					AnnualSalary.clear();
+					return;
+				}
 
 				management = new Management(new Profile(name.getText(), department, tmpDate),
 						Integer.parseInt(AnnualSalary.getText()), intRole);
@@ -122,9 +133,6 @@ public class Controller {
 					messageArea.appendText("Employee added.\n");
 				else
 					messageArea.appendText("Employee is already in the list.\n");
-
-				// JUST FOR DEBUG
-				messageArea.appendText(management.toString() + "\n");
 			}
 		} catch (Exception e) {
 			messageArea.appendText("Invalid input!\n");
@@ -312,7 +320,7 @@ public class Controller {
 				messageArea.appendText("Employee is already in the list.\n");
 			break;
 		default:
-			messageArea.appendText("Invalid Command!");
+			messageArea.appendText("Invalid Command!\n");
 
 		}
 
@@ -352,7 +360,7 @@ public class Controller {
 
 		}
 	}
-
+	
 	private boolean checkHoursWorked(int hoursWorked) {
 		if (hoursWorked > 100) {
 			messageArea.appendText("Invalid hours: over 100.\n");
@@ -374,7 +382,7 @@ public class Controller {
 	 */
 	private boolean checkNegativeValue(float value) {
 		if (value < 0) {
-			System.out.println("Pay rate cannot be negative.");
+			messageArea.appendText("Pay rate cannot be negative.\n");
 			return false;
 		}
 		return true;
@@ -390,7 +398,7 @@ public class Controller {
 	 */
 	private boolean checkRole(int role) {
 		if (role <= 0 || role > 3) {
-			System.out.println("Invalid management code.");
+			messageArea.appendText("Invalid management code.\n");
 			return false;
 		}
 		return true;
@@ -407,7 +415,7 @@ public class Controller {
 		Date dateObj = new Date(date);
 
 		if (!(dateObj.isValid())) {
-			System.out.println(date + " is not a valid date.");
+			messageArea.appendText(date + " is not a valid date.\n");
 			return false;
 		}
 		return true;
@@ -426,7 +434,7 @@ public class Controller {
 
 		if (departmentCode.compareTo("CS") != 0 && departmentCode.compareTo("IT") != 0
 				&& departmentCode.compareTo("ECE") != 0) {
-			System.out.printf("'%s' is not a valid department code.\n", departmentCode);
+			messageArea.appendText(departmentCode + " is not a valid department code.\n");
 			return false;
 		}
 

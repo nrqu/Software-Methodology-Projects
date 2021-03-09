@@ -2,8 +2,10 @@ package payrollsystem;
 
 import java.io.File;
 import java.io.PrintWriter;
+
 /**
- * This class is used as an abstract data type that represents a company with a number of employees
+ * This class is used as an abstract data type that represents a company with a
+ * number of employees
  * 
  * 
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
@@ -12,17 +14,20 @@ import java.io.PrintWriter;
 public class Company {
 	private Employee[] emplist;
 	private int numEmployee;
+
 	/**
-	 * CONSTRUCTOR: Creates a new object with an array with initial capacity of 4 and sets the number of employees in the company to 0
+	 * CONSTRUCTOR: Creates a new object with an array with initial capacity of 4
+	 * and sets the number of employees in the company to 0
 	 */
 	Company() {
 		int CAPACITY = 4;
 		emplist = new Employee[CAPACITY];
 		numEmployee = 0;
 	}
-	
+
 	/**
 	 * Finds an employee in the array of employees
+	 * 
 	 * @param employee an object representing an employee in the company
 	 * @return returns the location of the employee in the array
 	 */
@@ -30,10 +35,11 @@ public class Company {
 		for (int i = 0; i < numEmployee; i++) {
 			if (emplist[i].equals(employee)) {
 				return i;
-				}
 			}
+		}
 		return numEmployee;
 	}
+
 	/**
 	 * Grows the capacity of company array by 4 if its full
 	 */
@@ -46,10 +52,13 @@ public class Company {
 
 		emplist = newEmplist;
 	}
+
 	/**
 	 * Adds a new employee object in to the array
+	 * 
 	 * @param employee is an instance of a employee that will be added to the array
-	 * @return returns true if the employee was inserted into the array false otherwise
+	 * @return returns true if the employee was inserted into the array false
+	 *         otherwise
 	 */
 	public boolean add(Employee employee) {
 		if (emplist.length == numEmployee) {
@@ -66,13 +75,15 @@ public class Company {
 			return false;
 
 	} // check the profile before adding
+
 	/**
 	 * Removes and employee from the array
+	 * 
 	 * @param employee is an instance of the employee to be removed
 	 * @return returns true if an employee was removed false otherwise
 	 */
 	public boolean remove(Employee employee) {
-	
+
 		int index = find(employee);
 
 		if (index != numEmployee) {
@@ -87,8 +98,10 @@ public class Company {
 		}
 		return false;
 	} // maintain the original sequence
+
 	/**
 	 * Setter method to set the hours of a part time employee
+	 * 
 	 * @param employee is an instance of the new hours to be set
 	 * @return returns true if the hours were set false otherwise
 	 */
@@ -106,6 +119,7 @@ public class Company {
 		}
 
 	}
+
 	/**
 	 * Calculates the payments for all the instances in the employee array
 	 */
@@ -114,18 +128,21 @@ public class Company {
 			emplist[i].calculatePayment();
 		}
 	}
+
 	/**
 	 * Prints the current employees in the array
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public String print(int i) {
 		return emplist[i].toString();
 	} // print earning statements for all employees
+
 	/**
 	 * Prints employees in descending order by their department
 	 */
-	public void printByDepartment() {	
-		
+	public void printByDepartment() {
+
 		for (int i = 0; i < numEmployee - 1; i++) {
 			for (int j = i + 1; j < numEmployee; j++) {
 				if (emplist[i].getProfile().getDepartment().compareTo(emplist[j].getProfile().getDepartment()) > 0) {
@@ -135,13 +152,14 @@ public class Company {
 				}
 			}
 		}
-		
-	} 
+
+	}
+
 	/**
 	 * Prints the array by the hire date of the employees
 	 */
 	public void printByDate() {
-		
+
 		for (int i = 0; i < numEmployee - 1; i++) {
 			for (int j = i + 1; j < numEmployee; j++) {
 				Date date = emplist[i].getProfile().getDate();
@@ -154,25 +172,24 @@ public class Company {
 		}
 
 	} // print earning statements by date hired
-	
-	
+
 	public String exportDataBase(File file) {
 		try {
 			PrintWriter pw = new PrintWriter(file);
-			for(int i = 0; i < numEmployee;++i) {
+			for (int i = 0; i < numEmployee; ++i) {
 				pw.println(this.print(i));
 			}
 			pw.close();
-			return "Database Exported.";
-		}catch(Exception e) {
-			
+			return "Database Exported.\n";
+		} catch (Exception e) {
+
 		}
-		return "Database was not exported";
+		return "Database was not exported.\n";
 	}
-	
-	
+
 	/**
 	 * Getter that returns the total number of employees in the array
+	 * 
 	 * @return returns an in representing the number of employees in the array
 	 */
 	public int getNumEmployee() {

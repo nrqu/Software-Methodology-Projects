@@ -86,9 +86,21 @@ public class Date implements Comparable<Date>{
 
 		return false;
 	}
+
 	@Override
 	public int compareTo(Date date) {
-		return this.getDateSortFormat().compareTo(date.getDateSortFormat());
+		if (this.year > date.year || (this.year >= date.year && this.month > date.month)
+				|| (this.year >= date.year && this.month >= date.month && this.day > date.day))
+			return 1;
+
+		if (this.year < date.year || (this.year <= date.year && this.month < date.month)
+				|| (this.year <= date.year && this.month <= date.month && this.day < date.day))
+			return -1;
+
+		if (this.year == date.year && this.month == date.month && this.day == date.day)
+			return 0;
+
+		return 0;
 	}
 
 	/**
