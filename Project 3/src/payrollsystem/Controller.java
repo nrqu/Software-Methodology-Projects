@@ -92,13 +92,13 @@ public class Controller {
 			@Override
 			public void updateItem(LocalDate date, boolean empty) {
 				super.updateItem(date, empty);
-				setDisable(empty || date.compareTo(LocalDate.now()) > 0);
-				setDisable(empty || date.compareTo(LocalDate.parse("1900-01-01")) < 0);
+				setDisable((empty || date.compareTo(LocalDate.now()) > 0) || (empty || date.compareTo(LocalDate.parse("1900-01-01")) < 0));
 			}
 		});
 
 		date.setEditable(false);
 	}
+
 	/**
 	 * add new employees to data base
 	 */
@@ -143,8 +143,6 @@ public class Controller {
 
 			else if (Management.isSelected()) {
 
-				RadioButton tmpRole = (RadioButton) role.getSelectedToggle();
-				String strRole = tmpRole.getText();
 				int intRole = 0;
 
 				if (manager.isSelected())
