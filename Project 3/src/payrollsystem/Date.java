@@ -84,7 +84,7 @@ public class Date implements Comparable<Date> {
 
 		return false;
 	}
-	
+
 	/**
 	 * The compareTo method compares a Date object a checks whether it is greater,
 	 * less, or equal.

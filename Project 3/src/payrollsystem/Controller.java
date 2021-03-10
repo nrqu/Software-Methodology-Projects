@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+
 /**
  * This class is used as controller for the stage created by the the Main class
  * 
@@ -47,23 +48,20 @@ public class Controller {
 	@FXML
 	private ToggleGroup dept, empType, role;
 
-	
 	/**
-	 *  RadioButto objects for dept ToggleGroup
+	 * RadioButto objects for dept ToggleGroup
 	 */
 	@FXML
 	private RadioButton IT, ECE, CS;
 
-	
 	/**
-	 *  RadioButto objects for empType ToggleGroup
+	 * RadioButto objects for empType ToggleGroup
 	 */
 	@FXML
 	private RadioButton FT, PT, Management;
 
-	
 	/**
-	 *  RadioButto objects for FTtype ToggleGroup
+	 * RadioButto objects for FTtype ToggleGroup
 	 */
 	@FXML
 	private RadioButton manager, headDpt, director;
@@ -73,7 +71,8 @@ public class Controller {
 	@FXML
 	private Button addButton, removeButton, setHoursButton, clearButton;
 	/**
-	 * MenuItem that represent import file,print all employee,print by department,print by date hired and calculate payment
+	 * MenuItem that represent import file,print all employee,print by
+	 * department,print by date hired and calculate payment
 	 */
 	@FXML
 	private MenuItem importFile, exportFile, printAll, printDept, printHired, calculatePayment;
@@ -82,7 +81,7 @@ public class Controller {
 	 */
 	@FXML
 	private TextArea messageArea;
-	
+
 	/**
 	 * Disables future dates from the date picker
 	 */
@@ -98,6 +97,7 @@ public class Controller {
 
 		date.setEditable(false);
 	}
+
 	/**
 	 * add new employees to data base
 	 */
@@ -109,12 +109,11 @@ public class Controller {
 			String department = tmpDept.getText();
 
 			if (PT.isSelected()) {
-				if(checkNegativeValue(Float.parseFloat(Rate.getText())) != true)
-				{
+				if (checkNegativeValue(Float.parseFloat(Rate.getText())) != true) {
 					Rate.clear();
 					return;
 				}
-				
+
 				parttime = new Parttime(new Profile(name.getText(), department, tmpDate),
 						Float.parseFloat(Rate.getText()));
 
@@ -125,12 +124,11 @@ public class Controller {
 			}
 
 			if (FT.isSelected()) {
-				if(checkNegativeValue(Float.parseFloat(AnnualSalary.getText())) != true)
-				{
+				if (checkNegativeValue(Float.parseFloat(AnnualSalary.getText())) != true) {
 					AnnualSalary.clear();
 					return;
 				}
-				
+
 				fulltime = new Fulltime(new Profile(name.getText(), department, tmpDate),
 						Float.parseFloat(AnnualSalary.getText()));
 
@@ -152,8 +150,8 @@ public class Controller {
 					intRole = 2;
 				else if (strRole.compareTo("director") == 0)
 					intRole = 3;
-				
-				if(checkNegativeValue(Integer.parseInt(AnnualSalary.getText())) != true) {
+
+				if (checkNegativeValue(Integer.parseInt(AnnualSalary.getText())) != true) {
 					AnnualSalary.clear();
 					return;
 				}
@@ -170,6 +168,7 @@ public class Controller {
 			messageArea.appendText("Invalid input!\n");
 		}
 	}
+
 	/**
 	 * Removes and employee from the database if the employee exist
 	 */
@@ -193,6 +192,7 @@ public class Controller {
 			messageArea.appendText("Invalid input!\n");
 		}
 	}
+
 	/**
 	 * Prints the current employees in the database
 	 */
@@ -207,6 +207,7 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
+
 	/**
 	 * Prints employees in descending order by their department
 	 */
@@ -222,6 +223,7 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
+
 	/**
 	 * Prints the array by the hire date of the employees
 	 */
@@ -237,8 +239,10 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
+
 	/**
-	 * Setter method to set the hours of a part time employee if the employee exist in the data base
+	 * Setter method to set the hours of a part time employee if the employee exist
+	 * in the data base
 	 */
 	@FXML
 	void setHours(ActionEvent event) {
@@ -262,6 +266,7 @@ public class Controller {
 			}
 		}
 	}
+
 	/**
 	 * Used to calculate the Payment of the full time employee
 	 */
@@ -274,6 +279,7 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
+
 	/**
 	 * Clear the text from the TextField in the gui
 	 */
@@ -286,6 +292,7 @@ public class Controller {
 		date.setValue(null);
 
 	}
+
 	/**
 	 * imports an employee from a file and it insert it into the data base
 	 */
@@ -310,6 +317,7 @@ public class Controller {
 			messageArea.appendText(e.toString());
 		}
 	}
+
 	/**
 	 * Exports a file into a text file
 	 */
@@ -325,6 +333,7 @@ public class Controller {
 		messageArea.appendText(company.exportDataBase(targetFile));
 
 	}
+
 	/**
 	 * handles commands read from the import feature from the gui
 	 */
@@ -377,6 +386,7 @@ public class Controller {
 		}
 
 	}
+
 	/**
 	 * Disables options from the gui depending on what type of employee is selected
 	 */
@@ -414,14 +424,15 @@ public class Controller {
 
 		}
 	}
-    /**
-     * The CheckHoursWorked method receives an integer value and checks if it is
-     * less than zero or greater than 100.
-     *
-     * @param hoursWorked The number of hours worked.
-     * @return true if the hours worked is in valid range . Otherwise, it returns
-     *         false and prints an error message.
-     */
+
+	/**
+	 * The CheckHoursWorked method receives an integer value and checks if it is
+	 * less than zero or greater than 100.
+	 *
+	 * @param hoursWorked The number of hours worked.
+	 * @return true if the hours worked is in valid range . Otherwise, it returns
+	 *         false and prints an error message.
+	 */
 	private boolean checkHoursWorked(int hoursWorked) {
 		if (hoursWorked > 100) {
 			messageArea.appendText("Invalid hours: over 100.\n");

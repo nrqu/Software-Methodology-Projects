@@ -172,10 +172,12 @@ public class Company {
 		}
 
 	} // print earning statements by date hired
+
 	/**
 	 * Writes the employee information into a text file
+	 * 
 	 * @param a file object that represents the file being written into
-	 * @return returns a string depending if the write was successful 
+	 * @return returns a string depending if the write was successful
 	 */
 	public String exportDataBase(File file) {
 		try {
@@ -186,7 +188,7 @@ public class Company {
 			pw.close();
 			return "Database Exported.\n";
 		} catch (Exception e) {
-			
+
 		}
 		return "Database was not exported.\n";
 	}
