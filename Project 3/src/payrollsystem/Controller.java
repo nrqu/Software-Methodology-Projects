@@ -19,43 +19,73 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+/**
+ * This class is used as controller for the stage created by the the Main class
+ * 
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Controller {
 	Company company = new Company();// Creates a new company instance to store employees
 	Fulltime fulltime; // instance used to store full time employees
 	Parttime parttime;// instance used to store part time employees
 	Management management;// instance used to store management employees
-
+	/**
+	 * DatePicker to select the date the employee was hired
+	 */
 	@FXML
 	private DatePicker date;
-
+	/**
+	 * Text field to for the user to input the employee information
+	 */
 	@FXML
 	private TextField name, AnnualSalary, HoursWorked, Rate;
-
+	/**
+	 * ToggleGroup for roles and employee types
+	 */
 	@FXML
 	private ToggleGroup dept, empType, role;
 
+	
+	/**
+	 *  RadioButto objects for dept ToggleGroup
+	 */
 	@FXML
-	// RadioButto objects for dept ToggleGroup
 	private RadioButton IT, ECE, CS;
 
+	
+	/**
+	 *  RadioButto objects for empType ToggleGroup
+	 */
 	@FXML
-	// RadioButto objects for empType ToggleGroup
 	private RadioButton FT, PT, Management;
 
+	
+	/**
+	 *  RadioButto objects for FTtype ToggleGroup
+	 */
 	@FXML
-	// RadioButto objects for FTtype ToggleGroup
 	private RadioButton manager, headDpt, director;
-
+	/**
+	 * Button that represent add,remove,setHours and clear input box
+	 */
 	@FXML
 	private Button addButton, removeButton, setHoursButton, clearButton;
-
+	/**
+	 * MenuItem that represent import file,print all employee,print by department,print by date hired and calculate payment
+	 */
 	@FXML
 	private MenuItem importFile, exportFile, printAll, printDept, printHired, calculatePayment;
-
+	/**
+	 * TextArea that represents the text area where all the messages are printed
+	 */
 	@FXML
 	private TextArea messageArea;
-
+	
+	/**
+	 * Disables future dates from the date picker
+	 */
 	@FXML
 	void disableFutureDates(MouseEvent event) {
 		date.setDayCellFactory(param -> new DateCell() {
@@ -68,7 +98,9 @@ public class Controller {
 
 		date.setEditable(false);
 	}
-
+	/**
+	 * add new employees to data base
+	 */
 	@FXML
 	void add(ActionEvent event) {
 		try {
@@ -138,7 +170,9 @@ public class Controller {
 			messageArea.appendText("Invalid input!\n");
 		}
 	}
-
+	/**
+	 * Removes and employee from the database if the employee exist
+	 */
 	@FXML
 	void remove(ActionEvent event) {
 		try {
@@ -159,7 +193,9 @@ public class Controller {
 			messageArea.appendText("Invalid input!\n");
 		}
 	}
-
+	/**
+	 * Prints the current employees in the database
+	 */
 	@FXML
 	void printAll(ActionEvent event) {
 		if (company.getNumEmployee() > 0) {
@@ -171,7 +207,9 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
-
+	/**
+	 * Prints employees in descending order by their department
+	 */
 	@FXML
 	void printDept(ActionEvent event) {
 		if (company.getNumEmployee() > 0) {
@@ -184,7 +222,9 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
-
+	/**
+	 * Prints the array by the hire date of the employees
+	 */
 	@FXML
 	void printHired(ActionEvent event) {
 		if (company.getNumEmployee() > 0) {
@@ -197,7 +237,9 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
-
+	/**
+	 * Setter method to set the hours of a part time employee if the employee exist in the data base
+	 */
 	@FXML
 	void setHours(ActionEvent event) {
 		try {
@@ -220,7 +262,9 @@ public class Controller {
 			}
 		}
 	}
-
+	/**
+	 * Used to calculate the Payment of the full time employee
+	 */
 	@FXML
 	void calculatePayment(ActionEvent event) {
 		if (company.getNumEmployee() > 0) {
@@ -230,7 +274,9 @@ public class Controller {
 			messageArea.appendText("Employee database is empty.\n");
 		}
 	}
-
+	/**
+	 * Clear the text from the TextField in the gui
+	 */
 	@FXML
 	void clearTextFields(MouseEvent event) {
 		name.clear();
@@ -240,7 +286,9 @@ public class Controller {
 		date.setValue(null);
 
 	}
-
+	/**
+	 * imports an employee from a file and it insert it into the data base
+	 */
 	@FXML
 	void importFile(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
@@ -262,7 +310,9 @@ public class Controller {
 			messageArea.appendText(e.toString());
 		}
 	}
-
+	/**
+	 * Exports a file into a text file
+	 */
 	@FXML
 	void exportFile(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
@@ -275,7 +325,9 @@ public class Controller {
 		messageArea.appendText(company.exportDataBase(targetFile));
 
 	}
-
+	/**
+	 * handles commands read from the import feature from the gui
+	 */
 	void handleCommand(String command) {
 		String[] tokens = command.split(",");
 		switch (tokens[0]) {
@@ -325,7 +377,9 @@ public class Controller {
 		}
 
 	}
-
+	/**
+	 * Disables options from the gui depending on what type of employee is selected
+	 */
 	@FXML
 	void enableEmpTypeOptions(ActionEvent event) {
 		if (FT.isSelected()) {
@@ -360,7 +414,14 @@ public class Controller {
 
 		}
 	}
-	
+    /**
+     * The CheckHoursWorked method receives an integer value and checks if it is
+     * less than zero or greater than 100.
+     *
+     * @param hoursWorked The number of hours worked.
+     * @return true if the hours worked is in valid range . Otherwise, it returns
+     *         false and prints an error message.
+     */
 	private boolean checkHoursWorked(int hoursWorked) {
 		if (hoursWorked > 100) {
 			messageArea.appendText("Invalid hours: over 100.\n");

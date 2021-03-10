@@ -7,9 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-
+/**
+ * This class is used to create a stage for the gui application
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Main extends Application {
-
+	/**
+	 * starts the components of the gui application
+	 */
     @Override
     public void start(Stage primaryStage) throws Exception{
     	BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("View.fxml"));
