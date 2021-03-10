@@ -93,6 +93,7 @@ public class Controller {
 			public void updateItem(LocalDate date, boolean empty) {
 				super.updateItem(date, empty);
 				setDisable(empty || date.compareTo(LocalDate.now()) > 0);
+				setDisable(empty || date.compareTo(LocalDate.parse("1900-01-01")) < 0);
 			}
 		});
 
@@ -124,7 +125,7 @@ public class Controller {
 					messageArea.appendText("Employee is already in the list.\n");
 			}
 
-			if (FT.isSelected()) {
+			else if (FT.isSelected()) {
 				if(checkNegativeValue(Float.parseFloat(AnnualSalary.getText())) != true)
 				{
 					AnnualSalary.clear();
@@ -140,17 +141,17 @@ public class Controller {
 					messageArea.appendText("Employee is already in the list.\n");
 			}
 
-			if (Management.isSelected()) {
+			else if (Management.isSelected()) {
 
 				RadioButton tmpRole = (RadioButton) role.getSelectedToggle();
 				String strRole = tmpRole.getText();
 				int intRole = 0;
 
-				if (strRole.compareTo("manager") == 0)
+				if (manager.isSelected())
 					intRole = 1;
-				else if (strRole.compareTo("headDpt") == 0)
+				else if (headDpt.isSelected())
 					intRole = 2;
-				else if (strRole.compareTo("director") == 0)
+				else if (director.isSelected())
 					intRole = 3;
 				
 				if(checkNegativeValue(Integer.parseInt(AnnualSalary.getText())) != true) {
