@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
@@ -14,11 +14,11 @@
       <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="100.0" mnemonicParsing="false" text="cream" />
       <Text layoutX="189.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Addons" wrappingWidth="75.13671875" />
       <CheckBox fx:id="syrupAddon" layoutX="189.0" layoutY="120.0" mnemonicParsing="false" text="syrup" />
-      <ListView layoutX="344.0" layoutY="100.0" prefHeight="39.0" prefWidth="170.0" />
       <CheckBox fx:id="milkAddon" layoutX="189.0" layoutY="140.0" mnemonicParsing="false" text="milk" />
       <CheckBox fx:id="caramelAddon" layoutX="189.0" layoutY="160.0" mnemonicParsing="false" text="caramel" />
       <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="180.0" mnemonicParsing="false" text="whipped cream" />
       <Text layoutX="392.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal" wrappingWidth="130.13671875" />
-      <Button fx:id="addCoffee" layoutX="344.0" layoutY="170.0" mnemonicParsing="false" text="Add coffee" />
+      <Button fx:id="addCoffee" layoutX="344.0" layoutY="170.0" mnemonicParsing="false" text="Add coffee to order" />
+      <TextArea fx:id="subTotalPrice" editable="false" layoutX="344.0" layoutY="102.0" prefHeight="49.0" prefWidth="208.0" />
    </children>
 </Pane>

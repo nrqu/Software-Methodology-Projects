@@ -3,12 +3,12 @@ package application;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 
 public class OrderCoffeeController extends MainMenuController{
     @FXML
-    private ComboBox<?> coffeSizes;
+    private ComboBox<String> coffeSizes;
 
     @FXML
     private CheckBox creamAddon;
@@ -17,7 +17,7 @@ public class OrderCoffeeController extends MainMenuController{
     private CheckBox syrupAddon;
 
     @FXML
-    private ListView<?> subTotalPrice;
+    private TextArea subTotalPrice;
 
     @FXML
     private CheckBox milkAddon;
@@ -27,4 +27,6 @@ public class OrderCoffeeController extends MainMenuController{
 
     @FXML
     private Button addCoffee;
+    
+    
 }

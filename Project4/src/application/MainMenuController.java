@@ -14,9 +14,23 @@ public class MainMenuController {
     private ImageView orderDonuts;
 
     @FXML
-    private void openDonutOrderMenu(ActionEvent event) {
+    private void openCoffeeOrderMenu(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(root1));  
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
+
+    @FXML
+    void openDonutOrderMenu(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderDonutView.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setResizable(false);

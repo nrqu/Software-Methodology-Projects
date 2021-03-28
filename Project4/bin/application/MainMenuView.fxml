@@ -23,9 +23,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button contentDisplay="TOP" graphicTextGap="10.0" mnemonicParsing="false" text="Order Donuts!" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true">
+            <Button contentDisplay="TOP" graphicTextGap="10.0" mnemonicParsing="false" onAction="#openDonutOrderMenu" text="Order Donuts!" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true">
                <graphic>
-                  <ImageView fx:id="orderDonuts" fitHeight="140.0" fitWidth="140.0" onMousePressed="#openDonutOrderMenu" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="orderDonuts" fitHeight="140.0" fitWidth="140.0" onMousePressed="#openCoffeeOrderMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/donut.png" />
                      </image>
@@ -38,7 +38,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#openDonutOrderMenu" text="Order Coffee!" textOverrun="WORD_ELLIPSIS" underline="true" GridPane.rowIndex="1">
+            <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#openCoffeeOrderMenu" text="Order Coffee!" textOverrun="WORD_ELLIPSIS" underline="true" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                      <image>
