@@ -40,4 +40,17 @@ public class MainMenuController {
 			e.printStackTrace();
 		}
     }
+    @FXML
+    void openOrderDetailMenu(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderDetailView.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(root1));  
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
 }
