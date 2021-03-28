@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +25,7 @@
          <children>
             <Button contentDisplay="TOP" graphicTextGap="10.0" mnemonicParsing="false" text="Order Donuts!" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true">
                <graphic>
-                  <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="orderDonuts" fitHeight="140.0" fitWidth="140.0" onMousePressed="#openDonutOrderMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/donut.png" />
                      </image>
@@ -39,7 +38,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" text="Order Coffee!" textOverrun="WORD_ELLIPSIS" underline="true" GridPane.rowIndex="1">
+            <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#openDonutOrderMenu" text="Order Coffee!" textOverrun="WORD_ELLIPSIS" underline="true" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ComboBox fx:id="coffeSizes" layoutX="14.0" layoutY="100.0" prefWidth="150.0" />
+      <Text layoutX="51.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffe Size" wrappingWidth="75.13671875" />
+      <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="100.0" mnemonicParsing="false" text="cream" />
+      <Text layoutX="189.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Addons" wrappingWidth="75.13671875" />
+      <CheckBox fx:id="syrupAddon" layoutX="189.0" layoutY="120.0" mnemonicParsing="false" text="syrup" />
+      <ListView layoutX="344.0" layoutY="100.0" prefHeight="39.0" prefWidth="170.0" />
+      <CheckBox fx:id="milkAddon" layoutX="189.0" layoutY="140.0" mnemonicParsing="false" text="milk" />
+      <CheckBox fx:id="caramelAddon" layoutX="189.0" layoutY="160.0" mnemonicParsing="false" text="caramel" />
+      <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="180.0" mnemonicParsing="false" text="whipped cream" />
+      <Text layoutX="392.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal" wrappingWidth="130.13671875" />
+   </children>
+</Pane>
