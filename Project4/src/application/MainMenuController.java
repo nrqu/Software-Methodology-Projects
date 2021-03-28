@@ -6,12 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MainMenuController {
-    @FXML
-    private ImageView orderDonuts;
+
 
     @FXML
     private void openCoffeeOrderMenu(ActionEvent event) {
@@ -44,6 +42,19 @@ public class MainMenuController {
     void openOrderDetailMenu(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderDetailView.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(root1));  
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
+    @FXML
+    void openOrderPageMenu(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderPageView.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setResizable(false);
