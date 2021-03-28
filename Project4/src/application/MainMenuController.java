@@ -19,6 +19,7 @@ public class MainMenuController {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
+			stage.setResizable(false);
 			stage.setScene(new Scene(root1));  
 			stage.show();
 		} catch(Exception e) {
