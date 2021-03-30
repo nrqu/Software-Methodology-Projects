@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
 public class OrderDonutController extends MainMenuController{
+	
+	ArrayList listOfYeastDonuts = new ArrayList();
+	YeastDonut yeastDonut;
+	double newSubTotal = 0.0;
 
     @FXML
     private ComboBox<String> donutTypeDropDown;
@@ -70,10 +76,51 @@ public class OrderDonutController extends MainMenuController{
     	
     }
     
+    void updateAddSubTotal() {
+    	yeastDonut = new YeastDonut(donutAmountSpinner.getValue());
+    	yeastDonut.calculateSubTotal();
+    	double subTotal = yeastDonut.getSubTotal();
+    	
+    	newSubTotal += subTotal;
+    	
+    	System.out.println(newSubTotal);
+    	
+    	donutSubtotal.setText(String.valueOf(newSubTotal));
+    }
+    
+    
     @FXML
     void addDonutButton(ActionEvent event) {
-    	donutOrderListView.getItems().add(donutFlavorDropDown.getValue());
+    	
+		if (donutTypeDropDown.getValue() == null || donutFlavorDropDown.getValue() == null) {
+			return;
+		} else {
+			donutOrderListView.getItems()
+					.add(donutFlavorDropDown.getValue() + " (" + donutAmountSpinner.getValue() + ")");
+			
+			updateAddSubTotal();
+		}
+		
     }
+    
+    void updateRemoveSubTotal() {
+    	
+    }
+    
+    @FXML
+    void removeDonutButton(ActionEvent event) {
+    	
+    	int selectedDonutOrder = donutOrderListView.getSelectionModel().getSelectedIndex();
+    	
+    	if (selectedDonutOrder != -1) {
+    		donutOrderListView.getItems().remove(selectedDonutOrder);
+    	}
+    	
+    }
+    
+ 
+    
+    
 
     
 
