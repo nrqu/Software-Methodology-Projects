@@ -4,6 +4,7 @@ package application;
 public class MenuItem {
 	private double subTotal;
 	
+	
 	public void calculateSubTotal() {
 		
 	}
@@ -17,8 +18,12 @@ public class MenuItem {
 		return this.subTotal;
 	}
 	
+	public void calculatePrice() {};
+	
+
 	@Override
 	public String toString() {
 		return String.format("%,.2f", subTotal);
 	}
+	
 }

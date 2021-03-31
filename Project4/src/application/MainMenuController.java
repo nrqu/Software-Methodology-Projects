@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MainMenuController {
-
+	
+	StoreOrders storeOrders;
+	Order order;
 
     @FXML
     private void openCoffeeOrderMenu(ActionEvent event) {
@@ -47,6 +51,8 @@ public class MainMenuController {
 			stage.setResizable(false);
 			stage.setScene(new Scene(root1));  
 			stage.show();
+			OrderCoffeeController coffeeController = fxmlLoader.getController();
+			coffeeController.setMainController(this);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -5,20 +5,26 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderCoffeeController">
    <children>
-      <ComboBox fx:id="coffeSizes" layoutX="14.0" layoutY="100.0" prefWidth="150.0" />
+      <ComboBox fx:id="coffeSizes" layoutX="14.0" layoutY="100.0" onAction="#coffeSizeEvent" prefWidth="150.0" />
       <Text layoutX="51.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffe Size" wrappingWidth="75.13671875" />
-      <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="100.0" mnemonicParsing="false" text="cream" />
+      <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="100.0" mnemonicParsing="false" text="whipped cream" />
       <Text layoutX="189.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Addons" wrappingWidth="75.13671875" />
       <CheckBox fx:id="syrupAddon" layoutX="189.0" layoutY="120.0" mnemonicParsing="false" text="syrup" />
       <CheckBox fx:id="milkAddon" layoutX="189.0" layoutY="140.0" mnemonicParsing="false" text="milk" />
       <CheckBox fx:id="caramelAddon" layoutX="189.0" layoutY="160.0" mnemonicParsing="false" text="caramel" />
-      <CheckBox fx:id="creamAddon" layoutX="189.0" layoutY="180.0" mnemonicParsing="false" text="whipped cream" />
-      <Text layoutX="392.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal" wrappingWidth="130.13671875" />
-      <Button fx:id="addCoffee" layoutX="344.0" layoutY="170.0" mnemonicParsing="false" text="Add coffee to order" />
-      <TextArea fx:id="subTotalPrice" editable="false" layoutX="344.0" layoutY="102.0" prefHeight="49.0" prefWidth="208.0" />
+      <Text layoutX="299.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="subtotal" wrappingWidth="130.13671875" />
+      <Button layoutX="499.0" layoutY="188.0" mnemonicParsing="false" onAction="#addCoffeeToOrder" text="Add to Order" />
+      <TextArea fx:id="subTotalPrice" editable="false" layoutX="300.0" layoutY="321.0" prefHeight="38.0" prefWidth="142.0" />
+      <Text fill="#c92644" layoutX="219.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Menu!" underline="true">
+         <font>
+            <Font name="Serif Bold Italic" size="28.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="orderInfo" editable="false" layoutX="299.0" layoutY="96.0" prefHeight="186.0" prefWidth="191.0" />
    </children>
 </Pane>
