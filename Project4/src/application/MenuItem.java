@@ -18,7 +18,6 @@ public class MenuItem {
 		return this.subTotal;
 	}
 	
-	public void calculatePrice() {};
 	
 
 	@Override

@@ -72,14 +72,17 @@ public class OrderCoffeeController{
         }
     public void setMainController(MainMenuController controller) {
     	this.mainController = controller;
-    	this.storeOrders = controller.storeOrders;
-    	this.order = controller.order;
+    	this.storeOrders = controller.getStoreOrderReference();
+    	this.order = controller.getOrderReference();
     }
-	
+
 	@FXML
 	void addCoffeeToOrder(ActionEvent event) {
-		
-		
+		if(coffeSizes.getSelectionModel().getSelectedIndex() > -1) {
+			if(order.add(coffee) )
+				orderInfo.appendText(coffee+" " +"\n");
+		}else
+			orderInfo.appendText("Please select a coffee size\n");
 	}
 	
 	void addAddon() {

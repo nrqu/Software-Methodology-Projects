@@ -4,15 +4,20 @@ import java.util.ArrayList;
 
 public class Order implements Customizable {
 	ArrayList<MenuItem> arr;
-	int orderId;
+	static int orderId;
 	
 	Order(){
 		arr = new ArrayList<MenuItem>();
+		orderId+=1;
 	}
 	@Override
 	public boolean add(Object obj) {
-		// TODO Auto-generated method stub
-		return true;
+		if(obj instanceof Coffee ) {
+			Coffee temp = (Coffee)obj;
+			arr.add(temp);
+			return true;
+		}
+		return false;
 	}
 
 	@Override

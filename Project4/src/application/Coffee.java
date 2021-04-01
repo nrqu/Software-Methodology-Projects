@@ -12,7 +12,7 @@ class Coffee extends MenuItem implements Customizable {
 		addons = new ArrayList<String>();	
 	}
 	@Override
-	public void calculatePrice() {
+	public void calculateSubTotal() {
 		double coffeePrice;
 
 		if(coffeeSize == 0) {
@@ -55,7 +55,7 @@ class Coffee extends MenuItem implements Customizable {
 
 	public void setCoffeeSize(int val) {
 		coffeeSize = val;
-		calculatePrice();
+		calculateSubTotal();
 	}
 	@Override
 	public String toString() {

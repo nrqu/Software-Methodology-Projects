@@ -1,20 +1,24 @@
 package application;
 
-import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MainMenuController {
 	
 	StoreOrders storeOrders;
 	Order order;
-
+	
+    @FXML 
+    void initialize() {
+    	storeOrders = new StoreOrders();
+    	order = new Order();
+    }
+    
     @FXML
     private void openCoffeeOrderMenu(ActionEvent event) {
 		try {
@@ -22,7 +26,9 @@ public class MainMenuController {
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setResizable(false);
-			stage.setScene(new Scene(root1));  
+			stage.setScene(new Scene(root1)); 
+			OrderCoffeeController coffeeController = fxmlLoader.getController();
+			coffeeController.setMainController(this);
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -51,8 +57,6 @@ public class MainMenuController {
 			stage.setResizable(false);
 			stage.setScene(new Scene(root1));  
 			stage.show();
-			OrderCoffeeController coffeeController = fxmlLoader.getController();
-			coffeeController.setMainController(this);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -69,5 +73,11 @@ public class MainMenuController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+    }
+    public Order getOrderReference() {
+    	return order;
+    }
+    public StoreOrders getStoreOrderReference() {
+    	return storeOrders;
     }
 }
