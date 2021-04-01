@@ -57,6 +57,7 @@ public class YeastDonut extends MenuItem {
 	public void calculateSubTotal() {
 		super.setSubTotal(YEASTPRICE * yeastDonutQty);
 	}
+	
 
 	@Override
 	public String toString() {

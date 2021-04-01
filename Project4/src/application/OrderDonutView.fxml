@@ -26,7 +26,7 @@
             <Font name="Serif Bold Italic" size="28.0" />
          </font>
       </Text>
-      <Button layoutX="410.0" layoutY="339.0" mnemonicParsing="false" text="Add to Order" />
+      <Button layoutX="410.0" layoutY="339.0" mnemonicParsing="false" onAction="#addToOrder" text="Add to Order" />
       <ListView fx:id="donutOrderListView" layoutX="348.0" layoutY="139.0" prefHeight="183.0" prefWidth="238.0" />
       <Text layoutX="392.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order List" textAlignment="CENTER" wrappingWidth="150.0">
          <font>

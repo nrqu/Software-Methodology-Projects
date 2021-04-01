@@ -4,7 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
@@ -17,8 +18,11 @@ public class OrderDonutController extends MainMenuController {
 	CakeDonut cakeDonut;
 	DonutHoles donutHoles;
 	Donut donuts;
+	StoreOrders storeOrders;
+	Order order;
 
 	double subTotal = 0.0;
+	int count = 0;
 
 	@FXML
 	private ComboBox<String> donutTypeDropDown;
@@ -28,12 +32,6 @@ public class OrderDonutController extends MainMenuController {
 
 	@FXML
 	private TextArea donutSubtotal;
-
-	@FXML
-	private Button addDonut;
-
-	@FXML
-	private Button removeDonut;
 
 	@FXML
 	private Spinner<Integer> donutAmountSpinner;
@@ -80,8 +78,7 @@ public class OrderDonutController extends MainMenuController {
 		if (donutTypeDropDown.getValue().equals("yeast donut")) {
 			yeastDonut = new YeastDonut(donutAmountSpinner.getValue());
 			yeastDonut.calculateSubTotal();
-			subTotal += yeastDonut.getSubTotal();;
-			
+			subTotal += yeastDonut.getSubTotal();
 		} else if (donutTypeDropDown.getValue().equals("cake donut")) {
 			cakeDonut = new CakeDonut(donutAmountSpinner.getValue());
 			cakeDonut.calculateSubTotal();
@@ -103,6 +100,7 @@ public class OrderDonutController extends MainMenuController {
 			donuts = new Donut(donutTypeDropDown.getValue(), donutFlavorDropDown.getValue(),
 					donutAmountSpinner.getValue());
 			donutOrderListView.getItems().add(donuts);
+			count++;
 
 			updateAddSubTotal();
 		}
@@ -126,6 +124,46 @@ public class OrderDonutController extends MainMenuController {
 			
 			donutSubtotal.setText(String.format("%,.2f", subTotal));
 			donutOrderListView.getItems().remove(selectedDonutOrder);
+			count--;
 		}
 	}
+	
+	@FXML
+	void addToOrder() {
+		Alert alert;
+		
+	
+		if(donutOrderListView.getItems().isEmpty() != true) {
+			alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation");
+			alert.setHeaderText("Donuts Added to Your Order!");
+			alert.setContentText("Enjoy!");
+			alert.showAndWait();
+			
+			
+			for (int i = 0; i < count; i++) {
+				Donut d = donutOrderListView.getItems().get(i);
+				order.add(d);
+				System.out.println(d);
+			}
+				//order.add((donutOrderListView.getItems().get(i)));
+			
+			// Reset global variables, listView, and subTotal text area.
+			donutOrderListView.getItems().clear();
+			donutSubtotal.clear();
+			count = 0;
+			subTotal = 0.0;
+		} else {
+			alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning!");
+			alert.setHeaderText("Order List Empty!");
+			alert.setContentText("Try adding some donuts to your order!");
+			alert.showAndWait();
+		}
+	}
+	
+    public void setMainController(MainMenuController controller) {
+    	this.storeOrders = controller.getStoreOrderReference();
+    	this.order = controller.getOrderReference();
+    }
 }

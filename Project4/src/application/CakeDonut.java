@@ -55,6 +55,8 @@ public class CakeDonut extends MenuItem {
 	public void calculateSubTotal() {
 		super.setSubTotal(CAKEDONUTPRICE * cakeDonutQty);
 	}
+	
+
 
 	@Override
 	public String toString() {
