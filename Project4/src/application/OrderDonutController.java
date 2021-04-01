@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,116 +11,121 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 
-public class OrderDonutController extends MainMenuController{
-	
-	ArrayList listOfYeastDonuts = new ArrayList();
+public class OrderDonutController extends MainMenuController {
+
 	YeastDonut yeastDonut;
-	double newSubTotal = 0.0;
+	CakeDonut cakeDonut;
+	DonutHoles donutHoles;
+	Donut donuts;
 
-    @FXML
-    private ComboBox<String> donutTypeDropDown;
+	double subTotal = 0.0;
 
-    @FXML
-    private ComboBox<String> donutFlavorDropDown;
+	@FXML
+	private ComboBox<String> donutTypeDropDown;
 
-    @FXML
-    private TextArea donutSubtotal;
+	@FXML
+	private ComboBox<String> donutFlavorDropDown;
 
-    @FXML
-    private Button addDonut;
+	@FXML
+	private TextArea donutSubtotal;
 
-    @FXML
-    private Button removeDonut;
+	@FXML
+	private Button addDonut;
 
-    @FXML
-    private Spinner<Integer> donutAmountSpinner;
-    
-    @FXML
-    private ListView<String> donutOrderListView;
-    
+	@FXML
+	private Button removeDonut;
+
+	@FXML
+	private Spinner<Integer> donutAmountSpinner;
+   
+	@FXML
+	private ListView<Donut> donutOrderListView;
+
 	ObservableList<String> donutTypes = FXCollections.observableArrayList("yeast donut", "cake donut", "donut holes");
-    ObservableList<String> yeastDonutFlavors = FXCollections.observableArrayList("Chocolate-Glazed", "Black and White", "Meyer Lemon");
-	ObservableList<String> cakeDonutFlavors = FXCollections.observableArrayList("Plain", "Vainalle-Glazed", "Baked Blueberry");
-	ObservableList<String> donutHolestFlavors = FXCollections.observableArrayList("Chocolate Frosted", "Powdered", "Cinammon");
-	
-    @FXML
-    void initialize() {
-//    	donutTypeDropDown.setValue("yeast donut");	
-    	donutTypeDropDown.setItems(donutTypes);
-    	
-    	
-//    	donutFlavorDropDown.setValue("Chocolate-Glazed");
-//    	donutFlavorDropDown.setItems(yeastDonutFlavors);
-    	
-    	SpinnerValueFactory<Integer> donutQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 5);
-    	donutAmountSpinner.setValueFactory(donutQuantity);
-    }
-    
-    @FXML
-    void donutFlavorChangeOptions(ActionEvent event)
-    {
-		if (donutTypeDropDown.getValue().equals("cake donut")) {
-			donutFlavorDropDown.setValue("Plain");
-			donutFlavorDropDown.setItems(cakeDonutFlavors);
+	ObservableList<String> yeastDonutFlavors;
+	ObservableList<String> cakeDonutFlavors;
+	ObservableList<String> donutHolestFlavors;
 
-		} else if (donutTypeDropDown.getValue().equals("donut holes")) {
-			donutFlavorDropDown.setValue("Chocolate Frosted");
-			donutFlavorDropDown.setItems(donutHolestFlavors);
-		} else {
-			donutFlavorDropDown.setValue("Chocolate-Glazed");
+	@FXML
+	void initialize() {
+
+		yeastDonut = new YeastDonut();
+		cakeDonut = new CakeDonut();
+		donutHoles = new DonutHoles();
+
+		yeastDonutFlavors = FXCollections.observableArrayList(yeastDonut.getList());
+		cakeDonutFlavors = FXCollections.observableArrayList(cakeDonut.getList());
+		donutHolestFlavors = FXCollections.observableArrayList(donutHoles.getList());
+		donutTypeDropDown.setItems(donutTypes);
+
+		SpinnerValueFactory<Integer> donutQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+		donutAmountSpinner.setValueFactory(donutQuantity);
+	}
+
+	@FXML
+	void donutFlavorChangeOptions(ActionEvent event) {
+		if (donutTypeDropDown.getValue().equals("yeast donut")) {
+			donutFlavorDropDown.setValue(yeastDonutFlavors.get(0));
 			donutFlavorDropDown.setItems(yeastDonutFlavors);
+		} else if (donutTypeDropDown.getValue().equals("cake donut")) {
+			donutFlavorDropDown.setValue(cakeDonutFlavors.get(0));
+			donutFlavorDropDown.setItems(cakeDonutFlavors);
+		} else if (donutTypeDropDown.getValue().equals("donut holes")) {
+			donutFlavorDropDown.setValue(donutHolestFlavors.get(0));
+			donutFlavorDropDown.setItems(donutHolestFlavors);
 		}
-    	
-    }
-    
-    void updateAddSubTotal() {
-    	yeastDonut = new YeastDonut(donutAmountSpinner.getValue());
-    	yeastDonut.calculateSubTotal();
-    	double subTotal = yeastDonut.getSubTotal();
-    	
-    	newSubTotal += subTotal;
-    	
-    	System.out.println(newSubTotal);
-    	
-    	donutSubtotal.setText(String.valueOf(newSubTotal));
-    }
-    
-    
-    @FXML
-    void addDonutButton(ActionEvent event) {
-    	
+	}
+
+	void updateAddSubTotal() {
+		if (donutTypeDropDown.getValue().equals("yeast donut")) {
+			yeastDonut = new YeastDonut(donutAmountSpinner.getValue());
+			yeastDonut.calculateSubTotal();
+			subTotal += yeastDonut.getSubTotal();;
+			
+		} else if (donutTypeDropDown.getValue().equals("cake donut")) {
+			cakeDonut = new CakeDonut(donutAmountSpinner.getValue());
+			cakeDonut.calculateSubTotal();
+			subTotal += cakeDonut.getSubTotal();
+		} else if (donutTypeDropDown.getValue().equals("donut holes")) {
+			donutHoles = new DonutHoles(donutAmountSpinner.getValue());
+			donutHoles.calculateSubTotal();
+			subTotal += donutHoles.getSubTotal();
+		}
+		donutSubtotal.setText(String.format("%,.2f", subTotal));
+	}
+
+	@FXML
+	void addDonutButton(ActionEvent event) {
+
 		if (donutTypeDropDown.getValue() == null || donutFlavorDropDown.getValue() == null) {
 			return;
 		} else {
-			donutOrderListView.getItems()
-					.add(donutFlavorDropDown.getValue() + " (" + donutAmountSpinner.getValue() + ")");
-			
+			donuts = new Donut(donutTypeDropDown.getValue(), donutFlavorDropDown.getValue(),
+					donutAmountSpinner.getValue());
+			donutOrderListView.getItems().add(donuts);
+
 			updateAddSubTotal();
 		}
-		
-    }
-    
-    void updateRemoveSubTotal() {
-    	
-    }
-    
-    @FXML
-    void removeDonutButton(ActionEvent event) {
-    	
-    	int selectedDonutOrder = donutOrderListView.getSelectionModel().getSelectedIndex();
-    	
-    	if (selectedDonutOrder != -1) {
-    		donutOrderListView.getItems().remove(selectedDonutOrder);
-    	}
-    	
-    }
 
+	}
 
- 
-    
-    
+	@FXML
+	void removeDonutButton(ActionEvent event) {
 
-    
+		int selectedDonutOrder = donutOrderListView.getSelectionModel().getSelectedIndex();
 
-
+		if (selectedDonutOrder != -1) {
+			Donut donut = donutOrderListView.getItems().get(selectedDonutOrder);
+			if (donut.getDonutType().equals("yeast donut")) {
+				subTotal -= yeastDonut.getSubTotal();
+			} else if (donut.getDonutType().equals("cake donut")) {
+				subTotal -= cakeDonut.getSubTotal();
+			} else if (donut.getDonutType().equals("donut holes")) {
+				subTotal -= donutHoles.getSubTotal();
+			}
+			
+			donutSubtotal.setText(String.format("%,.2f", subTotal));
+			donutOrderListView.getItems().remove(selectedDonutOrder);
+		}
+	}
 }
