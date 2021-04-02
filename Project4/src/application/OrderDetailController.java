@@ -13,7 +13,7 @@ public class OrderDetailController {
 	private  MainMenuController mainController;
 
     @FXML
-    private ListView<String> orderSummaryList;
+    private ListView<MenuItem> orderSummaryList;
 
     @FXML
     private TextField orderSubTotal;
@@ -26,18 +26,19 @@ public class OrderDetailController {
 	@FXML
 	
 	Order order;
-	ArrayList<MenuItem> arr;
-
+	StoreOrders storeOrders;
 	
 	
 	
     public void setMainController(MainMenuController controller) {
-    	this.mainController = controller;
+    	mainController = controller;
     	this.order = controller.getOrderReference();
-    	arr = order.getArr();
+    	this.storeOrders = controller.getStoreOrderReference();
+    	ArrayList<MenuItem> arr = order.getArr();
+    	    	
     	if(!arr.isEmpty()) {
 	    	for(var a: arr) {
-	    		orderSummaryList.getItems().add(a.toString());
+	    		orderSummaryList.getItems().add(a);
 	    	}
 	    	setPrice();
     	}
@@ -45,14 +46,21 @@ public class OrderDetailController {
     }
     @FXML
     void orderPlaceOrder(ActionEvent event) {
-   
+    	if(!orderSummaryList.getItems().isEmpty()) {
+    		storeOrders.add(order);
+    		orderSummaryList.getItems().clear();
+    		orderSubTotal.clear();
+    		orderSaleTax.clear();
+    		orderTotal.clear();
+    		mainController.setOrderReference(new Order());
+    	}
     }
 
     @FXML
     void orderRemoveItem(ActionEvent event) {
     	int selectedIndex = orderSummaryList.getSelectionModel().getSelectedIndex();
-    	if(selectedIndex > -1 && !arr.isEmpty()) {
-    		arr.remove(selectedIndex);
+    	if(selectedIndex > -1) {
+    		order.remove(orderSummaryList.getItems().get(selectedIndex));
     		orderSummaryList.getItems().remove(selectedIndex);
     		setPrice();
     	}
@@ -61,16 +69,20 @@ public class OrderDetailController {
     	double subtotal = 0;
     	double  taxes = 0;
     	double total=0;
-    	for(var a : arr) {
-    		subtotal+=a.getSubTotal();
-    	}
-    	if(subtotal > 0) {
-    		taxes = subtotal * 0.06625;
-    	}
-    	total = subtotal + taxes;
     	
-    	orderSubTotal.setText(subtotal+"");
-    	orderSaleTax.setText(taxes+"");
-    	orderTotal.setText(total+"");
+    	if(!order.getArr().isEmpty()) {
+	    	for(var a : order.getArr()) {
+	    		subtotal+=a.getSubTotal();
+	    	}
+	    	if(subtotal > 0) {
+	    		taxes = subtotal * 0.06625;
+	    	}
+	    	total = subtotal + taxes;
+	    	order.setTotal(total);
+	    	
+	    	orderSubTotal.setText(String.format("%.2f",subtotal));
+	    	orderSaleTax.setText(String.format("%.2f",taxes));
+	    	orderTotal.setText(String.format("%.2f",total));
+    	}
     }
 }

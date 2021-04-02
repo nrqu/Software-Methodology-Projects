@@ -9,7 +9,11 @@ public class StoreOrders implements Customizable{
 	}
 	@Override
 	public boolean add(Object obj) {
-		// TODO Auto-generated method stub
+		if(obj instanceof Order) {
+			Order temp = (Order)obj;
+			arr.add(temp);
+			return true;
+		}
 		return false;
 	}
 
@@ -17,6 +21,14 @@ public class StoreOrders implements Customizable{
 	public boolean remove(Object obj) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	//TODO: DELETE
+	public void print() {
+		for(var e : arr)
+			System.out.println(e);
+	}
+	public ArrayList<Order> getArr(){
+		return arr;
 	}
 
 }

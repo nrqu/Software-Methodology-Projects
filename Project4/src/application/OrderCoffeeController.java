@@ -57,17 +57,17 @@ public class OrderCoffeeController{
         @Override
         public void changed(ObservableValue<? extends Boolean> ov,
             Boolean old_val, Boolean new_val) {
-            if (new_val || old_val)
+            if (new_val || old_val) {
             	addAddon();
+            }
         }};
         
     
         @FXML
-        void coffeSizeEvent(ActionEvent event) {
-        	coffee.setCoffeeSize(0);
-        	coffee.setCoffeeSize(coffeSizes.getSelectionModel().getSelectedIndex());
-        	addAddon();
-
+    void coffeSizeEvent(ActionEvent event) {
+        coffee.setCoffeeSize(0);
+        coffee.setCoffeeSize(coffeSizes.getSelectionModel().getSelectedIndex());
+        addAddon();
         }
     public void setMainController(MainMenuController controller) {
     	this.mainController = controller;
@@ -77,33 +77,39 @@ public class OrderCoffeeController{
 	@FXML
 	void addCoffeeToOrder(ActionEvent event) {
 		if(coffeSizes.getSelectionModel().getSelectedIndex() > -1) {
-			if(order.add(coffee) )
+			if(order.add(coffee) ) {
 				orderInfo.appendText(coffee+" " +"\n");
+				coffee = new Coffee();
+			}
 		}else
 			orderInfo.appendText("Please select a coffee size\n");
 	}
 	
 	void addAddon() {
-		subTotalPrice.clear();
+		
 		if(creamAddon.isSelected())
 			coffee.add("Cream");
 		else
 			coffee.remove("Cream");
+		
 		if(syrupAddon.isSelected())
 			coffee.add("Syrup");
 		else
 			coffee.remove("Syrup");
+		
 		if(milkAddon.isSelected())
 			coffee.add("Milk");
 		else 
 			coffee.remove("Milk");
+		
 		if(caramelAddon.isSelected())
 			coffee.add("Caramel");
 		else 
 			coffee.remove("Caramel");
-
-			
-		subTotalPrice.appendText(String.format("%,.2f",coffee.getPrice())+"\n");
+		
+		subTotalPrice.clear();
+		coffee.calculateSubTotal();
+		subTotalPrice.appendText(String.format("%.2f",coffee.getSubTotal())+"\n");
 	}
 	
     

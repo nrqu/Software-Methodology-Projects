@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Order implements Customizable {
 	ArrayList<MenuItem> arr;
-	static int orderId;
+	static int orderId=1;
 	int orderNumber;
-	
+	double total;
 	Order(){
 		arr = new ArrayList<MenuItem>();
 		orderNumber = orderId;
@@ -24,10 +24,31 @@ public class Order implements Customizable {
 
 	@Override
 	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
+		if(obj instanceof Coffee) {
+			arr.remove((Coffee)obj);
+			return true;
+		}
 		return false;
 	}
 	public ArrayList<MenuItem> getArr(){
 		return arr;
 	}
+	//TODO: DELETE
+	public void print() {
+		for (var a : arr)
+			System.out.println(a);
+	}
+	@Override
+	public String toString() {
+		String temp = "Order Number: "+ orderNumber + " Order Total: "+String.format("%.2f",total)+ "\n\t";
+
+		for(var a: arr) {
+			temp += a + "\n\t";
+		}
+		
+		return temp;	
+	}
+   public void setTotal(double total) {
+	   this.total = total;
+   }
 }

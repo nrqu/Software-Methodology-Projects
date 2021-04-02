@@ -24,7 +24,7 @@ class Coffee extends MenuItem implements Customizable {
 		}else{
 			coffeePrice = COFFEEBASEPRICE + 1.5f;
 		}
-		super.setSubTotal(coffeePrice);
+		super.setSubTotal(coffeePrice + addonTotal);
 	}
 	@Override
 	public boolean add(Object obj) {
@@ -49,10 +49,6 @@ class Coffee extends MenuItem implements Customizable {
 		return false;
 	}
 	
-	public double getPrice() {
-		return super.getSubTotal() + addonTotal;
-	}
-
 	public void setCoffeeSize(int val) {
 		coffeeSize = val;
 		calculateSubTotal();
@@ -60,7 +56,8 @@ class Coffee extends MenuItem implements Customizable {
 	@Override
 	public String toString() {
 		String size;
-		String addon;
+		String n = addons.toString();
+
 		if(coffeeSize == 0) {
 			size = "Short";
 		}else if(coffeeSize == 1) {
@@ -70,9 +67,12 @@ class Coffee extends MenuItem implements Customizable {
 		}else{
 			size = "Venti";
 		}
-		String n = addons.toString();
 		
 		n = n.replace("[", "").replace("]", "").replace(" ", "");
+		
+		if(n.isBlank())
+			n = "none";
+		
 
 		return "Coffee Size: " + size +" Addons: "+ n;
 

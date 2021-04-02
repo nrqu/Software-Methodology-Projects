@@ -71,6 +71,8 @@ public class MainMenuController {
 			Stage stage = new Stage();
 			stage.setResizable(false);
 			stage.setScene(new Scene(root1));
+			OrderPageController orderController = fxmlLoader.getController();
+			orderController.setMainController(this);
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -81,5 +83,8 @@ public class MainMenuController {
     }
     public StoreOrders getStoreOrderReference() {
     	return storeOrders;
+    }
+    public void setOrderReference(Order order) {
+    	this.order = order;
     }
 }
