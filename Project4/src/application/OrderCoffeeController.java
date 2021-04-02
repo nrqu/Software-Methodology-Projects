@@ -40,7 +40,6 @@ public class OrderCoffeeController{
     
 	ObservableList<String> coffeeSizesList = FXCollections.observableArrayList("Short", "Tall", "Grande","Venti");
 	
-	StoreOrders storeOrders;
 	Coffee coffee;
 	Order order;
     @FXML 
@@ -72,7 +71,6 @@ public class OrderCoffeeController{
         }
     public void setMainController(MainMenuController controller) {
     	this.mainController = controller;
-    	this.storeOrders = controller.getStoreOrderReference();
     	this.order = controller.getOrderReference();
     }
 

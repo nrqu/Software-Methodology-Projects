@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class Order implements Customizable {
 	ArrayList<MenuItem> arr;
 	static int orderId;
+	int orderNumber;
 	
 	Order(){
 		arr = new ArrayList<MenuItem>();
+		orderNumber = orderId;
 		orderId+=1;
 	}
 	@Override
@@ -25,5 +27,7 @@ public class Order implements Customizable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	public ArrayList<MenuItem> getArr(){
+		return arr;
+	}
 }

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="591.0" maxWidth="880.0" minHeight="591.0" minWidth="880.0" prefHeight="591.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderDetailController">
    <children>
       <ListView fx:id="orderSummaryList" layoutX="7.0" layoutY="44.0" prefHeight="255.0" prefWidth="867.0" />
@@ -17,7 +16,7 @@
       <TextField fx:id="orderSubTotal" editable="false" layoutX="79.0" layoutY="310.0" />
       <TextField fx:id="orderSaleTax" editable="false" layoutX="79.0" layoutY="348.0" />
       <TextField fx:id="orderTotal" editable="false" layoutX="79.0" layoutY="382.0" />
-      <Button fx:id="orderRemoveItem" layoutX="321.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Remove item" />
-      <Button fx:id="orderPlaceOrder" layoutX="482.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Place order" />
+      <Button layoutX="321.0" layoutY="310.0" mnemonicParsing="false" onAction="#orderRemoveItem" prefHeight="25.0" prefWidth="125.0" text="Remove item" />
+      <Button layoutX="482.0" layoutY="310.0" mnemonicParsing="false" onAction="#orderPlaceOrder" prefHeight="25.0" prefWidth="125.0" text="Place order" />
    </children>
 </Pane>
