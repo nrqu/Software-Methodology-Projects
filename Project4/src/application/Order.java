@@ -18,6 +18,10 @@ public class Order implements Customizable {
 			Coffee temp = (Coffee)obj;
 			arr.add(temp);
 			return true;
+		} else if (obj instanceof Donut) {
+			Donut tmp = (Donut) obj;
+			arr.add(tmp);
+			return true;
 		}
 		return false;
 	}
@@ -26,6 +30,9 @@ public class Order implements Customizable {
 	public boolean remove(Object obj) {
 		if(obj instanceof Coffee) {
 			arr.remove((Coffee)obj);
+			return true;
+		} else if (obj instanceof Donut) {
+			arr.remove((Donut)obj);
 			return true;
 		}
 		return false;
