@@ -42,7 +42,9 @@ public class MainMenuController {
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setResizable(false);
-			stage.setScene(new Scene(root1));  
+			stage.setScene(new Scene(root1));
+			OrderDonutController donutController = fxmlLoader.getController();
+			donutController.setMainController(this);
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
