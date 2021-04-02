@@ -9,19 +9,21 @@ package application;
  *
  */
 
-public class Donut {
+public class Donut extends MenuItem {
 	private String donutType;
 	private String donutFlavour;
 	private int donutQuantity;
+	private double donutBasePrice;
 
 	/**
 	 * Constructor: Creates a Donut object.
 	 */
 
-	Donut(String type, String flavour, int quantity) {
+	Donut(String type, String flavour, int quantity, double basePrice) {
 		donutType = type;
 		donutFlavour = flavour;
 		donutQuantity = quantity;
+		donutBasePrice = basePrice;
 	}
 
 	/**
@@ -33,6 +35,12 @@ public class Donut {
 	@Override
 	public String toString() {
 		return donutType + "~" + donutFlavour + "~" + "(" + donutQuantity + ")";
+	}
+	
+	@Override
+	public void calculateSubTotal()
+	{
+		super.setSubTotal(donutBasePrice * donutQuantity);
 	}
 
 	/**

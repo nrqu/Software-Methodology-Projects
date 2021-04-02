@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CakeDonut extends MenuItem {
-	protected final static double CAKEDONUTPRICE = 1.59;
+	protected final double CAKEDONUTPRICE = 1.59;
 	protected int cakeDonutQty;
 	private List<String> cakeDonutFlavors;
 
@@ -54,6 +54,10 @@ public class CakeDonut extends MenuItem {
 	@Override
 	public void calculateSubTotal() {
 		super.setSubTotal(CAKEDONUTPRICE * cakeDonutQty);
+	}
+	
+	public double getBasePrice() {
+		return this.CAKEDONUTPRICE;
 	}
 	
 

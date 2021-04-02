@@ -12,17 +12,18 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 
-public class OrderDonutController extends MainMenuController {
+public class OrderDonutController {
 
 	YeastDonut yeastDonut;
 	CakeDonut cakeDonut;
 	DonutHoles donutHoles;
 	Donut donuts;
-	StoreOrders storeOrders;
 	Order order;
 
 	double subTotal = 0.0;
 	int count = 0;
+
+	protected MainMenuController mainController;
 
 	@FXML
 	private ComboBox<String> donutTypeDropDown;
@@ -35,7 +36,7 @@ public class OrderDonutController extends MainMenuController {
 
 	@FXML
 	private Spinner<Integer> donutAmountSpinner;
-   
+
 	@FXML
 	private ListView<Donut> donutOrderListView;
 
@@ -58,6 +59,11 @@ public class OrderDonutController extends MainMenuController {
 
 		SpinnerValueFactory<Integer> donutQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
 		donutAmountSpinner.setValueFactory(donutQuantity);
+	}
+	
+	public void setMainController(MainMenuController controller) {
+		this.mainController = controller;
+		this.order = controller.getOrderReference();
 	}
 
 	@FXML
@@ -97,8 +103,17 @@ public class OrderDonutController extends MainMenuController {
 		if (donutTypeDropDown.getValue() == null || donutFlavorDropDown.getValue() == null) {
 			return;
 		} else {
+			double donutBasePrice = 0.0;
+			if (donutTypeDropDown.getValue().equals("yeast donut")) {
+				donutBasePrice = yeastDonut.getBasePrice();
+			} else if (donutTypeDropDown.getValue().equals("cake donut")) {
+				donutBasePrice = cakeDonut.getBasePrice();
+			} else if (donutTypeDropDown.getValue().equals("donut holes")) {
+				donutBasePrice = donutHoles.getBasePrice();
+			}
 			donuts = new Donut(donutTypeDropDown.getValue(), donutFlavorDropDown.getValue(),
-					donutAmountSpinner.getValue());
+					donutAmountSpinner.getValue(), donutBasePrice);
+			donuts.calculateSubTotal();
 			donutOrderListView.getItems().add(donuts);
 			count++;
 
@@ -121,33 +136,31 @@ public class OrderDonutController extends MainMenuController {
 			} else if (donut.getDonutType().equals("donut holes")) {
 				subTotal -= donutHoles.getSubTotal();
 			}
-			
+
 			donutSubtotal.setText(String.format("%,.2f", subTotal));
 			donutOrderListView.getItems().remove(selectedDonutOrder);
 			count--;
 		}
 	}
-	
+
+
+
 	@FXML
-	void addToOrder() {
+	void addToOrder(ActionEvent event) {
 		Alert alert;
-		
-	
-		if(donutOrderListView.getItems().isEmpty() != true) {
+
+		if (donutOrderListView.getItems().isEmpty() != true) {
 			alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation");
 			alert.setHeaderText("Donuts Added to Your Order!");
 			alert.setContentText("Enjoy!");
 			alert.showAndWait();
-			
-			
+
 			for (int i = 0; i < count; i++) {
 				Donut d = donutOrderListView.getItems().get(i);
 				order.add(d);
-				System.out.println(d);
 			}
-				//order.add((donutOrderListView.getItems().get(i)));
-			
+
 			// Reset global variables, listView, and subTotal text area.
 			donutOrderListView.getItems().clear();
 			donutSubtotal.clear();
@@ -161,9 +174,5 @@ public class OrderDonutController extends MainMenuController {
 			alert.showAndWait();
 		}
 	}
-	
-    public void setMainController(MainMenuController controller) {
-    	this.storeOrders = controller.getStoreOrderReference();
-    	this.order = controller.getOrderReference();
-    }
+
 }

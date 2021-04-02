@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YeastDonut extends MenuItem {
-	protected final static double YEASTPRICE = 1.39;
+	protected final double YEASTPRICE = 1.39;
 	protected int yeastDonutQty;
 	private List<String> yeastFlavors;
 
@@ -58,10 +58,14 @@ public class YeastDonut extends MenuItem {
 		super.setSubTotal(YEASTPRICE * yeastDonutQty);
 	}
 	
+	public double getBasePrice() {
+		return this.YEASTPRICE;
+	}
+	
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Yeast Donut" + "(" + yeastDonutQty + ")";
 
 	}
 }

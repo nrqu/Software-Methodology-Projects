@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DonutHoles extends MenuItem {
-	protected final static double DONUTHOLESPRICE = 0.33;
+	protected final double DONUTHOLESPRICE = 0.33;
 	protected int donutHolesQty;
 	private List<String> donutHolesFlavors;
 
@@ -56,6 +56,10 @@ public class DonutHoles extends MenuItem {
 	@Override
 	public void calculateSubTotal() {
 		super.setSubTotal(DONUTHOLESPRICE * donutHolesQty);
+	}
+	
+	public double getBasePrice() {
+		return this.DONUTHOLESPRICE;
 	}
 
 	@Override
