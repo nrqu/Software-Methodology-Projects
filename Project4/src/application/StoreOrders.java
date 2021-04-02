@@ -19,7 +19,11 @@ public class StoreOrders implements Customizable{
 
 	@Override
 	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
+		if(obj instanceof Order) {
+			Order temp = (Order)obj;
+			arr.remove(temp);
+			return true;
+		}
 		return false;
 	}
 	//TODO: DELETE
