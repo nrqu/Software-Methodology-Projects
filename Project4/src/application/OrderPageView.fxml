@@ -17,7 +17,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="orderExport" mnemonicParsing="false" text="export" />
+                  <MenuItem fx:id="orderExport" mnemonicParsing="false" onAction="#exportFile" text="export" />
             </items>
           </Menu>
         </menus>
