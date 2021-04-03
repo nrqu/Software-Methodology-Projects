@@ -67,7 +67,11 @@ public class OrderDetailController {
 		double subtotal = 0.0;
 		double taxes = 0.0;
 		double total = 0.0;
-
+		
+		orderSubTotal.clear();
+		orderSaleTax.clear();
+		orderTotal.clear();
+		
 		if (!order.getArr().isEmpty()) {
 			for (var a : order.getArr()) {
 				subtotal += a.getSubTotal();

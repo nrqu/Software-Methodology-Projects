@@ -14,13 +14,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 
 public class OrderCoffeeController{
-	private  MainMenuController mainController;
     @FXML
     private ComboBox<String> coffeSizes;
 
     @FXML
     private CheckBox creamAddon;
-
+    @FXML
+    private CheckBox creamAddon2;
     @FXML
     private CheckBox syrupAddon;
 
@@ -46,6 +46,7 @@ public class OrderCoffeeController{
     void initialize() {
     	coffeSizes.setItems(coffeeSizesList);
     	creamAddon.selectedProperty().addListener(addonChangeListenter);
+    	creamAddon2.selectedProperty().addListener(addonChangeListenter);
     	syrupAddon.selectedProperty().addListener(addonChangeListenter);
     	milkAddon.selectedProperty().addListener(addonChangeListenter);
     	caramelAddon.selectedProperty().addListener(addonChangeListenter);
@@ -65,12 +66,10 @@ public class OrderCoffeeController{
     
         @FXML
     void coffeSizeEvent(ActionEvent event) {
-        coffee.setCoffeeSize(0);
         coffee.setCoffeeSize(coffeSizes.getSelectionModel().getSelectedIndex());
         addAddon();
         }
     public void setMainController(MainMenuController controller) {
-    	this.mainController = controller;
     	this.order = controller.getOrderReference();
     }
 
@@ -80,36 +79,49 @@ public class OrderCoffeeController{
 			if(order.add(coffee) ) {
 				orderInfo.appendText(coffee+" " +"\n");
 				coffee = new Coffee();
+			    creamAddon.setSelected(false);
+			    creamAddon2.setSelected(false);
+			    syrupAddon.setSelected(false);
+			    milkAddon.setSelected(false);
+			    caramelAddon.setSelected(false);
+			    coffeSizes.getSelectionModel().clearSelection();
+			    subTotalPrice.clear();
 			}
 		}else
 			orderInfo.appendText("Please select a coffee size\n");
 	}
 	
 	void addAddon() {
+		if(coffeSizes.getSelectionModel().getSelectedIndex() > -1) {
 		
-		if(creamAddon.isSelected())
-			coffee.add("Cream");
-		else
-			coffee.remove("Cream");
-		
-		if(syrupAddon.isSelected())
-			coffee.add("Syrup");
-		else
-			coffee.remove("Syrup");
-		
-		if(milkAddon.isSelected())
-			coffee.add("Milk");
-		else 
-			coffee.remove("Milk");
-		
-		if(caramelAddon.isSelected())
-			coffee.add("Caramel");
-		else 
-			coffee.remove("Caramel");
-		
-		subTotalPrice.clear();
-		coffee.calculateSubTotal();
-		subTotalPrice.appendText(String.format("%.2f",coffee.getSubTotal())+"\n");
+			if(creamAddon.isSelected())
+				coffee.add("Whipped Cream");
+			else
+				coffee.remove("Whipped Cream");
+			
+			if(syrupAddon.isSelected())
+				coffee.add("Syrup");
+			else
+				coffee.remove("Syrup");
+			
+			if(milkAddon.isSelected())
+				coffee.add("Milk");
+			else 
+				coffee.remove("Milk");
+			
+			if(caramelAddon.isSelected())
+				coffee.add("Caramel");
+			else 
+				coffee.remove("Caramel");
+			if(creamAddon2.isSelected())
+				coffee.add("Cream");
+			else
+				coffee.remove("Cream");
+			
+			subTotalPrice.clear();
+			coffee.calculateSubTotal();
+			subTotalPrice.appendText(String.format("%.2f",coffee.getSubTotal())+"\n");
+		}
 	}
 	
     

@@ -10,6 +10,7 @@ class Coffee extends MenuItem implements Customizable {
 	
 	Coffee(){
 		addons = new ArrayList<String>();	
+		
 	}
 	@Override
 	public void calculateSubTotal() {
@@ -68,7 +69,7 @@ class Coffee extends MenuItem implements Customizable {
 			size = "Venti";
 		}
 		
-		n = n.replace("[", "").replace("]", "").replace(" ", "");
+		n = n.replace("[", "").replace("]", "");
 		
 		if(n.isBlank())
 			n = "none";
