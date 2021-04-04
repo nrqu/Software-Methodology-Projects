@@ -1,5 +1,13 @@
 package application;
 
+/**
+ * This class is used as the donut GUI controller for the stage created by the the MainMenuController class.
+ * 
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,6 +53,10 @@ public class OrderDonutController {
 	ObservableList<String> cakeDonutFlavors;
 	ObservableList<String> donutHolestFlavors;
 
+	/**
+	 * It initializes corresponding variables.
+	 */
+
 	@FXML
 	void initialize() {
 
@@ -60,11 +72,19 @@ public class OrderDonutController {
 		SpinnerValueFactory<Integer> donutQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
 		donutAmountSpinner.setValueFactory(donutQuantity);
 	}
-	
+
+	/**
+	 * Gets the an order reference from the main controller.
+	 */
+
 	public void setMainController(MainMenuController controller) {
 		this.mainController = controller;
 		this.order = controller.getOrderReference();
 	}
+
+	/**
+	 * It changes the donut flavors corresponding to each donut type.
+	 */
 
 	@FXML
 	void donutFlavorChangeOptions(ActionEvent event) {
@@ -79,6 +99,10 @@ public class OrderDonutController {
 			donutFlavorDropDown.setItems(donutHolestFlavors);
 		}
 	}
+
+	/**
+	 * It updates the subtotal when any type of donut is added to the order list.
+	 */
 
 	void updateAddSubTotal() {
 		if (donutTypeDropDown.getValue().equals("yeast donut")) {
@@ -96,6 +120,11 @@ public class OrderDonutController {
 		}
 		donutSubtotal.setText(String.format("%,.2f", subTotal));
 	}
+
+	/**
+	 * It adds a Donut object to the listView, updates the count variable when a
+	 * Donut object, and calls the updateAddSubTotal method.
+	 */
 
 	@FXML
 	void addDonutButton(ActionEvent event) {
@@ -122,6 +151,11 @@ public class OrderDonutController {
 
 	}
 
+	/**
+	 * It removes a Donut object from the listView, updates the count and subtotal
+	 * variable depending on the Donut object removed.
+	 */
+
 	@FXML
 	void removeDonutButton(ActionEvent event) {
 
@@ -143,7 +177,9 @@ public class OrderDonutController {
 		}
 	}
 
-
+	/**
+	 * It adds any Donut object on the listView to the Order Object.
+	 */
 
 	@FXML
 	void addToOrder(ActionEvent event) {

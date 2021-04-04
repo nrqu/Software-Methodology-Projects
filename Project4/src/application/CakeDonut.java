@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CakeDonut extends MenuItem {
-	protected final double CAKEDONUTPRICE = 1.59;
-	protected int cakeDonutQty;
+	private final double CAKEDONUTPRICE = 1.59;
+	private int cakeDonutQty;
 	private List<String> cakeDonutFlavors;
 
 	/**
@@ -47,6 +47,16 @@ public class CakeDonut extends MenuItem {
 	}
 
 	/**
+	 * Getter method for the cake donut base price.
+	 * 
+	 * @return a double with the cake donut base price.
+	 */
+
+	public double getBasePrice() {
+		return this.CAKEDONUTPRICE;
+	}
+
+	/**
 	 * It calculates the subtotal amount of the cake donut by multiplying the
 	 * quantity times the cake donut base price.
 	 */
@@ -55,16 +65,5 @@ public class CakeDonut extends MenuItem {
 	public void calculateSubTotal() {
 		super.setSubTotal(CAKEDONUTPRICE * cakeDonutQty);
 	}
-	
-	public double getBasePrice() {
-		return this.CAKEDONUTPRICE;
-	}
-	
 
-
-	@Override
-	public String toString() {
-		return super.toString();
-
-	}
 }

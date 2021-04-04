@@ -49,6 +49,16 @@ public class DonutHoles extends MenuItem {
 	}
 
 	/**
+	 * Getter method for the donut hole base price.
+	 * 
+	 * @return a double with the donut hole base price.
+	 */
+
+	public double getBasePrice() {
+		return this.DONUTHOLESPRICE;
+	}
+
+	/**
 	 * It calculates the subtotal amount of the donut holes by multiplying the
 	 * quantity times the donut holes base price.
 	 */
@@ -56,16 +66,6 @@ public class DonutHoles extends MenuItem {
 	@Override
 	public void calculateSubTotal() {
 		super.setSubTotal(DONUTHOLESPRICE * donutHolesQty);
-	}
-	
-	public double getBasePrice() {
-		return this.DONUTHOLESPRICE;
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
-
 	}
 
 }

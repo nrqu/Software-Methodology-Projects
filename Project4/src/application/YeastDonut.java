@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YeastDonut extends MenuItem {
-	protected final double YEASTPRICE = 1.39;
-	protected int yeastDonutQty;
+	private final double YEASTPRICE = 1.39;
+	private int yeastDonutQty;
 	private List<String> yeastFlavors;
 
 	/**
@@ -49,6 +49,16 @@ public class YeastDonut extends MenuItem {
 	}
 
 	/**
+	 * Getter method for the yeast donut base price.
+	 * 
+	 * @return a double with the yeast base price.
+	 */
+
+	public double getBasePrice() {
+		return this.YEASTPRICE;
+	}
+
+	/**
 	 * It calculates the subtotal amount of the yeast donut by multiplying the
 	 * quantity times the yeast price.
 	 */
@@ -57,15 +67,5 @@ public class YeastDonut extends MenuItem {
 	public void calculateSubTotal() {
 		super.setSubTotal(YEASTPRICE * yeastDonutQty);
 	}
-	
-	public double getBasePrice() {
-		return this.YEASTPRICE;
-	}
-	
 
-	@Override
-	public String toString() {
-		return "Yeast Donut" + "(" + yeastDonutQty + ")";
-
-	}
 }
