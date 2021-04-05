@@ -1,5 +1,9 @@
 package application;
 
+
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * This class is used as an abstract data type that represents a yeast donut that
  * contains different flavors.
@@ -8,10 +12,6 @@ package application;
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  *
  */
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class YeastDonut extends MenuItem {
 	private final double YEASTPRICE = 1.39;
 	private int yeastDonutQty;

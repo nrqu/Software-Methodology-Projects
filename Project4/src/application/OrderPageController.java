@@ -13,7 +13,12 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+/**
+ * Controller used to handle the Order Page GUI
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class OrderPageController{
 	protected MainMenuController mainController;
 
@@ -28,7 +33,9 @@ public class OrderPageController{
     
 	StoreOrders storeOrders;
 
-    
+	/**
+	 * method that gets called after constructor of the class. It is used to initialize items in the class
+	 */
     public void setMainController(MainMenuController controller) {
     	this.mainController = controller;
     	this.storeOrders = controller.getStoreOrderReference();
@@ -40,7 +47,10 @@ public class OrderPageController{
 	    	}
     	}
     }
-    
+	/**
+	 * Removes objects from the order store object
+	 * @param event
+	 */
     @FXML
     void cancelOrder(ActionEvent event) {
     	int selectedOrder = orderHistory.getSelectionModel().getSelectedIndex();

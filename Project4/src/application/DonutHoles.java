@@ -1,5 +1,8 @@
 package application;
 
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * This class is used as an abstract data type that represents a Donut holes that
  * contains different flavors.
@@ -8,9 +11,6 @@ package application;
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  *
  */
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DonutHoles extends MenuItem {
 	protected final double DONUTHOLESPRICE = 0.33;

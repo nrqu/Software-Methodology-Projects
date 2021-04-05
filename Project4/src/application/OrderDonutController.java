@@ -1,12 +1,6 @@
 package application;
 
-/**
- * This class is used as the donut GUI controller for the stage created by the the MainMenuController class.
- * 
- * 
- * @author HECTOR CERDA, LUIS FIGUEROAGIL
- *
- */
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +13,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
-
+/**
+ * This class is used as the donut GUI controller for the stage created by the the MainMenuController class.
+ * 
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class OrderDonutController {
 
 	YeastDonut yeastDonut;

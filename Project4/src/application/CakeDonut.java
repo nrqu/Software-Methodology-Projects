@@ -1,5 +1,8 @@
 package application;
 
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * This class is used as an abstract data type that represents a cake donut that
  * contains different flavors.
@@ -7,9 +10,6 @@ package application;
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  *
  */
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CakeDonut extends MenuItem {
 	private final double CAKEDONUTPRICE = 1.59;

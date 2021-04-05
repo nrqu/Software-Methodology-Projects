@@ -6,26 +6,33 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
+/**
+ * Controller used to handle the order GUI
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class OrderDetailController {
-	private MainMenuController mainController;
+	private MainMenuController mainController;//main gui reference
 
 	@FXML
-	private ListView<MenuItem> orderSummaryList;
+	private ListView<MenuItem> orderSummaryList;//list of orders
 
 	@FXML
-	private TextField orderSubTotal;
+	private TextField orderSubTotal;//order subtotal field
 
 	@FXML
-	private TextField orderSaleTax;
+	private TextField orderSaleTax;//order sale taxt field
 
 	@FXML
-	private TextField orderTotal;
+	private TextField orderTotal; // order total field
 	@FXML
 
-	Order order;
-	StoreOrders storeOrders;
-
+	Order order;//order reference
+	StoreOrders storeOrders;//store reference
+    /**
+     * Used by the Main controller to get a reference of the data in the main controller in child stages.
+     */
 	public void setMainController(MainMenuController controller) {
 		mainController = controller;
 		this.order = controller.getOrderReference();
@@ -40,7 +47,10 @@ public class OrderDetailController {
 		}
 
 	}
-
+	/**
+	 * Event handler that inserts orders into the StoreOrder object
+	 * @param event
+	 */
 	@FXML
 	void orderPlaceOrder(ActionEvent event) {
 		if (!orderSummaryList.getItems().isEmpty()) {
@@ -52,7 +62,10 @@ public class OrderDetailController {
 			mainController.setOrderReference(new Order());
 		}
 	}
-
+	/**
+	 * Removes objects from the order Object
+	 * @param event
+	 */
 	@FXML
 	void orderRemoveItem(ActionEvent event) {
 		int selectedIndex = orderSummaryList.getSelectionModel().getSelectedIndex();
@@ -62,7 +75,9 @@ public class OrderDetailController {
 			setPrice();
 		}
 	}
-
+	/**
+	 * calculates the sub-total,tax and total of the order
+	 */
 	void setPrice() {
 		double subtotal = 0.0;
 		double taxes = 0.0;
@@ -82,9 +97,6 @@ public class OrderDetailController {
 			total = subtotal + taxes;
 			order.setTotal(total);
 
-//			orderSubTotal.setText(String.format("%.2f", subtotal));
-//			orderSaleTax.setText(String.format("%.2f", taxes));
-//			orderTotal.setText(String.format("%.2f", total));
 		} else {
 			subtotal = 0.0;
 			taxes = 0.0;

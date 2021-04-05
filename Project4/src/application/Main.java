@@ -6,7 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
-
+/**
+ * Class used to create the state for the main GUI window
+ * 
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
