@@ -36,10 +36,14 @@ public class Donut extends MenuItem {
 	public String toString() {
 		return donutType + "~" + donutFlavour + "~" + "(" + donutQuantity + ")";
 	}
-	
+
+	/**
+	 * It calculates the subtotal amount of a donut by multiplying the quantity
+	 * times the donut base price.
+	 */
+
 	@Override
-	public void calculateSubTotal()
-	{
+	public void calculateSubTotal() {
 		super.setSubTotal(donutBasePrice * donutQuantity);
 	}
 

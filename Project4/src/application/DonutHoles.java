@@ -13,8 +13,8 @@ import java.util.List;
  */
 
 public class DonutHoles extends MenuItem {
-	protected final double DONUTHOLESPRICE = 0.33;
-	protected int donutHolesQty;
+	private final static double DONUTHOLESPRICE = 0.33;
+	private int donutHolesQty;
 	private List<String> donutHolesFlavors;
 
 	/**
@@ -55,7 +55,7 @@ public class DonutHoles extends MenuItem {
 	 */
 
 	public double getBasePrice() {
-		return this.DONUTHOLESPRICE;
+		return DONUTHOLESPRICE;
 	}
 
 	/**

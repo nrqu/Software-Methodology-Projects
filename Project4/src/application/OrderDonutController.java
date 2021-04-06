@@ -1,7 +1,5 @@
 package application;
 
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,8 +11,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
+
 /**
- * This class is used as the donut GUI controller for the stage created by the the MainMenuController class.
+ * This class is used as the donut GUI controller for the stage created by the
+ * the MainMenuController class.
  * 
  * 
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
@@ -29,7 +29,6 @@ public class OrderDonutController {
 	Order order;
 
 	double subTotal = 0.0;
-	int count = 0;
 
 	protected MainMenuController mainController;
 
@@ -122,8 +121,8 @@ public class OrderDonutController {
 	}
 
 	/**
-	 * It adds a Donut object to the listView, updates the count variable when a
-	 * Donut object, and calls the updateAddSubTotal method.
+	 * It adds a Donut object to the listView and calls the updateAddSubTotal
+	 * method.
 	 */
 
 	@FXML
@@ -144,16 +143,14 @@ public class OrderDonutController {
 					donutAmountSpinner.getValue(), donutBasePrice);
 			donuts.calculateSubTotal();
 			donutOrderListView.getItems().add(donuts);
-			count++;
-
 			updateAddSubTotal();
 		}
 
 	}
 
 	/**
-	 * It removes a Donut object from the listView, updates the count and subtotal
-	 * variable depending on the Donut object removed.
+	 * It removes a Donut object from the listView, updates the subtotal variable
+	 * depending on the Donut object removed.
 	 */
 
 	@FXML
@@ -173,7 +170,6 @@ public class OrderDonutController {
 
 			donutSubtotal.setText(String.format("%,.2f", subTotal));
 			donutOrderListView.getItems().remove(selectedDonutOrder);
-			count--;
 		}
 	}
 
@@ -192,15 +188,13 @@ public class OrderDonutController {
 			alert.setContentText("Enjoy!");
 			alert.showAndWait();
 
-			for (int i = 0; i < count; i++) {
-				Donut d = donutOrderListView.getItems().get(i);
-				order.add(d);
+			for (int i = 0; i < donutOrderListView.getItems().size(); i++) {
+				order.add(donutOrderListView.getItems().get(i));
 			}
 
 			// Reset global variables, listView, and subTotal text area.
 			donutOrderListView.getItems().clear();
 			donutSubtotal.clear();
-			count = 0;
 			subTotal = 0.0;
 		} else {
 			alert = new Alert(AlertType.WARNING);

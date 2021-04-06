@@ -13,57 +13,62 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+
 /**
  * Controller used to handle the Order Page GUI
  * 
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  *
  */
-public class OrderPageController{
+public class OrderPageController {
 	protected MainMenuController mainController;
 
-    @FXML
-    private ListView<Order> orderHistory;
+	@FXML
+	private ListView<Order> orderHistory;
 
-    @FXML
-    private Button orderCancel;
+	@FXML
+	private Button orderCancel;
 
-    @FXML
-    private MenuItem orderExport;
-    
+	@FXML
+	private MenuItem orderExport;
+
 	StoreOrders storeOrders;
 
 	/**
-	 * method that gets called after constructor of the class. It is used to initialize items in the class
+	 * method that gets called after constructor of the class. It is used to
+	 * initialize items in the class
 	 */
-    public void setMainController(MainMenuController controller) {
-    	this.mainController = controller;
-    	this.storeOrders = controller.getStoreOrderReference();
-    	ArrayList<Order> arr = storeOrders.getArr();
-    	
-    	if(!arr.isEmpty()) {
-	    	for(var a: arr) {
-	    		orderHistory.getItems().add(a);
-	    	}
-    	}
-    }
+	public void setMainController(MainMenuController controller) {
+		this.mainController = controller;
+		this.storeOrders = controller.getStoreOrderReference();
+		ArrayList<Order> arr = storeOrders.getArr();
+
+		if (!arr.isEmpty()) {
+			for (var a : arr) {
+				orderHistory.getItems().add(a);
+			}
+		}
+	}
+
 	/**
 	 * Removes objects from the order store object
+	 * 
 	 * @param event
 	 */
-    @FXML
-    void cancelOrder(ActionEvent event) {
-    	int selectedOrder = orderHistory.getSelectionModel().getSelectedIndex();
-    	
-    	if(selectedOrder != -1) {
-    		storeOrders.remove(orderHistory.getItems().get(selectedOrder));
-    		orderHistory.getItems().remove(selectedOrder);
-    	}
-    }
-    
+	@FXML
+	void cancelOrder(ActionEvent event) {
+		int selectedOrder = orderHistory.getSelectionModel().getSelectedIndex();
+
+		if (selectedOrder != -1) {
+			storeOrders.remove(orderHistory.getItems().get(selectedOrder));
+			orderHistory.getItems().remove(selectedOrder);
+		}
+	}
+
 	/**
 	 * Exports a file into a text file
 	 */
+
 	@FXML
 	void exportFile(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
@@ -72,15 +77,11 @@ public class OrderPageController{
 				new ExtensionFilter("All Files", "*.*"));
 		Stage stage = new Stage();
 		File targetFile = chooser.showSaveDialog(stage); // get the reference of the target file
-		
-		
+
 		Alert a = new Alert(AlertType.CONFIRMATION);
 		a.setTitle("CONFIRMATION");
 		a.setHeaderText(storeOrders.exportDataBase(targetFile));
 		a.showAndWait();
 	}
-    
- 
 
-    
 }
