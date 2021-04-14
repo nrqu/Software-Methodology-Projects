@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Rutgers Cafe</string>
+    <string name="ru_cafe">RU Cafe!</string>
+    <string name="orderdonutbutton">orderDonutButton</string>
+    <string name="orderdetailbutton">orderDetailButton</string>
+    <string name="storeordersbutton">storeOrdersButton</string>
+    <string name="ordercoffeebutton">orderCoffeeButton</string>
+    <string name="order_donuts">Order Donuts!</string>
+</resources>

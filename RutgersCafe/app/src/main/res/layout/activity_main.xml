@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="147dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/ru_cafe"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/orderDonutButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/donut"
+        android:contentDescription="@string/orderdonutbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/orderCoffeButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/coffee1"
+        android:contentDescription="@string/ordercoffeebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/orderDonutButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/orderButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/cart"
+        android:contentDescription="@string/orderdetailbutton"
+        app:layout_constraintEnd_toEndOf="@+id/orderDonutButton"
+        app:layout_constraintStart_toStartOf="@+id/orderDonutButton"
+        app:layout_constraintTop_toBottomOf="@+id/orderDonutButton" />
+
+    <ImageButton
+        android:id="@+id/storeOrdersButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/orders"
+        android:contentDescription="@string/storeordersbutton"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/orderCoffeButton"
+        app:layout_constraintStart_toStartOf="@+id/orderCoffeButton"
+        app:layout_constraintTop_toBottomOf="@+id/orderCoffeButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
