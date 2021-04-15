@@ -12,5 +12,5 @@ public class OrderDonut extends AppCompatActivity {
         setContentView(R.layout.activity_order_donut);
     }
 
-    // some functions in here
+    // some functions in heredsvsdvsdv
 }
