@@ -11,5 +11,5 @@ public class OrderDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
     }
-    // TODO
+
 }
