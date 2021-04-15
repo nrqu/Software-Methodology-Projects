@@ -12,7 +12,9 @@
         <activity android:name=".StoreOrders"></activity>
         <activity android:name=".OrderDetails" />
         <activity android:name=".OrderCoffee" />
-        <activity android:name=".OrderDonut" />
+        <activity android:name=".OrderDonut"
+            android:label="Order Donuts"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

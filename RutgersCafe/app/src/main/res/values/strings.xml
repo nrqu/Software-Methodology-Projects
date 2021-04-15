@@ -6,4 +6,7 @@
     <string name="storeordersbutton">storeOrdersButton</string>
     <string name="ordercoffeebutton">orderCoffeeButton</string>
     <string name="order_donuts">Order Donuts!</string>
+    <string name="choose_donut_type">Choose donut type</string>
+    <string name="select_quantity">Select Quantity</string>
+    <string name="subtotal">SubTotal:</string>
 </resources>
