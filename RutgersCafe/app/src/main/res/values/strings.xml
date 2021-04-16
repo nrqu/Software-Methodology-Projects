@@ -10,4 +10,9 @@
     <string name="select_quantity">Select Quantity</string>
     <string name="subtotal">SubTotal:</string>
     <string name="add_to_order">Add to Order</string>
+    <string name="your_order">Your Order</string>
+    <string name="tax">Tax:</string>
+    <string name="total">Total:</string>
+    <string name="place_order">Place Order!</string>
+    <string name="remove_order">remove order!</string>
 </resources>
