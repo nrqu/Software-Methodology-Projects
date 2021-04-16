@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RutgersCafe">
-        <activity android:name=".StoreOrders"></activity>
-        <activity android:name=".OrderDetails" />
-        <activity android:name=".OrderCoffee" />
+        <activity
+            android:name=".StoreOrders"
+            android:label="Store Orders!"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".OrderDetails"
+            android:label="Your Order!"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".OrderCoffee"
+            android:label="Order Coffee!"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".OrderDonut"
-            android:label="Order Donuts"
+            android:label="Order Donuts!"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

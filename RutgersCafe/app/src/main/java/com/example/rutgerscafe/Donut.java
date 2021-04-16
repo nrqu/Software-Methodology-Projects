@@ -20,10 +20,10 @@ public class Donut extends MenuItem {
 
     Donut() {
         donutFlavors = new ArrayList<>();
+        donutFlavors.add("Plain");
         donutFlavors.add("Chocolate Frosted");
         donutFlavors.add("Cinammon");
         donutFlavors.add("Powdered");
-        donutFlavors.add("Plain");
         donutFlavors.add("Meyer Lemon");
         donutFlavors.add("Black and White");
         donutFlavors.add("Chocolate-Glazed");

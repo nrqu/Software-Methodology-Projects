@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rutgers Cafe</string>
+    <string name="app_name">RU Cafe!</string>
     <string name="ru_cafe">RU Cafe!</string>
     <string name="orderdonutbutton">orderDonutButton</string>
     <string name="orderdetailbutton">orderDetailButton</string>
@@ -9,4 +9,5 @@
     <string name="choose_donut_type">Choose donut type</string>
     <string name="select_quantity">Select Quantity</string>
     <string name="subtotal">SubTotal:</string>
+    <string name="add_to_order">Add to Order</string>
 </resources>

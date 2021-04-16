@@ -17,26 +17,29 @@ public class MainActivity extends AppCompatActivity {
 
         goToDonutActivity();
         goToCoffeeActivity();
+        goToOrderDetailActivity();
+        goToStoreOrdersActivity();
     }
 
     public void goToDonutActivity() {
-        ImageButton donutButton = (ImageButton) findViewById(R.id.orderDonutButton);
-        donutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, OrderDonut.class));
-            }
-        });
+        ImageButton donutButton = findViewById(R.id.orderDonutButton);
+        donutButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDonut.class)));
     }
 
     public void goToCoffeeActivity() {
-        ImageButton coffeeButton = (ImageButton) findViewById(R.id.orderCoffeButton);
-        coffeeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, OrderCoffee.class));
-            }
-        });
+        ImageButton coffeeButton = findViewById(R.id.orderCoffeButton);
+        coffeeButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderCoffee.class)));
+    }
+
+    public void goToOrderDetailActivity() {
+        ImageButton orderButton = findViewById(R.id.orderButton);
+        orderButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDetails.class)));
+
+    }
+
+    public void goToStoreOrdersActivity() {
+        ImageButton storeButton = findViewById(R.id.storeOrdersButton);
+        storeButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, StoreOrders.class)));
     }
 
 

@@ -44,23 +44,32 @@
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:textStyle="italic"
         android:layout_marginTop="20dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/donutChoiceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/subtotalView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtotal"
         android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
+        android:onClick="addToOrder"
+        android:text="@string/add_to_order" />
 
 </LinearLayout>
