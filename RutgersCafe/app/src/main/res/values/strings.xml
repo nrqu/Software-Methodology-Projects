@@ -6,6 +6,9 @@
     <string name="storeordersbutton">storeOrdersButton</string>
     <string name="ordercoffeebutton">orderCoffeeButton</string>
     <string name="order_donuts">Order Donuts!</string>
+    <string name="order_coffee">Order Coffee!</string>
+    <string name="order_info">Order Information!</string>
+    <string name="order_store">Order Store!</string>
     <string name="choose_donut_type">Choose donut type</string>
     <string name="select_quantity">Select Quantity</string>
     <string name="subtotal">SubTotal:</string>
@@ -15,4 +18,11 @@
     <string name="total">Total:</string>
     <string name="place_order">Place Order!</string>
     <string name="remove_order">remove order!</string>
+    <string name="WhippedCream">Whipped Cream</string>
+    <string name="cream">Cream</string>
+    <string name="Syrup">Syrup</string>
+    <string name="milk">Milk</string>
+    <string name="Caramel">Caramel</string>
+    <string name="addons">Addons</string>
+    <string name="sizes">Coffee Size</string>
 </resources>

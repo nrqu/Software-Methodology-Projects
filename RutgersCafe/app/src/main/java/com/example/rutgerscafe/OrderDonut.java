@@ -52,6 +52,7 @@ public class OrderDonut extends AppCompatActivity {
         ArrayAdapter<Integer> qtyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         qtySpinner.setAdapter(qtyAdapter);
     }
+
     public void updateSubtotal() {
         donutSubtotal = findViewById(R.id.subtotalView);
         qtySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -83,7 +84,6 @@ public class OrderDonut extends AppCompatActivity {
     /*
     * function definition
     * */
-
     public void addToOrder(View v) {
         Context context = getApplicationContext();
         String msg;

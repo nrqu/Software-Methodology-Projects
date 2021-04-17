@@ -1,8 +1,9 @@
 package com.example.rutgerscafe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Order implements Customizable{
+public class Order implements Customizable, Serializable {
     ArrayList<MenuItem> arr;
     static int orderId=1;//increases by one every time an object is created
     int orderNumber;//unique order number of each for each order created
@@ -38,7 +39,7 @@ public class Order implements Customizable{
     public boolean remove(Object obj) {
         if(obj instanceof Coffee) {
             arr.remove(obj);
-            return true;
+           return true;
         } else if (obj instanceof Donut) {
             arr.remove(obj);
             return true;

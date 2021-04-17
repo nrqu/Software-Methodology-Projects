@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-
+    Order order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        order = new Order();
 
         goToDonutActivity();
         goToCoffeeActivity();
@@ -28,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToCoffeeActivity() {
         ImageButton coffeeButton = findViewById(R.id.orderCoffeButton);
-        coffeeButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderCoffee.class)));
+        Intent intent = new Intent(MainActivity.this, OrderCoffee.class);
+        intent.putExtra("ORDER_REFERENCE",order);
+        coffeeButton.setOnClickListener(v -> startActivity(intent));
+
     }
 
     public void goToOrderDetailActivity() {
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         ImageButton storeButton = findViewById(R.id.storeOrdersButton);
         storeButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, StoreOrders.class)));
     }
-
+    public Order getOrderReference(){
+        return order;
+    }
 
 }
