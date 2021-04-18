@@ -3,6 +3,7 @@ package com.example.rutgerscafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,12 +24,15 @@ public class OrderDonut extends AppCompatActivity {
     TextView donutChoice;
     TextView donutSubtotal;
     double subTotal = 0.0;
+    Donut donut;
+    Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_donut);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        order = (Order)getIntent().getSerializableExtra("ORDER_REFERENCE");
 
         setDonutListView();
         setQtySpinner();
@@ -59,17 +63,14 @@ public class OrderDonut extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int qty = (int) parent.getItemAtPosition(position);
-                Donut d = new Donut(qty);
-                d.calculateSubTotal();
-                subTotal = d.getSubTotal();
-                Log.println(Log.INFO, "price", String.valueOf(subTotal));
-
-                donutSubtotal.setText("Subtotal: $" + subTotal);
+                donut = new Donut(donutChoice.getText().toString(), qty);
+                donut.calculateSubTotal();
+                subTotal = donut.getSubTotal();
+                donutSubtotal.setText("Subtotal: $" +  String.format("%.2f", subTotal));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -93,7 +94,7 @@ public class OrderDonut extends AppCompatActivity {
         if(subTotal != 0) {
             msg = donutChoice.getText().toString() + " added to order!.";
 
-            // add to order
+            order.add(donut);
 
             qtySpinner.setSelection(0);
 
@@ -104,6 +105,14 @@ public class OrderDonut extends AppCompatActivity {
         Toast toast = Toast.makeText(context,msg, duration);
         toast.show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("MyData", order);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 

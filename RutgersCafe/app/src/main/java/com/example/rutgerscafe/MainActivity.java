@@ -17,15 +17,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         order = new Order();
 
-        goToDonutActivity();
+        //goToDonutActivity();
         //goToCoffeeActivity();
         //goToOrderDetailActivity();
         goToStoreOrdersActivity();
     }
 
-    public void goToDonutActivity() {
+    public void goToDonutActivity(View View) {
         ImageButton donutButton = findViewById(R.id.orderDonutButton);
-        donutButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDonut.class)));
+//        donutButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDonut.class)));
+        Intent intent = new Intent(MainActivity.this, OrderDonut.class);
+        intent.putExtra("ORDER_REFERENCE",order);
+        startActivityForResult(intent,101);
     }
 
     public void goToCoffeeActivity(View view) {

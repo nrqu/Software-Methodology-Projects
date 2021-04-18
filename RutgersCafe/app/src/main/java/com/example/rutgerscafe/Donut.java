@@ -7,6 +7,7 @@ import java.util.List;
 public class Donut extends MenuItem {
     private final static double DONUTPRICE = 1.39;
     private int donutQuantity;
+    private String donutType;
     private List<String> donutFlavors;
 
 
@@ -14,7 +15,8 @@ public class Donut extends MenuItem {
      * Constructor: Creates a Donut object.
      */
 
-    Donut(int quantity) {
+    Donut(String flavor, int quantity) {
+        donutType = flavor;
         donutQuantity = quantity;
     }
 
@@ -38,10 +40,10 @@ public class Donut extends MenuItem {
      * @return a String representation with donut information.
      */
 
-//    @Override
-//    public String toString() {
-//        return donutType + "~" + donutFlavour + "~" + "(" + donutQuantity + ")";
-//    }
+    @Override
+    public String toString() {
+        return donutType + "~" + "(" + donutQuantity + ")";
+    }
 
     /**
      * It calculates the subtotal amount of a donut by multiplying the quantity

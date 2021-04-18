@@ -38,10 +38,11 @@ public class Order implements Customizable, Serializable {
     @Override
     public boolean remove(Object obj) {
         if(obj instanceof Coffee) {
-            arr.remove(obj);
-           return true;
+            arr.remove((Coffee)obj);
+            return true;
         } else if (obj instanceof Donut) {
-            arr.remove(obj);
+            System.out.println("remove: " + obj);
+            arr.remove((Donut)obj);
             return true;
         }
         return false;
