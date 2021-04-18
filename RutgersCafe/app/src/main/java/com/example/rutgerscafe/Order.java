@@ -73,4 +73,10 @@ public class Order implements Customizable, Serializable {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public void print(){
+        System.out.println("Current items in Order: ");
+        for(MenuItem m: arr)
+            System.out.println(m);
+    }
 }

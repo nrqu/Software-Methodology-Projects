@@ -1,6 +1,8 @@
 package com.example.rutgerscafe;
 
-public class MenuItem {
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
     private double subTotal;
 
     /**

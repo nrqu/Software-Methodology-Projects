@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Order order;
@@ -17,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
         order = new Order();
 
         goToDonutActivity();
-        goToCoffeeActivity();
-        goToOrderDetailActivity();
+        //goToCoffeeActivity();
+        //goToOrderDetailActivity();
         goToStoreOrdersActivity();
     }
 
@@ -27,17 +28,19 @@ public class MainActivity extends AppCompatActivity {
         donutButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDonut.class)));
     }
 
-    public void goToCoffeeActivity() {
-        ImageButton coffeeButton = findViewById(R.id.orderCoffeButton);
+    public void goToCoffeeActivity(View view) {
+        //ImageButton coffeeButton = findViewById(R.id.orderCoffeButton);
         Intent intent = new Intent(MainActivity.this, OrderCoffee.class);
         intent.putExtra("ORDER_REFERENCE",order);
-        coffeeButton.setOnClickListener(v -> startActivity(intent));
+        startActivityForResult(intent,101);
 
     }
 
-    public void goToOrderDetailActivity() {
+    public void goToOrderDetailActivity(View view) {
         ImageButton orderButton = findViewById(R.id.orderButton);
-        orderButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrderDetails.class)));
+        Intent intent = new Intent(MainActivity.this, OrderDetails.class);
+        intent.putExtra("ORDER_REFERENCE2",order);
+        startActivityForResult(intent,101);
 
     }
 
@@ -45,8 +48,24 @@ public class MainActivity extends AppCompatActivity {
         ImageButton storeButton = findViewById(R.id.storeOrdersButton);
         storeButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, StoreOrders.class)));
     }
-    public Order getOrderReference(){
-        return order;
-    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 101 ) {
+            Toast.makeText(getApplicationContext(),"Level 1", Toast.LENGTH_SHORT).show();
+            if( resultCode == RESULT_OK ){
+                Toast.makeText(getApplicationContext(),"Level 2", Toast.LENGTH_SHORT).show();
+
+                if(data != null){
+                    Toast.makeText(getApplicationContext(),"Level 3", Toast.LENGTH_SHORT).show();
+
+                    this.order = (Order)data.getSerializableExtra("MyData");
+                    order.print();
+                }
+            }
+
+        }
+    }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Intent;
 import android.widget.AdapterView;
 import android.view.View;
 
@@ -34,7 +35,7 @@ public class OrderCoffee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_coffee);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         setCoffeeSizeSpinner();
         setCheckBoxOwners();
         coffee = new Coffee();
@@ -110,19 +111,29 @@ public class OrderCoffee extends AppCompatActivity {
         updateSubtotal();
     }
     public void placeOrder(View view){
-        if(order.add(coffee)){
-            Toast toast = Toast.makeText(getApplicationContext(),"Coffee added to Order!", Toast.LENGTH_SHORT);
-            toast.show();
-            addonWhippedCream.setChecked(false);
-            addonCaramel.setChecked(false);
-            addonMilk.setChecked(false);
-            addonSyrup.setChecked(false);
-            addonCream.setChecked(false);
-            sizeSpinner.setSelection(0);
-            coffee = new Coffee();
+        if(sizeSpinner.getSelectedItemPosition() > 0) {
+            if (order.add(coffee)) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Coffee added to Order!", Toast.LENGTH_SHORT);
+                toast.show();
+                addonWhippedCream.setChecked(false);
+                addonCaramel.setChecked(false);
+                addonMilk.setChecked(false);
+                addonSyrup.setChecked(false);
+                addonCream.setChecked(false);
+                sizeSpinner.setSelection(0);
+                coffee = new Coffee();
+            }
+
         }else{
             Toast toast = Toast.makeText(getApplicationContext(),"Please select a coffee size!", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("MyData", order);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
