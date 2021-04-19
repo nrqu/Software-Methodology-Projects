@@ -11,11 +11,13 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Order order;
+    Store store;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         order = new Order();
+        store = new Store();
 
         //goToDonutActivity();
         //goToCoffeeActivity();
@@ -42,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
     public void goToOrderDetailActivity(View view) {
         ImageButton orderButton = findViewById(R.id.orderButton);
         Intent intent = new Intent(MainActivity.this, OrderDetails.class);
-        intent.putExtra("ORDER_REFERENCE2",order);
-        startActivityForResult(intent,101);
+        intent.putExtra("ORDER_REFERENCE",order);
+        intent.putExtra("STORE_REFERENCE",store);
+        startActivityForResult(intent,102);
 
     }
 
@@ -55,20 +58,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("" + requestCode);
 
         if (requestCode == 101 ) {
-            Toast.makeText(getApplicationContext(),"Level 1", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),"Level 1", Toast.LENGTH_SHORT).show();
             if( resultCode == RESULT_OK ){
-                Toast.makeText(getApplicationContext(),"Level 2", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Level 2", Toast.LENGTH_SHORT).show();
 
                 if(data != null){
-                    Toast.makeText(getApplicationContext(),"Level 3", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Level 3", Toast.LENGTH_SHORT).show();
 
                     this.order = (Order)data.getSerializableExtra("MyData");
-                    order.print();
+
                 }
             }
 
+        }else if(requestCode == 102){
+            if( resultCode == RESULT_OK ){
+                if(data != null){
+                    this.order = (Order)data.getSerializableExtra("order");
+                    this.store = (Store)data.getSerializableExtra("store");
+                    for(Order m: store.getArr()){
+                        System.out.println(m);
+                    }
+
+                }
+            }
         }
     }
 }
