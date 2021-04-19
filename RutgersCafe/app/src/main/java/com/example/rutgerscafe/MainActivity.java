@@ -58,16 +58,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("" + requestCode);
 
         if (requestCode == 101 ) {
             //Toast.makeText(getApplicationContext(),"Level 1", Toast.LENGTH_SHORT).show();
             if( resultCode == RESULT_OK ){
                 //Toast.makeText(getApplicationContext(),"Level 2", Toast.LENGTH_SHORT).show();
-
                 if(data != null){
                     //Toast.makeText(getApplicationContext(),"Level 3", Toast.LENGTH_SHORT).show();
-
                     this.order = (Order)data.getSerializableExtra("MyData");
 
                 }
@@ -78,10 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 if(data != null){
                     this.order = (Order)data.getSerializableExtra("order");
                     this.store = (Store)data.getSerializableExtra("store");
-                    for(Order m: store.getArr()){
-                        System.out.println(m);
-                    }
-
                 }
             }
         }

@@ -41,7 +41,6 @@ public class Order implements Customizable, Serializable {
             arr.remove((Coffee)obj);
             return true;
         } else if (obj instanceof Donut) {
-            System.out.println("remove: " + obj);
             arr.remove((Donut)obj);
             return true;
         }
