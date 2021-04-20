@@ -73,6 +73,7 @@
         android:layout_marginTop="60dp"
         android:background="@drawable/orders"
         android:contentDescription="@string/storeordersbutton"
+        android:onClick="goToStoreOrdersActivity"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/orderCoffeButton"

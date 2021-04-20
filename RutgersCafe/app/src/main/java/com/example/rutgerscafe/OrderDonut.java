@@ -1,11 +1,17 @@
 package com.example.rutgerscafe;
 
+/**
+ * This class is used as the donut GUI for the activity created by the
+ * the MainActivity class.
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderDonut extends AppCompatActivity {
 
@@ -32,7 +37,7 @@ public class OrderDonut extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_donut);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        order = (Order)getIntent().getSerializableExtra("ORDER_REFERENCE");
+        order = (Order) getIntent().getSerializableExtra("ORDER_REFERENCE");
 
         setDonutListView();
         setQtySpinner();
@@ -40,22 +45,36 @@ public class OrderDonut extends AppCompatActivity {
         setDonutChoiceText();
     }
 
+    /**
+     * It fetches a list view with an array list of strings from the Donut class.
+     */
+
     public void setDonutListView() {
         Donut donut = new Donut();
         donutListView = findViewById(R.id.donutListView);
         ArrayList<String> flavorsList;
         flavorsList = (ArrayList<String>) donut.getList();
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, flavorsList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1, flavorsList);
         donutListView.setAdapter(arrayAdapter);
     }
+
+    /**
+     * It sets a spinner with an integer array.
+     */
 
     public void setQtySpinner() {
         qtySpinner = findViewById(R.id.spinner);
         Integer[] items = new Integer[]{0, 1, 2, 3, 4, 5};
-        ArrayAdapter<Integer> qtyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<Integer> qtyAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, items);
         qtySpinner.setAdapter(qtyAdapter);
     }
+
+    /**
+     * It updates the the subtotal textView according to the quantity selected.
+     */
 
     public void updateSubtotal() {
         donutSubtotal = findViewById(R.id.subtotalView);
@@ -66,7 +85,7 @@ public class OrderDonut extends AppCompatActivity {
                 donut = new Donut(donutChoice.getText().toString(), qty);
                 donut.calculateSubTotal();
                 subTotal = donut.getSubTotal();
-                donutSubtotal.setText("Subtotal: $" +  String.format("%.2f", subTotal));
+                donutSubtotal.setText("Subtotal: $" + String.format("%.2f", subTotal));
             }
 
             @Override
@@ -75,37 +94,41 @@ public class OrderDonut extends AppCompatActivity {
         });
     }
 
-    public void setDonutChoiceText () {
+    /**
+     * It sets a textView with the flavor at index 0 from the donutListView.
+     */
+
+    public void setDonutChoiceText() {
         donutChoice = findViewById(R.id.donutChoiceView);
         donutChoice.setText(donutListView.getItemAtPosition(0).toString());
         donutListView.setOnItemClickListener((parent, view, position, id) ->
                 donutChoice.setText(donutListView.getItemAtPosition(position).toString()));
     }
 
-    /*
-    * function definition
-    * */
+    /**
+     * It adds a Donut object to an Order object and display a toast message whether the Donut
+     * object was added or not.
+     */
     public void addToOrder(View v) {
         Context context = getApplicationContext();
         String msg;
-
         int duration = Toast.LENGTH_SHORT;
 
-        if(subTotal != 0) {
+        if (subTotal != 0) {
             msg = donutChoice.getText().toString() + " added to order!.";
-
             order.add(donut);
-
             qtySpinner.setSelection(0);
 
-        }
-        else
+        } else
             msg = "Select a donut quantity!";
 
-        Toast toast = Toast.makeText(context,msg, duration);
-        toast.show();
+        Toast.makeText(context, msg, duration).show();
 
     }
+
+    /**
+     * It transfer the Donut object information to the Order class.
+     */
 
     @Override
     public void onBackPressed() {
@@ -114,6 +137,4 @@ public class OrderDonut extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
-
 }

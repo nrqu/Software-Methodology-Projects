@@ -12,13 +12,17 @@ public class Donut extends MenuItem {
 
 
     /**
-     * Constructor: Creates a Donut object.
+     * Constructor: It sets the donut flavor and quantity
      */
 
     Donut(String flavor, int quantity) {
         donutType = flavor;
         donutQuantity = quantity;
     }
+
+    /**
+     * Constructor: Creates a Donut object
+     */
 
     Donut() {
         donutFlavors = new ArrayList<>();
@@ -33,7 +37,16 @@ public class Donut extends MenuItem {
         donutFlavors.add("Seasonal Donut Flavor");
     }
 
-    public List<String> getList() { return donutFlavors; }
+    /**
+     * It returns a string list
+     *
+     * @return a string list of donut flavors.
+     */
+
+    public List<String> getList() {
+        return donutFlavors;
+    }
+
     /**
      * Creates a string with the donut type, donut flavot, and quantity information.
      *
@@ -54,14 +67,4 @@ public class Donut extends MenuItem {
     public void calculateSubTotal() {
         super.setSubTotal(DONUTPRICE * donutQuantity);
     }
-
-//    /**
-//     * getter method that returns the donut type information of the object.
-//     *
-//     * @return a String type of the donut type information.
-//     */
-//
-//    public String getDonutType() {
-//        return this.donutType;
-//    }
 }

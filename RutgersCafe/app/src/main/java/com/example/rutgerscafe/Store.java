@@ -1,7 +1,6 @@
 package com.example.rutgerscafe;
 
-import java.io.File;
-import java.io.PrintWriter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,7 +8,6 @@ import java.util.ArrayList;
  * Class used to handle the StoreOrders GUI
  *
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
- *
  */
 public class Store implements Customizable, Serializable {
     ArrayList<Order> arr;
