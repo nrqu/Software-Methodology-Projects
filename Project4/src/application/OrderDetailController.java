@@ -71,6 +71,7 @@ public class OrderDetailController {
 		int selectedIndex = orderSummaryList.getSelectionModel().getSelectedIndex();
 		if (selectedIndex > -1) {
 			order.remove(orderSummaryList.getItems().get(selectedIndex));
+			System.out.println(orderSummaryList.getItems().get(selectedIndex));
 			orderSummaryList.getItems().remove(selectedIndex);
 			setPrice();
 		}
