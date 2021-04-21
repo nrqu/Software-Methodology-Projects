@@ -11,7 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/**
+ * Class used as the activity for the order detail view.
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ */
 public class OrderDetails extends AppCompatActivity {
     Order order;
     Store store;
@@ -50,7 +54,6 @@ public class OrderDetails extends AppCompatActivity {
      *
      * @param view base class for widgets.
      */
-
     public void removeItem(View view) {
         if (selectedIndex > -1) {
             order.remove(orderItemList.getItemAtPosition(selectedIndex));
@@ -66,7 +69,6 @@ public class OrderDetails extends AppCompatActivity {
      *
      * @param view base class for widgets.
      */
-
     public void placeOrder(View view) {
         if (arrayAdapter.getCount() > 0) {
             if (store.add(order)) {
@@ -82,6 +84,9 @@ public class OrderDetails extends AppCompatActivity {
         }
     }
 
+    /**
+     * This function is called when the back button is pressed on the app
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
@@ -95,7 +100,6 @@ public class OrderDetails extends AppCompatActivity {
     /**
      * calculates the sub-total,tax and total of the order
      **/
-
     void setPrice() {
         double subTotal = 0.0;
         double taxes = 0.0;

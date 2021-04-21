@@ -1,7 +1,12 @@
 package com.example.rutgerscafe;
 
 import java.util.ArrayList;
-
+/**
+ * This class is used as an object that represents a coffee in a store order
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ *
+ */
 public class Coffee extends MenuItem  implements Customizable{
     final static double COFFEEBASEPRICE = 1.99;
     final static double COFFEETALLPRICE = 2.49;
@@ -9,7 +14,7 @@ public class Coffee extends MenuItem  implements Customizable{
     final static double COFFEEVENTIPRICE = 3.49;
     final static double ADDONPRICE = 0.20;
 
-    int coffeeSize;//0=short,1=tall,2=grande,3=venti
+    int coffeeSize;
     ArrayList<String> addons;
     double addonTotal;
     /**
@@ -22,7 +27,7 @@ public class Coffee extends MenuItem  implements Customizable{
      * Calculates the sub-total price of the coffee depending on the size and add-ons the coffee contains.
      */
     @Override
-    public void calculateSubTotal() {
+    public void itemPrice() {
         double coffeePrice = 0.0;
         if(coffeeSize == 0)
             coffeePrice =0.0;
@@ -74,7 +79,7 @@ public class Coffee extends MenuItem  implements Customizable{
     public void setCoffeeSize(int val) {
         if(val > -1) {
             coffeeSize = val;
-            calculateSubTotal();
+            itemPrice();
         }
     }
     /**

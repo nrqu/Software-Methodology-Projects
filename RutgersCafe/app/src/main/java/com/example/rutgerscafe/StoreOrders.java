@@ -1,10 +1,6 @@
 package com.example.rutgerscafe;
 
-/**
- * StoreOrder activity to represent a store GUI with Orders objects.
- *
- * @author HECTOR CERDA, LUIS FIGUEROAGIL
- */
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
+/**
+ * StoreOrder activity to represent a store GUI with Orders objects.
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ */
 public class StoreOrders extends AppCompatActivity {
     ListView storeOrders;
     ArrayList<Order> ordersList;

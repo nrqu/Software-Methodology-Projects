@@ -1,20 +1,20 @@
 package com.example.rutgerscafe;
 
+
+import java.io.Serializable;
+
 /**
  * Class used as the parent class for all the menu items
  *
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  */
-
-import java.io.Serializable;
-
 public class MenuItem implements Serializable {
     private double subTotal;
 
     /**
      * Calculates the sub-total price of the coffee depending on the size and add-ons the coffee contains.
      */
-    public void calculateSubTotal() {
+    public void itemPrice() {
     }
 
     /**

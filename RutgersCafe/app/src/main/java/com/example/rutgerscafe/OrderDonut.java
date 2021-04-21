@@ -1,17 +1,10 @@
 package com.example.rutgerscafe;
 
-/**
- * This class is used as the donut GUI for the activity created by the
- * the MainActivity class.
- *
- * @author HECTOR CERDA, LUIS FIGUEROAGIL
- */
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,7 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/**
+ * This class is used as the donut GUI for the activity created by the
+ * the MainActivity class.
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ */
 public class OrderDonut extends AppCompatActivity {
 
     ListView donutListView;
@@ -49,7 +47,6 @@ public class OrderDonut extends AppCompatActivity {
     /**
      * It fetches a list view with an array list of strings from the Donut class.
      */
-
     public void setDonutListView() {
         Donut donut = new Donut();
         donutListView = findViewById(R.id.donutListView);
@@ -64,7 +61,6 @@ public class OrderDonut extends AppCompatActivity {
     /**
      * It sets a spinner with an integer array.
      */
-
     public void setQtySpinner() {
         qtySpinner = findViewById(R.id.spinner);
         Integer[] items = new Integer[]{0, 1, 2, 3, 4, 5};
@@ -76,7 +72,6 @@ public class OrderDonut extends AppCompatActivity {
     /**
      * It updates the the subtotal textView according to the quantity selected.
      */
-
     public void updateSubtotal() {
         donutSubtotal = findViewById(R.id.subtotalView);
         qtySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -84,7 +79,7 @@ public class OrderDonut extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int qty = (int) parent.getItemAtPosition(position);
                 donut = new Donut(donutChoice.getText().toString(), qty);
-                donut.calculateSubTotal();
+                donut.itemPrice();
                 subTotal = donut.getSubTotal();
                 donutSubtotal.setText("Subtotal: $" + String.format("%.2f", subTotal));
             }
@@ -98,7 +93,6 @@ public class OrderDonut extends AppCompatActivity {
     /**
      * It sets a textView with the flavor at index 0 from the donutListView.
      */
-
     public void setDonutChoiceText() {
         donutChoice = findViewById(R.id.donutChoiceView);
         donutChoice.setText(donutListView.getItemAtPosition(0).toString());
@@ -128,7 +122,6 @@ public class OrderDonut extends AppCompatActivity {
     /**
      * It transfer the Donut object information to the Order class.
      */
-
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();

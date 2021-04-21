@@ -1,7 +1,6 @@
 package com.example.rutgerscafe;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
@@ -12,13 +11,14 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-
+/**
+ * Class used as the activity for the coffee view.
+ *
+ * @author HECTOR CERDA, LUIS FIGUEROAGIL
+ */
 public class OrderCoffee extends AppCompatActivity {
 
     String[] coffeeSizesList = {"Choose Size","Short", "Tall", "Grande","Venti"};
@@ -31,6 +31,7 @@ public class OrderCoffee extends AppCompatActivity {
     TextView subtotal;
     Coffee coffee;
     Order order;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,10 @@ public class OrderCoffee extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Sets the sizes for the coffe spinner
+     */
     private void setCoffeeSizeSpinner() {
         sizeSpinner = findViewById(R.id.coffeeSizes);
         ArrayAdapter<String> qtyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, coffeeSizesList);
@@ -62,6 +67,9 @@ public class OrderCoffee extends AppCompatActivity {
         subtotal = (TextView) findViewById(R.id.coffeeSubtotal);
     }
 
+    /**
+     * Checks sets the owners of the buttons in the coffee view
+     */
     private void setCheckBoxOwners(){
         addonCream = (CheckBox) findViewById(R.id.addonCream);
         addonWhippedCream = (CheckBox) findViewById(R.id.addonWhippedCream);
@@ -71,6 +79,10 @@ public class OrderCoffee extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Updates the subtotal price for the coffee order
+     */
     private void updateSubtotal() {
 
         if(sizeSpinner.getSelectedItemPosition() > -1) {
@@ -99,7 +111,7 @@ public class OrderCoffee extends AppCompatActivity {
             else
                 coffee.remove("Cream");
 
-            coffee.calculateSubTotal();
+            coffee.itemPrice();
 
             if(coffee.getSubTotal() > 0.0)
                 subtotal.setText("Subtotal: $" + String.format("%.2f",coffee.getSubTotal())+"\n");
@@ -107,6 +119,11 @@ public class OrderCoffee extends AppCompatActivity {
                 subtotal.setText("Subtotal: $0.00");
         }
     }
+
+    /**
+     * This method is called everytime a check box is clicked in the activity
+     * @param view
+     */
     public void onClickAddons(View view){
         updateSubtotal();
     }
@@ -129,6 +146,9 @@ public class OrderCoffee extends AppCompatActivity {
             toast.show();
         }
     }
+    /**
+     * This function is called when the back button is pressed on the app
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();

@@ -1,14 +1,14 @@
 package com.example.rutgerscafe;
 
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * Class used as the parent class for all the menu items
  *
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  */
-
-import java.io.Serializable;
-import java.util.ArrayList;
-
 public class Order implements Customizable, Serializable {
     ArrayList<MenuItem> arr;
     static int orderId = 1;//increases by one every time an object is created

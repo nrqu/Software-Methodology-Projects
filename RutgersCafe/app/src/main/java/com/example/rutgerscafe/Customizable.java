@@ -5,7 +5,6 @@ package com.example.rutgerscafe;
  *
  * @author HECTOR CERDA, LUIS FIGUEROAGIL
  */
-
 interface Customizable {
     boolean add(Object obj);
 
