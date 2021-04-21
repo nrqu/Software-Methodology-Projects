@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -56,6 +57,7 @@ public class OrderDetails extends AppCompatActivity {
             arrayAdapter.notifyDataSetChanged();
             selectedIndex = -1;
             setPrice();
+            Toast.makeText(getApplicationContext(), "Item removed!!!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -72,8 +74,11 @@ public class OrderDetails extends AppCompatActivity {
                 arrayAdapter = new ArrayAdapter(this,
                         android.R.layout.simple_list_item_1, order.getArr());
                 orderItemList.setAdapter(arrayAdapter);
+                Toast.makeText(getApplicationContext(), "Order placed!!!", Toast.LENGTH_SHORT).show();
                 setPrice();
             }
+        } else {
+            Toast.makeText(getApplicationContext(), "No items in your order", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -94,7 +99,7 @@ public class OrderDetails extends AppCompatActivity {
     void setPrice() {
         double subTotal = 0.0;
         double taxes = 0.0;
-        double total = 0.0;
+        double total;
 
         subtotalTV = findViewById(R.id.subtotalOrderTxtView);
         taxTV = findViewById(R.id.taxTxtView);
@@ -117,7 +122,7 @@ public class OrderDetails extends AppCompatActivity {
             total = 0.0;
         }
         subtotalTV.setText("Subtotal: $" + String.format("%.2f", subTotal));
-        taxTV.setText("Subtotal: $" + String.format("%.2f", taxes));
-        totalTV.setText("Subtotal: $" + String.format("%.2f", total));
+        taxTV.setText("Tax: $" + String.format("%.2f", taxes));
+        totalTV.setText("Total: $" + String.format("%.2f", total));
     }
 }

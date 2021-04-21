@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -110,9 +111,7 @@ public class OrderDonut extends AppCompatActivity {
      * object was added or not.
      */
     public void addToOrder(View v) {
-        Context context = getApplicationContext();
         String msg;
-        int duration = Toast.LENGTH_SHORT;
 
         if (subTotal != 0) {
             msg = donutChoice.getText().toString() + " added to order!.";
@@ -122,7 +121,7 @@ public class OrderDonut extends AppCompatActivity {
         } else
             msg = "Select a donut quantity!";
 
-        Toast.makeText(context, msg, duration).show();
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 
     }
 

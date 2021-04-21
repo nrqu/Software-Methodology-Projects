@@ -21,9 +21,10 @@ import java.util.ArrayList;
 
 public class StoreOrders extends AppCompatActivity {
     ListView storeOrders;
-    Store store;
     ArrayList<Order> ordersList;
     ArrayAdapter ordersAdapter;
+    Store store;
+    Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class StoreOrders extends AppCompatActivity {
 
         storeOrders = findViewById(R.id.storeOrdersListView);
         store = (Store) getIntent().getSerializableExtra("STORE_REFERENCE");
+        order = (Order) getIntent().getSerializableExtra("ORDER_REFERENCE");
 
         ordersList = store.getArr();
         ordersAdapter = new ArrayAdapter(this,
@@ -60,6 +62,7 @@ public class StoreOrders extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("store", store);
+        intent.putExtra("order", order);
 
         setResult(RESULT_OK, intent);
         finish();

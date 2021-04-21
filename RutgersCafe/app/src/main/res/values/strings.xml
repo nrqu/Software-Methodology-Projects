@@ -26,4 +26,5 @@
     <string name="addons">Addons</string>
     <string name="sizes">Coffee Size</string>
     <string name="store_orders">Store Orders</string>
+    <string name="remove_item">remove item</string>
 </resources>
